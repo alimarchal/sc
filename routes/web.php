@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//    return view('layouts.page');
+    return view('layouts.master');
+//    return view('dashboard');
+})->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/blank-page', function () {
+    return view('layouts.page');
+})->name('blank.page');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/test', function () {
+    return view('test.test');
+})->name('test.page');
+
+Route::resource('courtCaseSecs', \App\Http\Controllers\CourtCaseSecController::class);
+Route::resource('courtCaseAotr', \App\Http\Controllers\CourtCaseAotrController::class);
