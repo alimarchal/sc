@@ -34,3 +34,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/test', function () {
 
 Route::resource('courtCaseSecs', \App\Http\Controllers\CourtCaseSecController::class);
 Route::resource('courtCaseAotr', \App\Http\Controllers\CourtCaseAotrController::class);
+Route::resource('customerServiceCenter', \App\Http\Controllers\CustomerServiceCenterController::class);
+Route::resource('simSale', \App\Http\Controllers\SimsSaleController::class);
+Route::resource('consumerComplaints', \App\Http\Controllers\ConsumerComplaintsController::class);
