@@ -17,9 +17,9 @@ class ConsumerComplaintsController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(ConsumerComplaints::class)
-            ->allowedFilters(['district', AllowedFilter::scope('starts_between')])
+            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
             ->get();
-        return view('court.court-case-aotr.index', compact('collection'));
+        return view('consumerComplaints.index', compact('collection'));
     }
 
     /**
@@ -50,9 +50,9 @@ class ConsumerComplaintsController extends Controller
      * @param  \App\Models\ConsumerComplaints  $consumerComplaints
      * @return \Illuminate\Http\Response
      */
-    public function show(ConsumerComplaints $consumerComplaints)
+    public function show(ConsumerComplaints $consumerComplaint)
     {
-        //
+        return view('consumerComplaints.show',compact('consumerComplaint'));
     }
 
     /**
@@ -61,9 +61,10 @@ class ConsumerComplaintsController extends Controller
      * @param  \App\Models\ConsumerComplaints  $consumerComplaints
      * @return \Illuminate\Http\Response
      */
-    public function edit(ConsumerComplaints $consumerComplaints)
+    public function edit(ConsumerComplaints $consumerComplaint)
     {
-        return view('consumerComplaints.edit',compact('courtCaseAotr'));
+        $consumerComplaints = $consumerComplaint;
+        return view('consumerComplaints.edit',compact('consumerComplaints'));
     }
 
     /**
@@ -73,9 +74,9 @@ class ConsumerComplaintsController extends Controller
      * @param  \App\Models\ConsumerComplaints  $consumerComplaints
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ConsumerComplaints $consumerComplaints)
+    public function update(Request $request, ConsumerComplaints $consumerComplaint)
     {
-        $consumerComplaints->update($request->all());
+        $consumerComplaint->update($request->all());
         return redirect()->route('consumerComplaints.index');
     }
 
@@ -85,9 +86,9 @@ class ConsumerComplaintsController extends Controller
      * @param  \App\Models\ConsumerComplaints  $consumerComplaints
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ConsumerComplaints $consumerComplaints)
+    public function destroy(ConsumerComplaints $consumerComplaint)
     {
-        $consumerComplaints->delete();
+        $consumerComplaint->delete();
         return redirect()->route('consumerComplaints.index');
     }
 }

@@ -14,6 +14,30 @@
 
 
         </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                    Marketing
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
 
 
         <li class="nav-item">
@@ -40,6 +64,33 @@
 
             </ul>
         </li>
+
+
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                    Consumer Complaints
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('consumerComplaints.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('consumerComplaints.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
 
 
         <li class="nav-item">

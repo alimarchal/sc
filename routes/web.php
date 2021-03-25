@@ -37,3 +37,5 @@ Route::resource('courtCaseAotr', \App\Http\Controllers\CourtCaseAotrController::
 Route::resource('customerServiceCenter', \App\Http\Controllers\CustomerServiceCenterController::class);
 Route::resource('simSale', \App\Http\Controllers\SimsSaleController::class);
 Route::resource('consumerComplaints', \App\Http\Controllers\ConsumerComplaintsController::class);
+Route::resource('monthlySaleProgress', \App\Http\Controllers\MonthlySaleProgressController::class);
+Route::resource('monthlyStockSummery', \App\Http\Controllers\MonthlyStockSummeryController::class);
