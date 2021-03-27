@@ -22,8 +22,8 @@ class CreateMonthlySaleProgressTable extends Migration
             $table->string('card_sale_through_own_outlets_423_csc')->nullable();
             $table->string('card_sale_through_own_outlets_426_csc')->nullable();
             $table->string('card_sale_through_own_outlets_429_csc')->nullable();
-            $table->decimal('own_outlet_total_cards',2)->nullable();
-            $table->decimal('own_outlet_total_revenue',2)->nullable();
+            $table->string('own_outlet_total_cards')->nullable();
+            $table->string('own_outlet_total_revenue')->nullable();
             $table->string('card_sale_through_franchise_neelum_comm_mzd')->nullable();
             $table->string('card_sale_through_franchise_ahmed_trader_bagh')->nullable();
             $table->string('card_sale_through_franchise_rkt_comm_gp')->nullable();

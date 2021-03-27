@@ -17,6 +17,7 @@ class CreateMonthlyStockSummeriesTable extends Migration
             $table->id();
             $table->string('btn')->nullable();
             $table->string('type_of_cards')->nullable();
+            $table->string('denom')->nullable();
             $table->string('previous_balance_423_csc')->nullable();
             $table->string('previous_balance_426_csc')->nullable();
             $table->string('previous_balance_429_csc')->nullable();

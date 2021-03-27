@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="invoice p-3 mb-3 rounded">
 
-                <form action="{{route('consumerComplaints.store')}}" method="post">
+                <form action="{{route('monthlySaleProgress.store')}}" method="post">
                     @csrf
 
 {{--                    <div class="form-group">--}}

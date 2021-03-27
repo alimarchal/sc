@@ -72,4 +72,16 @@ class User extends Authenticatable
             'Haveli',
             'Sudhnati'];
     }
+
+
+    public static function cards(): array
+    {
+        return $cards = [
+            'SCOM',
+            'CDMA',
+            'PPCCs',
+            'DSL',
+            'SIMs',
+        ];
+    }
 }
