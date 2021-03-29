@@ -39,3 +39,5 @@ Route::resource('simSale', \App\Http\Controllers\SimsSaleController::class);
 Route::resource('consumerComplaints', \App\Http\Controllers\ConsumerComplaintsController::class);
 Route::resource('monthlySaleProgress', \App\Http\Controllers\MonthlySaleProgressController::class);
 Route::resource('monthlyStockSummery', \App\Http\Controllers\MonthlyStockSummeryController::class);
+Route::resource('corporateCustomer', \App\Http\Controllers\CorporateCustomerDataController::class);
+Route::resource('monthlyReportPostPaid', \App\Http\Controllers\MonthlyReportPostPaidController::class);
