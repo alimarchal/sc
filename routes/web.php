@@ -41,3 +41,5 @@ Route::resource('monthlySaleProgress', \App\Http\Controllers\MonthlySaleProgress
 Route::resource('monthlyStockSummery', \App\Http\Controllers\MonthlyStockSummeryController::class);
 Route::resource('corporateCustomer', \App\Http\Controllers\CorporateCustomerDataController::class);
 Route::resource('monthlyReportPostPaid', \App\Http\Controllers\MonthlyReportPostPaidController::class);
+Route::resource('franchiseWiseRevenue', \App\Http\Controllers\FranchiseWiseRevenueController::class);
+Route::resource('siteState', \App\Http\Controllers\SiteStateController::class);

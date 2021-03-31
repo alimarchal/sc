@@ -84,4 +84,13 @@ class User extends Authenticatable
             'SIMs',
         ];
     }
+
+    public static function connectionType(): array
+    {
+        return $connectionType = [
+            'PSTN EXCH SITES',
+            'GSM BTS SITES',
+            'WILL BTS SITES',
+        ];
+    }
 }
