@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('page-title', 'Court Case')
+@section('page-title', 'Customer Services Center')
 
 @section('breadcrumb-item','')
 
@@ -7,16 +7,51 @@
     <div class="row">
         <div class="col-12">
             <form action="{{route('customerServiceCenter.index')}}" method="get">
-                <div class="form-group">
-                    <label>{{strtoupper(str_replace('_',' ', 'loc_of_csc'))}}</label>
-                    <select class="form-control" name="filter[loc_of_csc]">
-                        @foreach(\App\Models\User::district() as $dist)
-                            <option value="{{$dist}}">{{$dist}}</option>
-                        @endforeach
-                    </select>
-                    <br>
-                    <input type="submit" class="btn btn-danger">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Enter Month</label>
+                        <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>{{strtoupper(str_replace('_',' ', 'region'))}}</label>
+                        <select class="form-control" name="filter[region]">
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
+                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <label>{{strtoupper(str_replace('_',' ', 'loc_of_csc'))}}</label>
+                        <select class="form-control" name="filter[loc_of_csc]">
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::district() as $dist)
+                                <option value="{{$dist}}">{{$dist}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>{{strtoupper(str_replace('_',' ', 'svsc'))}}</label>
+                        <select class="form-control" name="filter[svsc]">
+                            <option value="">None</option>
+                            <option value="S Phone">S Phone</option>
+                            <option value="GSM">GSM</option>
+                            <option value="CDMA/NW">CDMA/NW</option>
+                            <option value="Snet">Snet</option>
+                        </select>
+                    </div>
+
+
                 </div>
+
+                <br>
+                <input type="submit" class="btn btn-danger" value="Search">
+                <br>
+                <br>
 
             </form>
             <div class="invoice p-3 mb-3 rounded">

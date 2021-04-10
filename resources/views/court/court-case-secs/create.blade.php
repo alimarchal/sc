@@ -10,10 +10,30 @@
 
                 <form action="{{route('courtCaseSecs.store')}}" method="post">
                     @csrf
+
+                    <div class="form-group">
+                        <label >{{strtoupper(str_replace('_',' ', 'date'))}}</label>
+                        <input type="date" name="date" class="form-control" >
+                    </div>
+
+                    <div class="form-group">
+                        <label >{{strtoupper(str_replace('_',' ', 'region'))}}</label>
+                        <select class="form-control" name="region">
+                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
+                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
+
+
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'name_of_tri'))}}</label>
                         <input type="text" name="name_of_tri" class="form-control" >
                     </div>
+
+
 
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'district'))}}</label>

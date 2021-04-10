@@ -15,6 +15,8 @@ class CreateCustomerServiceCentersTable extends Migration
     {
         Schema::create('customer_service_centers', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
+            $table->string('region')->nullable();
             $table->string('loc_of_csc')->nullable();
             $table->string('svsc')->nullable();
             $table->string('inquiry')->nullable();

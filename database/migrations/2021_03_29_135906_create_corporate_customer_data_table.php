@@ -15,6 +15,7 @@ class CreateCorporateCustomerDataTable extends Migration
     {
         Schema::create('corporate_customer_data', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
             $table->string('btn_name')->nullable();
             $table->string('district')->nullable();
             $table->string('customer_name')->nullable();

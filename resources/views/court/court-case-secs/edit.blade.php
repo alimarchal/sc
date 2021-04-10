@@ -12,6 +12,20 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
+                        <label >{{strtoupper(str_replace('_',' ', 'date'))}}</label>
+                        <input type="text" name="date" value="{{$courtCaseSec->date}}" class="form-control" >
+                    </div>
+
+                    <div class="form-group">
+                        <label >{{strtoupper(str_replace('_',' ', 'district'))}}</label>
+                        <select class="form-control" name="region">
+                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
+                                <option value="{{$region_court_case}}" @if($courtCaseSec->region == $courtCaseSec->region_court_case) selected @endif>{{$region_court_case}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'name_of_tri'))}}</label>
                         <input type="text" name="name_of_tri" value="{{$courtCaseSec->name_of_tri}}" class="form-control" >
                     </div>

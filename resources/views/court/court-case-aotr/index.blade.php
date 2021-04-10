@@ -6,18 +6,38 @@
 @section('body-start')
     <div class="row">
         <div class="col-12">
-            <form action="{{route('courtCaseSecs.index')}}" method="get">
-                <div class="form-group">
-                    <label>{{strtoupper(str_replace('_',' ', 'district'))}}</label>
-                    <select class="form-control" name="filter[district]">
-                        @foreach(\App\Models\User::district() as $dist)
-                            <option value="{{$dist}}">{{$dist}}</option>
-                        @endforeach
-                    </select>
-                    <br>
-                    <input type="submit" class="btn btn-danger">
+            <form action="{{route('courtCaseAotr.index')}}" method="get">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>{{strtoupper(str_replace('_',' ', 'district'))}}</label>
+                        <select class="form-control" name="filter[district]">
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::district() as $dist)
+                                <option value="{{$dist}}">{{$dist}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>{{strtoupper(str_replace('_',' ', 'region'))}}</label>
+                        <select class="form-control" name="filter[region]">
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
+                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Enter a Date</label>
+                        <input class="form-control" type="date" name="filter[date]" placeholder="YYYY-MM-DD">
+                    </div>
+
                 </div>
 
+                <br>
+                <input type="submit" class="btn btn-danger" value="Search">
+                <br>
+                <br>
             </form>
             <div class="invoice p-3 mb-3 rounded">
                 <table class="table table-bordered">

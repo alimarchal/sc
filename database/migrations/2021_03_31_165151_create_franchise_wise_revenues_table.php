@@ -15,6 +15,8 @@ class CreateFranchiseWiseRevenuesTable extends Migration
     {
         Schema::create('franchise_wise_revenues', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
+            $table->string('btn_name')->nullable();
             $table->string('name_of_franchise')->nullable();
             $table->string('aor_district')->nullable();
             $table->string('asg')->nullable();

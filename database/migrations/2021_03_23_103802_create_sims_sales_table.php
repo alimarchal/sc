@@ -15,6 +15,7 @@ class CreateSimsSalesTable extends Migration
     {
         Schema::create('sims_sales', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
             $table->string('type')->nullable();
             $table->string('btn_name')->nullable();
             $table->string('name')->nullable();

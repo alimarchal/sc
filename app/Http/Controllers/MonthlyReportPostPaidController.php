@@ -17,7 +17,7 @@ class MonthlyReportPostPaidController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(MonthlyReportPostPaid::class)
-            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+            ->allowedFilters(['type', 'btn_name','district', AllowedFilter::scope('month')])
             ->get();
         return view('monthlyReportPostPaid.index', compact('collection'));
     }

@@ -33,7 +33,12 @@
 
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'Battalion Name'))}}</label>
-                        <input type="number" name="btn_name" class="form-control" >
+                        <select class="form-control" name="btn_name" required>
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::btn_name() as $btn_name)
+                                <option value="{{$btn_name}}">{{$btn_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
 

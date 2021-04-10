@@ -15,6 +15,8 @@ class CreateCourtCaseAotrsTable extends Migration
     {
         Schema::create('court_case_aotrs', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
+            $table->string('region')->nullable();
             $table->string('district')->nullable();
             $table->string('case_pending_no')->nullable();
             $table->string('case_pending_amount')->nullable();

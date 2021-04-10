@@ -17,7 +17,7 @@ class CorporateCustomerDataController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(CorporateCustomerData::class)
-            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+            ->allowedFilters(['type', 'btn_name','district', AllowedFilter::scope('month')])
             ->get();
         return view('CorporateCustomerData.index', compact('collection'));
     }

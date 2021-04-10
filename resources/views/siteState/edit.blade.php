@@ -14,6 +14,28 @@
 
                     <div class="row">
 
+
+
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', 'date'))}}</label>
+                                <input type="date" name="date" value="{{$siteState->date}}" class="form-control" >
+                            </div>
+
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', 'btn_name'))}}</label>
+                                <select class="form-control" name="btn_name">
+                                    @foreach(\App\Models\User::btn_name() as $btn_name)
+                                        <option value="{{$btn_name}}" @if($btn_name == $siteState->btn_name) selected @endif>{{$btn_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'type'))}}</label>
@@ -24,15 +46,6 @@
                                 </select>
                             </div>
                         </div>
-
-
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'btn_name'))}}</label>
-                                <input type="text" name="btn_name" value="{{$siteState->btn_name}}" class="form-control" >
-                            </div>
-                        </div>
-
 
                         <div class="col-4">
                             <div class="form-group">

@@ -20,7 +20,7 @@ class SimsSaleController extends Controller
 
         //simSale
         $collection = QueryBuilder::for(SimsSale::class)
-            ->allowedFilters(['type', 'btn_name', 'name', AllowedFilter::scope('starts_between')])
+            ->allowedFilters(['type', 'btn_name', 'name', AllowedFilter::scope('month')])
             ->get();
 //        $collection = CourtCaseSec::all();
         return view('SimsSale.index', compact('collection'));
@@ -45,7 +45,7 @@ class SimsSaleController extends Controller
     public function store(Request $request)
     {
         SimsSale::create($request->all());
-        return redirect()->route('SimsSale.index');
+        return redirect()->route('simSale.index');
     }
 
     /**

@@ -15,6 +15,7 @@ class CreateSiteStatesTable extends Migration
     {
         Schema::create('site_states', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
             $table->string('type')->nullable();
             $table->string('btn_name')->nullable();
             $table->string('site_name')->nullable();

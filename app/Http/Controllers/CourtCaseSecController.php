@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CourtCaseSec;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CourtCaseSecController extends Controller
@@ -16,7 +17,7 @@ class CourtCaseSecController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(CourtCaseSec::class)
-            ->allowedFilters(['district'])
+            ->allowedFilters(['district','region','date',AllowedFilter::scope('starts_between')])
             ->get();
 //        $collection = CourtCaseSec::all();
         return view('court.court-case-secs.index', compact('collection'));

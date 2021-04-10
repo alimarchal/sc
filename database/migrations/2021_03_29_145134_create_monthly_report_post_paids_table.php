@@ -15,6 +15,7 @@ class CreateMonthlyReportPostPaidsTable extends Migration
     {
         Schema::create('monthly_report_post_paids', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
             $table->string('btn_name')->nullable();
             $table->string('district')->nullable();
             $table->string('client_name')->nullable();

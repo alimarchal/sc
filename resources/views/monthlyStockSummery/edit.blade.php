@@ -23,10 +23,22 @@
 
                     <div class="row">
 
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'btn'))}}</label>
-                                <input type="number" name="btn" value="{{$monthlyStockSummery->btn}}" class="form-control" >
+                                <label >{{strtoupper(str_replace('_',' ', 'date'))}}</label>
+                                <input type="date" name="date" value="{{$monthlyStockSummery->date}}" class="form-control" >
+                            </div>
+
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', 'Btn'))}}</label>
+                                <select class="form-control" name="btn">
+                                    @foreach(\App\Models\User::btn_name() as $btn_name)
+                                        <option value="{{$btn_name}}" @if($btn_name == $monthlyStockSummery->btn) selected @endif>{{$btn_name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

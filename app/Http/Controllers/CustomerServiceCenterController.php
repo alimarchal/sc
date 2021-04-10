@@ -18,7 +18,7 @@ class CustomerServiceCenterController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(CustomerServiceCenter::class)
-            ->allowedFilters(['loc_of_csc', 'svsc', AllowedFilter::scope('starts_between')])
+            ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
             ->get();
         return view('customerServiceCenter.index', compact('collection'));
     }

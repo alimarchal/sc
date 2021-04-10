@@ -13,10 +13,23 @@
 
                     <div class="row">
 
-                        <div class="col-6">
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', 'date'))}}</label>
+                                <input type="date" name="date" class="form-control" >
+                            </div>
+
+                        </div>
+
+                        <div class="col-3">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'btn_name'))}}</label>
-                                <input type="number" name="btn_name" class="form-control" >
+                                <select class="form-control" name="btn_name">
+                                    @foreach(\App\Models\User::btn_name() as $btn_name)
+                                        <option value="{{$btn_name}}">{{$btn_name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

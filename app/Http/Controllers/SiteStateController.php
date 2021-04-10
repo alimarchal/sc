@@ -17,7 +17,7 @@ class SiteStateController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(SiteState::class)
-            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+            ->allowedFilters(['type', 'btn_name', 'type','site_name', AllowedFilter::scope('month')])
             ->get();
         return view('siteState.index', compact('collection'));
     }

@@ -15,6 +15,8 @@ class CreateCourtCaseSecsTable extends Migration
     {
         Schema::create('court_case_secs', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
+            $table->string('region')->nullable();
             $table->string('name_of_tri')->nullable();
             $table->string('district')->nullable();
             $table->string('tehsil')->nullable();

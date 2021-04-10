@@ -74,6 +74,16 @@ class User extends Authenticatable
     }
 
 
+    public static function region_court_case(): array
+    {
+        return $region_court_case = ['AOTR MZD', 'AOTR MIRPUR'];
+    }
+
+    public static function btn_name(): array
+    {
+        return ['61 CSB MZD', '64 CSB MPR'];
+    }
+
     public static function cards(): array
     {
         return $cards = [

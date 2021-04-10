@@ -15,7 +15,7 @@ class CreateMonthlySaleProgressTable extends Migration
     {
         Schema::create('monthly_sale_progress', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->nullable();
+            $table->date('date')->nullable();
             $table->string('btn')->nullable();
             $table->string('services')->nullable();
             $table->string('denom')->nullable();

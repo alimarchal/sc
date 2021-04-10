@@ -15,6 +15,7 @@ class CreateMonthlyStockSummeriesTable extends Migration
     {
         Schema::create('monthly_stock_summeries', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
             $table->string('btn')->nullable();
             $table->string('type_of_cards')->nullable();
             $table->string('denom')->nullable();

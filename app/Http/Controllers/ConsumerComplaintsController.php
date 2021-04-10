@@ -17,7 +17,7 @@ class ConsumerComplaintsController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(ConsumerComplaints::class)
-            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('month')])
             ->get();
         return view('consumerComplaints.index', compact('collection'));
     }

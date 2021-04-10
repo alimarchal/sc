@@ -11,6 +11,24 @@
                 <form action="{{route('simSale.update',$simSale->id)}}" method="post">
                     @csrf
                     @method('put')
+
+
+                    <div class="form-group">
+                        <label >{{strtoupper(str_replace('_',' ', 'date'))}}</label>
+                        <input type="date" name="date" value="{{$simSale->date}}" class="form-control" >
+                    </div>
+
+                    <div class="form-group">
+                        <label >{{strtoupper(str_replace('_',' ', 'BTN Name'))}}</label>
+                        <select class="form-control" name="btn_name" required>
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::btn_name() as $btn_name)
+                                <option value="{{$btn_name}}" @if($btn_name == $simSale->btn_name) selected @endif>{{$btn_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'type'))}}</label>
                         <select class="form-control" name="type" required>
@@ -19,10 +37,6 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label >{{strtoupper(str_replace('_',' ', 'btn_name'))}}</label>
-                        <input type="number" name="btn_name" value="{{$simSale->btn_name}}" class="form-control" >
-                    </div>
 
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'name'))}}</label>

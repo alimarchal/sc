@@ -22,10 +22,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label >{{strtoupper(str_replace('_',' ', 'Battalion Name'))}}</label>
-                        <input type="number" name="btn_name" value="{{$consumerComplaints->btn_name}}" class="form-control" >
+                        <label >{{strtoupper(str_replace('_',' ', 'BTN Name'))}}</label>
+                        <select class="form-control" name="btn_name" required>
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::btn_name() as $btn_name)
+                                <option value="{{$btn_name}}" @if($btn_name == $consumerComplaints->btn_name) selected @endif>{{$btn_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-
 
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'Complaints sruption in svcs, repeated fault/disruption in svcs, elec outage of svc.'))}}</label>

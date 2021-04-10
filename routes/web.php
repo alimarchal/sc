@@ -32,14 +32,24 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/test', function () {
     return view('test.test');
 })->name('test.page');
 
+
 Route::resource('courtCaseSecs', \App\Http\Controllers\CourtCaseSecController::class);
 Route::resource('courtCaseAotr', \App\Http\Controllers\CourtCaseAotrController::class);
-Route::resource('customerServiceCenter', \App\Http\Controllers\CustomerServiceCenterController::class);
-Route::resource('simSale', \App\Http\Controllers\SimsSaleController::class);
-Route::resource('consumerComplaints', \App\Http\Controllers\ConsumerComplaintsController::class);
+Route::resource('franchiseWiseRevenue', \App\Http\Controllers\FranchiseWiseRevenueController::class);
+Route::resource('siteState', \App\Http\Controllers\SiteStateController::class);
+
+
+
 Route::resource('monthlySaleProgress', \App\Http\Controllers\MonthlySaleProgressController::class);
 Route::resource('monthlyStockSummery', \App\Http\Controllers\MonthlyStockSummeryController::class);
 Route::resource('corporateCustomer', \App\Http\Controllers\CorporateCustomerDataController::class);
 Route::resource('monthlyReportPostPaid', \App\Http\Controllers\MonthlyReportPostPaidController::class);
-Route::resource('franchiseWiseRevenue', \App\Http\Controllers\FranchiseWiseRevenueController::class);
-Route::resource('siteState', \App\Http\Controllers\SiteStateController::class);
+
+
+
+
+Route::resource('customerServiceCenter', \App\Http\Controllers\CustomerServiceCenterController::class);
+Route::resource('simSale', \App\Http\Controllers\SimsSaleController::class);
+Route::resource('consumerComplaints', \App\Http\Controllers\ConsumerComplaintsController::class);
+
+
