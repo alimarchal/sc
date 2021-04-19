@@ -84,6 +84,45 @@ class User extends Authenticatable
         return ['61 CSB MZD', '64 CSB MPR'];
     }
 
+
+    public static function company_name(): array
+    {
+        return [
+            '423 CSC',
+            '426 CSC',
+            '429 CSC',
+        ];
+    }
+
+
+    public static function service_type(): array
+    {
+        return [
+            '2G',
+            '3G',
+            '4G',
+            '2G/3G',
+            '2G/3G/4G',
+            '3G/4G',
+        ];
+    }
+
+    public static function connectivity(): array
+    {
+        return [
+            'Microwave',
+            'Fiber',
+        ];
+    }
+
+    public static function manned_unmanned(): array
+    {
+        return [
+            'Manned',
+            'UnManned',
+        ];
+    }
+
     public static function cards(): array
     {
         return $cards = [

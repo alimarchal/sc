@@ -15,6 +15,82 @@
         </li>
 
 
+        <li class="nav-header">Main Operations</li>
+
+
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-mobile-alt"></i>
+                <p>
+                    SNet-SPhone
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('snet-sphone.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('snet-sphone.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-broadcast-tower"></i>
+                <p>
+                    BTS Tower
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('bts-tower.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('bts-tower.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-money-bill"></i>
+                <p>
+                    Revenue Target
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('revenue-target.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('revenue-target.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+
         <li class="nav-header">Operations</li>
         <li class="nav-item">
             <a href="#" class="nav-link">
