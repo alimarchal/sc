@@ -53,7 +53,7 @@ class BtsTowerController extends Controller
      */
     public function show(BtsTower $btsTower)
     {
-         return view('snet_sphones.show', compact('btsTower'));
+         return view('bts_tower.show', compact('btsTower'));
     }
 
     /**
@@ -64,7 +64,7 @@ class BtsTowerController extends Controller
      */
     public function edit(BtsTower $btsTower)
     {
-        return view('snet_sphones.edit', compact('btsTower'));
+        return view('bts_tower.edit', compact('btsTower'));
     }
 
     /**
