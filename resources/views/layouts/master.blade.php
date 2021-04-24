@@ -25,6 +25,85 @@
     <link rel="stylesheet" href="{{url('AdminLTE/plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{url('AdminLTE/plugins/summernote/summernote-bs4.min.css')}}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChart1);
+        google.charts.setOnLoadCallback(drawChart3);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['User', 'Available Slots'],
+                ['Users', 12810],
+                ['Available Slots', 426],
+            ]);
+
+            var options = {
+                title: 'Exchange',
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+
+
+        function drawChart1() {
+            var data = google.visualization.arrayToDataTable([
+                ['Month', 'New Users', 'Outgoing Users'],
+                ['Jan', 90, 40],
+                ['Feb', 100, 50],
+                ['Mar', 120, 80],
+                ['Apr', 180, 60],
+                ['May', 160, 35]
+            ]);
+
+            var options = {
+                title: 'Customer Profile',
+                curveType: 'function',
+                legend: {position: 'bottom'}
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+
+        function drawChart3() {
+            var data = google.visualization.arrayToDataTable([
+                ["Element", "Density", {role: "style"}],
+                ["Jan", 5000, "#b87333"],
+                ["Feb", 8000, "silver"],
+                ["March", 19000, "gold"],
+                ["April", 7000, "color: #e5e4e2"],
+                ["May", 9000, "color: #e5e4e2"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Density of Precious Metals, in g/cm^3",
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "95%"},
+                legend: {position: "none"},
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            chart.draw(view, options);
+        }
+    </script>
+
     @livewireStyles
 
     {{--    <!-- Styles -->--}}
@@ -134,11 +213,10 @@
                     <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                    <button href="{{ route('logout') }}" class="dropdown-item">
-                        <i class="fas fa-user mr-2"></i> Logout
-                    </button>
+                        <button href="{{ route('logout') }}" class="dropdown-item">
+                            <i class="fas fa-user mr-2"></i> Logout
+                        </button>
                     </form>
-
 
 
                     <div class="dropdown-divider"></div>
@@ -294,9 +372,29 @@
                     </div>
                     <!-- ./col -->
                 </div>
+
+
+                <div class="row">
+                    <!-- Left col -->
+                    <section class="col-lg-6 connectedSortable">
+                        <div id="piechart_3d" style="width: 600px; height: 500px;"></div>
+                    </section>
+                    <!-- /.Left col -->
+                    <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                    <section class="col-lg-6 connectedSortable">
+                        <div id="curve_chart" style="width: 600px; height: 500px"></div>
+                    </section>
+                    <section class="col-lg-6 connectedSortable">
+                        <div id="columnchart_values" style="width: 600px; height: 300px;"></div>
+                    </section>
+
+                    <!-- right col -->
+                </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
+
+
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

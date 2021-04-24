@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,4 +56,35 @@ Route::resource('consumerComplaints', \App\Http\Controllers\ConsumerComplaintsCo
 Route::resource('snet-sphone', \App\Http\Controllers\SnetSphoneController::class);
 Route::resource('bts-tower', \App\Http\Controllers\BtsTowerController::class);
 Route::resource('revenue-target', \App\Http\Controllers\RevenueTargetController::class);
+
+Route::resource('user', \App\Http\Controllers\UserController::class);
+
+
+
+//Route::get('/role', function () {
+//    $role1 = Role::create(['name' => 'admin']);
+//    $role2 = Role::create(['name' => 'user']);
+//    $permission1 = Permission::create(['name' => 'create']);
+//    $permission2 = Permission::create(['name' => 'read']);
+//    $permission3 = Permission::create(['name' => 'update']);
+//    $permission4 = Permission::create(['name' => 'delete']);
+//    $permission5 = Permission::create(['name' => '61csc']);
+//    $permission6 = Permission::create(['name' => '64csb']);
+//    $permission7 = Permission::create(['name' => 'aotr_mzd']);
+//    $permission8 = Permission::create(['name' => 'aotr_mpr']);
+//
+//    $role1->givePermissionTo($permission1);
+//    $role1->givePermissionTo($permission2);
+//    $role1->givePermissionTo($permission3);
+//    $role1->givePermissionTo($permission4);
+//    $role1->givePermissionTo($permission5);
+//    $role1->givePermissionTo($permission6);
+//    $role1->givePermissionTo($permission7);
+//    $role1->givePermissionTo($permission8);
+//
+//
+//    $role2->givePermissionTo($permission1);
+//    $role2->givePermissionTo($permission2);
+//
+//});
 
