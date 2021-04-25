@@ -82,7 +82,7 @@ class User extends Authenticatable
 
     public static function region_court_case(): array
     {
-        return $region_court_case = ['AOTR MZD', 'AOTR MIRPUR'];
+        return $region_court_case = ['AOTR MZD', 'AOTR MPR'];
     }
 
     public static function btn_name(): array
@@ -116,6 +116,7 @@ class User extends Authenticatable
     public static function connectivity(): array
     {
         return [
+            'Microwave/Fiber',
             'Microwave',
             'Fiber',
         ];
@@ -146,6 +147,15 @@ class User extends Authenticatable
             'PSTN EXCH SITES',
             'GSM BTS SITES',
             'WILL BTS SITES',
+        ];
+    }
+
+
+    public static function type_of_exchange(): array
+    {
+        return [
+            'MSU',
+            'RSU',
         ];
     }
 }

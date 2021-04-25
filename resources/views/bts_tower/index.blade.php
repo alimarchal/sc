@@ -114,13 +114,13 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('d-M-Y')}}</td>
+                            <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('M-Y')}}</td>
                             <td>{{$coll->district}}</td>
                             <td>{{$coll->location_site}}</td>
                             <td>{{$coll->service_type}}</td>
                             <td>{{$coll->connectivity}}</td>
                             <td>{{$coll->manned_unmanned}}</td>
-                            <td>{{($coll->revenue / 1000000)}} Million</td>
+                            <td>{{($coll->revenue / 1000000)}} M</td>
                             <td class="text-center"><a href="{{route('bts-tower.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class="text-center">
                                 <form action="{{route('bts-tower.destroy',$coll->id)}}" method="post">

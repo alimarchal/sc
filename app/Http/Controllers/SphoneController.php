@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RevenueTarget;
+use App\Models\Sphone;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class RevenueTargetController extends Controller
+class SphoneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class RevenueTargetController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(RevenueTarget::class)
-            ->allowedFilters(['aor', AllowedFilter::scope('month')])
-            ->get();
-        return view('revenue_target.index', compact('collection'));
+        $collection = QueryBuilder::for(Sphone::class)
+            ->allowedFilters(['btn', 'location', 'type_of_exchange', 'company', AllowedFilter::scope('month')])
+            ->orderBy('date', 'desc')->get();
+        return view('sphone.index', compact('collection'));
     }
 
     /**
@@ -29,7 +29,7 @@ class RevenueTargetController extends Controller
      */
     public function create()
     {
-        return view('revenue_target.create');
+        return view('sphone.create');
     }
 
     /**
@@ -40,18 +40,19 @@ class RevenueTargetController extends Controller
      */
     public function store(Request $request)
     {
-        RevenueTarget::create($request->all());
+        $request->merge(['vacant' => ($request->capacity - $request->wc)]);
+        Sphone::create($request->all());
         session()->flash('message', 'Record successfully saved.');
-        return redirect()->route('revenue-target.index');
+        return redirect()->route('sphone.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\RevenueTarget $revenueTarget
+     * @param \App\Models\Sphone $sphone
      * @return \Illuminate\Http\Response
      */
-    public function show(RevenueTarget $revenueTarget)
+    public function show(Sphone $sphone)
     {
         //
     }
@@ -59,38 +60,38 @@ class RevenueTargetController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\RevenueTarget $revenueTarget
+     * @param \App\Models\Sphone $sphone
      * @return \Illuminate\Http\Response
      */
-    public function edit(RevenueTarget $revenueTarget)
+    public function edit(Sphone $sphone)
     {
-        return view('revenue_target.edit', compact('revenueTarget'));
+        return view('sphone.edit', compact('sphone'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\RevenueTarget $revenueTarget
+     * @param \App\Models\Sphone $sphone
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RevenueTarget $revenueTarget)
+    public function update(Request $request, Sphone $sphone)
     {
-        $revenueTarget->update($request->all());
+        $sphone->update($request->all());
         session()->flash('message', 'Record successfully updated.');
-        return redirect()->route('revenue-target.index');
+        return redirect()->route('sphone.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\RevenueTarget $revenueTarget
+     * @param \App\Models\Sphone $sphone
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RevenueTarget $revenueTarget)
+    public function destroy(Sphone $sphone)
     {
-        $revenueTarget->delete();
+        $sphone->delete();
         session()->flash('message', 'Record successfully deleted.');
-        return redirect()->route('revenue-target.index');
+        return redirect()->route('sphone.index');
     }
 }

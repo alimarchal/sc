@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RevenueTarget;
+use App\Models\Snet;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class RevenueTargetController extends Controller
+class SnetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class RevenueTargetController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(RevenueTarget::class)
-            ->allowedFilters(['aor', AllowedFilter::scope('month')])
+        $collection = QueryBuilder::for(Snet::class)
+            ->allowedFilters(['btn','dsl_site', 'company', AllowedFilter::scope('month')])
             ->get();
-        return view('revenue_target.index', compact('collection'));
+        return view('snet.index', compact('collection'));
     }
 
     /**
@@ -29,7 +29,7 @@ class RevenueTargetController extends Controller
      */
     public function create()
     {
-        return view('revenue_target.create');
+        return view('snet.create');
     }
 
     /**
@@ -40,18 +40,19 @@ class RevenueTargetController extends Controller
      */
     public function store(Request $request)
     {
-        RevenueTarget::create($request->all());
+        $request->merge(['vacant' => ($request->capacity - $request->active_subscriber)]);
+        Snet::create($request->all());
         session()->flash('message', 'Record successfully saved.');
-        return redirect()->route('revenue-target.index');
+        return redirect()->route('snet.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\RevenueTarget $revenueTarget
+     * @param \App\Models\Snet $snet
      * @return \Illuminate\Http\Response
      */
-    public function show(RevenueTarget $revenueTarget)
+    public function show(Snet $snet)
     {
         //
     }
@@ -59,38 +60,38 @@ class RevenueTargetController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\RevenueTarget $revenueTarget
+     * @param \App\Models\Snet $snet
      * @return \Illuminate\Http\Response
      */
-    public function edit(RevenueTarget $revenueTarget)
+    public function edit(Snet $snet)
     {
-        return view('revenue_target.edit', compact('revenueTarget'));
+        return view('snet.edit', compact('snet'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\RevenueTarget $revenueTarget
+     * @param \App\Models\Snet $snet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RevenueTarget $revenueTarget)
+    public function update(Request $request, Snet $snet)
     {
-        $revenueTarget->update($request->all());
+        $snet->update($request->all());
         session()->flash('message', 'Record successfully updated.');
-        return redirect()->route('revenue-target.index');
+        return redirect()->route('snet.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\RevenueTarget $revenueTarget
+     * @param \App\Models\Snet $snet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RevenueTarget $revenueTarget)
+    public function destroy(Snet $snet)
     {
-        $revenueTarget->delete();
+        $snet->delete();
         session()->flash('message', 'Record successfully deleted.');
-        return redirect()->route('revenue-target.index');
+        return redirect()->route('snet.index');
     }
 }

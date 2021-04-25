@@ -19,49 +19,30 @@
                             </div>
                         </div>
 
-                        <div class="col-3">
-                            <label>{{strtoupper(str_replace('_',' ', 'btn'))}}</label>
-                            <select class="form-control" name="btn">
-                                <option value="">None</option>
-                                @foreach(\App\Models\User::btn_name() as $btn_name)
-                                    <option value="{{$btn_name}}">{{$btn_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-3">
-                            <label>{{strtoupper(str_replace('_',' ', 'company'))}}</label>
-                            <select class="form-control" name="company">
-                                <option value="">None</option>
-                                @foreach(\App\Models\User::company_name() as $company_name)
-                                    <option value="{{$company_name}}">{{$company_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
 
 
                         <div class="col-3">
-                            <label>{{strtoupper(str_replace('_',' ', 'district'))}}</label>
-                            <select class="form-control" name="district">
+                            <label>{{strtoupper(str_replace('_',' ', 'aor'))}}</label>
+                            <select class="form-control" name="aor">
                                 <option value="">None</option>
-                                @foreach(\App\Models\User::district() as $dist)
-                                    <option value="{{$dist}}">{{$dist}}</option>
+                                @foreach(\App\Models\User::region_court_case() as $region_court_case)
+                                    <option value="{{$region_court_case}}">{{$region_court_case}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="col-2">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', '4g_asg'))}}</label>
-                                <input type="number" step="any" min="0" name="fourg_asg" class="form-control">
+                                <label>{{strtoupper(str_replace('_',' ', 'scom_asg'))}}</label>
+                                <input type="number" step="any" min="0" name="scom_asg" class="form-control">
                             </div>
                         </div>
 
 
                         <div class="col-2">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', '4g_ach'))}}</label>
-                                <input type="number" step="any" min="0" name="fourg_ach" class="form-control">
+                                <label>{{strtoupper(str_replace('_',' ', 'scom_ach'))}}</label>
+                                <input type="number" step="any" min="0" name="scom_ach" class="form-control">
                             </div>
                         </div>
 

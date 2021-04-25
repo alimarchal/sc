@@ -10,7 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{url('AdminLTE/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{url('AdminLTE/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{url('AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
     <!-- iCheck -->
@@ -33,16 +33,17 @@
         google.charts.setOnLoadCallback(drawChart);
         google.charts.setOnLoadCallback(drawChart1);
         google.charts.setOnLoadCallback(drawChart3);
+        google.charts.setOnLoadCallback(drawChart4);
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['User', 'Available Slots'],
-                ['Users', 12810],
-                ['Available Slots', 426],
+                ['Working', {{$slots['wroking_slot']}}],
+                ['Free', {{$slots['free_slot']}}],
             ]);
 
             var options = {
-                title: 'Exchange',
+                title: 'Exchange Slots',
                 is3D: true,
             };
 
@@ -54,15 +55,18 @@
         function drawChart1() {
             var data = google.visualization.arrayToDataTable([
                 ['Month', 'New Users', 'Outgoing Users'],
-                ['Jan', 90, 40],
-                ['Feb', 100, 50],
-                ['Mar', 120, 80],
-                ['Apr', 180, 60],
-                ['May', 160, 35]
+                @foreach($customer_trend as $ct)
+                    ['{{$ct->month}}', {{$ct->ntc}},{{$ct->pmc}}],
+                @endforeach
+                // ['Jan', 90, 40],
+                // ['Feb', 100, 50],
+                // ['Mar', 120, 80],
+                // ['Apr', 180, 60],
+                // ['May', 160, 35]
             ]);
 
             var options = {
-                title: 'Customer Profile',
+                title: 'Customer Profile Trend',
                 curveType: 'function',
                 legend: {position: 'bottom'}
             };
@@ -74,12 +78,15 @@
 
         function drawChart3() {
             var data = google.visualization.arrayToDataTable([
-                ["Element", "Density", {role: "style"}],
-                ["Jan", 5000, "#b87333"],
-                ["Feb", 8000, "silver"],
-                ["March", 19000, "gold"],
-                ["April", 7000, "color: #e5e4e2"],
-                ["May", 9000, "color: #e5e4e2"]
+                ["Month", "AOR MZD", {role: "style"}],
+                @foreach($customer_trend_revenue_mzd as $ct)
+                    ["{{$ct->month}}", {{$ct->total}}, "blue"],
+                @endforeach
+                // ["Jan", 5000, "#b87333"],
+                // ["Feb", 8000, "silver"],
+                // ["March", 19000, "gold"],
+                // ["April", 7000, "color: #e5e4e2"],
+                // ["May", 9000,"color: #e5e4e2"]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -93,13 +100,48 @@
                 2]);
 
             var options = {
-                title: "Density of Precious Metals, in g/cm^3",
+                title: "6 Month Customer Revenue AOR MZD",
                 width: 600,
                 height: 400,
                 bar: {groupWidth: "95%"},
                 legend: {position: "none"},
             };
-            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values_mzd"));
+            chart.draw(view, options);
+        }
+
+
+        function drawChart4() {
+            var data = google.visualization.arrayToDataTable([
+                ["Month", "AOR MPR", {role: "style"}],
+                    @foreach($customer_trend_revenue_mpr as $ct)
+                ["{{$ct->month}}", {{$ct->total}}, "blue"],
+                @endforeach
+                // ["Jan", 5000, "#b87333"],
+                // ["Feb", 8000, "silver"],
+                // ["March", 19000, "gold"],
+                // ["April", 7000, "color: #e5e4e2"],
+                // ["May", 9000,"color: #e5e4e2"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "6 Month Customer Revenue AOR MPR",
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "95%"},
+                legend: {position: "none"},
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values_mpr"));
             chart.draw(view, options);
         }
     </script>
@@ -315,9 +357,9 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{$bts_tower_count}}</h3>
 
-                                <p>4G Towers</p>
+                                <p>SCOM Towers</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -330,14 +372,14 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                <h3>{{$snet_as}}</h3>
 
                                 <p>S-Net Connections</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="{{route('snet-sphone.index',['?filter[type]=snet'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{route('snet.index',['filter[month]=' . date('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -345,14 +387,14 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
+                                <h3>{{$sphone_wc}}</h3>
 
                                 <p>S-Phone Connections</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="{{route('snet-sphone.index',['?filter[type]=sphone'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{route('sphone.index',['filter[month]=' . date('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -360,14 +402,14 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>65</h3>
+                                <h3>{{number_format(($revenue_total/1000000),3)}} Million</h3>
 
                                 <p>Total Revenue</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="{{route('revenue-target.index',['?filter[month]=' . date('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{route('revenue-target.index',['filter[month]=' . date('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -384,8 +426,14 @@
                     <section class="col-lg-6 connectedSortable">
                         <div id="curve_chart" style="width: 600px; height: 500px"></div>
                     </section>
-                    <section class="col-lg-6 connectedSortable">
-                        <div id="columnchart_values" style="width: 600px; height: 300px;"></div>
+
+
+                    <section class="col-lg-6 mt-4 mb-4 connectedSortable">
+                        <div id="columnchart_values_mzd" style="width: 600px; height: 300px;"></div>
+                    </section>
+
+                    <section class="col-lg-6 mt-4 mb-4 connectedSortable">
+                        <div id="columnchart_values_mpr" style="width: 600px; height: 300px;"></div>
                     </section>
 
                     <!-- right col -->
@@ -394,6 +442,11 @@
             </div><!-- /.container-fluid -->
         </section>
 
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <!-- /.content -->
     </div>

@@ -56,6 +56,8 @@ Route::resource('consumerComplaints', \App\Http\Controllers\ConsumerComplaintsCo
 Route::resource('snet-sphone', \App\Http\Controllers\SnetSphoneController::class);
 Route::resource('bts-tower', \App\Http\Controllers\BtsTowerController::class);
 Route::resource('revenue-target', \App\Http\Controllers\RevenueTargetController::class);
+Route::resource('snet', \App\Http\Controllers\SnetController::class);
+Route::resource('sphone', \App\Http\Controllers\SphoneController::class);
 
 Route::resource('user', \App\Http\Controllers\UserController::class);
 

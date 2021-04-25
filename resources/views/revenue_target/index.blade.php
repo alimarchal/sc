@@ -10,37 +10,16 @@
                 <div class="row">
 
                     <div class="col-md-3">
-                        <label>{{strtoupper(str_replace('_',' ', 'Battalion Name'))}}</label>
-                        <select class="form-control" name="filter[btn]">
-                            <option value="">None</option>
-                            @foreach(\App\Models\User::btn_name() as $btn_name)
-                                <option value="{{$btn_name}}">{{$btn_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-
-                    <div class="col-md-3">
-                        <label>{{strtoupper(str_replace('_',' ', 'Company'))}}</label>
-                        <select class="form-control" name="filter[company]">
-                            <option value="">None</option>
-                            @foreach(\App\Models\User::company_name() as $company_name)
-                                <option value="{{$company_name}}">{{$company_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="col-md-3">
                         <label>Enter Month</label>
                         <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
                     </div>
 
                     <div class="col-md-3">
-                        <label>{{strtoupper(str_replace('_',' ', 'district'))}}</label>
-                        <select class="form-control" name="filter[district]">
+                        <label>{{strtoupper(str_replace('_',' ', 'AOR'))}}</label>
+                        <select class="form-control" name="filter[aor]">
                             <option value="">None</option>
-                            @foreach(\App\Models\User::district() as $dist)
-                                <option value="{{$dist}}">{{$dist}}</option>
+                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
+                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -61,12 +40,12 @@
                     <tr class="text-center">
                         <th>#</th>
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'district'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '4g_asg'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '4g_ach'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'aor'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'scom_asg'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'scom_ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'snet_asg'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'snet_ach'))}}</th>
 
+                        <th>{{strtoupper(str_replace('_',' ', 'snet_ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'sphone_asg'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'sphone_ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'dxx_asg'))}}</th>
@@ -79,16 +58,16 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('d-M-Y')}}</td>
-                            <td>{{$coll->district}}</td>
-                            <td>{{$coll->fourg_asg}}</td>
-                            <td>{{$coll->fourg_ach}}</td>
-                            <td>{{$coll->snet_asg}}</td>
-                            <td>{{$coll->snet_ach}}</td>
-                            <td>{{$coll->sphone_asg}}</td>
-                            <td>{{$coll->sphone_ach}}</td>
-                            <td>{{$coll->dxx_asg}}</td>
-                            <td>{{$coll->dxx_ach}}</td>
+                            <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('M-Y')}}</td>
+                            <td>{{$coll->aor}}</td>
+                            <td>{{number_format(($coll->scom_asg/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->scom_ach/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->snet_asg/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->snet_ach/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->sphone_asg/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->sphone_ach/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->dxx_asg/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->dxx_ach/1000000),3)}} m</td>
 
                             <td class="text-center"><a href="{{route('revenue-target.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class="text-center">
@@ -104,14 +83,14 @@
                     @if($collection->isNotEmpty())
                         <tr>
                             <td colspan="3" class="text-right font-weight-bold">Total</td>
-                            <td>{{number_format(($collection->sum('fourg_asg')),2)}}</td>
-                            <td>{{number_format(($collection->sum('fourg_ach')),2)}}</td>
-                            <td>{{number_format(($collection->sum('snet_asg')),2)}}</td>
-                            <td>{{number_format(($collection->sum('snet_ach')),2)}}</td>
-                            <td>{{number_format(($collection->sum('sphone_asg')),2)}}</td>
-                            <td>{{number_format(($collection->sum('sphone_ach')),2)}}</td>
-                            <td>{{number_format(($collection->sum('dxx_asg')),2)}}</td>
-                            <td>{{number_format(($collection->sum('dxx_ach')),2)}}</td>
+                            <td>{{number_format(($collection->sum('scom_asg')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('scom_ach')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('snet_asg')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('snet_ach')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('sphone_asg')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('sphone_ach')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('dxx_asg')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('dxx_ach')/1000000),3)}} m</td>
                         </tr>
                     @endif
                     </tbody>

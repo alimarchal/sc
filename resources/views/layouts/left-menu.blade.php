@@ -48,25 +48,51 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-mobile-alt"></i>
                 <p>
-                    SNet-SPhone
+                    SPhone
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{route('snet-sphone.create')}}" class="nav-link">
+                    <a href="{{route('sphone.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('snet-sphone.index')}}" class="nav-link">
+                    <a href="{{route('sphone.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Show All</p>
                     </a>
                 </li>
             </ul>
         </li>
+
+
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-globe"></i>
+                <p>
+                    SNet
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('snet.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('snet.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-broadcast-tower"></i>
