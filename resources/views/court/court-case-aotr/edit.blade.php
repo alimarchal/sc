@@ -15,7 +15,7 @@
 
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'date'))}}</label>
-                        <input type="text" name="date" value="{{$courtCaseAotr->date}}" class="form-control" >
+                        <input type="date" name="date" value="{{$courtCaseAotr->date}}" class="form-control" >
                     </div>
 
                     <div class="form-group">
@@ -35,6 +35,11 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label >{{strtoupper(str_replace('_',' ', 'particulars'))}}</label>
+                        <input type="text" name="particulars" value="{{$courtCaseAotr->particulars}}"  class="form-control" >
+                    </div>
+
                     <div class="form-group">
                         <label>{{strtoupper(str_replace('_',' ', 'case_pending_no'))}}</label>
                         <input type="number" name="case_pending_no" value="{{$courtCaseAotr->case_pending_no}}" class="form-control">

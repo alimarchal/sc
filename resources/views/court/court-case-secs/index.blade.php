@@ -6,7 +6,7 @@
 @section('body-start')
     <div class="row">
         <div class="col-12">
-            <form action="{{route('courtCaseSecs.index')}}" method="get">
+            <form class=" d-print-none" action="{{route('courtCaseSecs.index')}}" method="get">
                 <div class="row">
                     <div class="col-md-3">
                         <label>{{strtoupper(str_replace('_',' ', 'district'))}}</label>
@@ -36,9 +36,11 @@
 
                 <br>
                 <input type="submit" class="btn btn-danger" value="Search">
-                <br>
-                <br>
             </form>
+                <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
+                <br>
+                <br>
+
             <div class="invoice p-3 mb-3 rounded">
                 <table class="table table-bordered">
                     <thead>
@@ -52,8 +54,8 @@
                         <th>{{strtoupper(str_replace('_',' ', 'outstanding_amount_against_regd_cases'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'amount_recovered_through_tri'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'cases_settled'))}}</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th class=" d-print-none">Edit</th>
+                        <th class=" d-print-none">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -68,12 +70,12 @@
                             <td>{{$coll->outstanding_amount_against_regd_cases}}</td>
                             <td>{{$coll->amount_recovered_through_tri}}</td>
                             <td>{{$coll->cases_settled}}</td>
-                            <td><a href="{{route('courtCaseSecs.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
-                            <td>
+                            <td class=" d-print-none"><a href="{{route('courtCaseSecs.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
+                            <td class=" d-print-none">
                                 <form action="{{route('courtCaseSecs.destroy',$coll->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>

@@ -6,7 +6,7 @@
 @section('body-start')
     <div class="row">
         <div class="col-12">
-            <form action="{{route('snet-sphone.index')}}" method="get">
+            <form action="{{route('snet-sphone.index')}}" class="d-print-none" method="get">
                 <div class="row">
 
                     <div class="col-md-3">
@@ -67,10 +67,11 @@
 
                 <br>
                 <input type="submit" class="btn btn-danger" value="Search">
-                <br>
-                <br>
 
             </form>
+                <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
+                <br>
+                <br>
             <div class="invoice p-3 mb-3 rounded">
                 <h2 class="text-center">SNet/SPhones</h2>
                 <br>
@@ -107,7 +108,7 @@
                                 <form action="{{route('snet-sphone.destroy',$coll->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>

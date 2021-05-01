@@ -48,7 +48,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'customer_name'))}}</label>
-                                <input type="number" name="customer_name" value="{{$corporateCustomer->customer_name}}" class="form-control" >
+                                <input type="text" name="customer_name" value="{{$corporateCustomer->customer_name}}" class="form-control" >
                             </div>
                         </div>
 
@@ -66,7 +66,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'package_offered'))}}</label>
-                                <input type="number" name="package_offered" value="{{$corporateCustomer->package_offered}}" class="form-control" >
+                                <input type="text" name="package_offered" value="{{$corporateCustomer->package_offered}}" class="form-control" >
                             </div>
                         </div>
 
@@ -75,7 +75,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'remarks'))}}</label>
-                                <input type="number" name="remarks" value="{{$corporateCustomer->remarks}}" class="form-control" >
+                                <input type="text" name="remarks" value="{{$corporateCustomer->remarks}}" class="form-control" >
                             </div>
                         </div>
 

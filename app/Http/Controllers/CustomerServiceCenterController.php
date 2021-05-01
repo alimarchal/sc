@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CourtCaseAotr;
 use App\Models\CustomerServiceCenter;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -20,7 +21,7 @@ class CustomerServiceCenterController extends Controller
         $collection = QueryBuilder::for(CustomerServiceCenter::class)
             ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
             ->get();
-        return view('customerServiceCenter.index', compact('collection'));
+        return view('CustomerServiceCenter.index', compact('collection'));
     }
 
     /**

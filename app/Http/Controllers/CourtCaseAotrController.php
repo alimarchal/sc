@@ -18,7 +18,7 @@ class CourtCaseAotrController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(CourtCaseAotr::class)
-            ->allowedFilters(['district','region','date'])
+            ->allowedFilters(['district','region','particulars', AllowedFilter::scope('month')])
             ->get();
 //        $collection = CourtCaseSec::all();
         return view('court.court-case-aotr.index', compact('collection'));

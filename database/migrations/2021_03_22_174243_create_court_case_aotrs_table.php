@@ -18,6 +18,7 @@ class CreateCourtCaseAotrsTable extends Migration
             $table->date('date')->nullable();
             $table->string('region')->nullable();
             $table->string('district')->nullable();
+            $table->string('particulars')->nullable();
             $table->string('case_pending_no')->nullable();
             $table->string('case_pending_amount')->nullable();
             $table->string('case_civs_suit_filed_no')->nullable();

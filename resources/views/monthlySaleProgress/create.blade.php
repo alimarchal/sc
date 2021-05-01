@@ -39,26 +39,7 @@
                         </div>
                         </div>
 
-
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'services'))}}</label>
-                                <select class="form-control" name="services">
-                                        <option value="SCOM">SCOM</option>
-                                        <option value="CDMA">CDMA</option>
-                                        <option value="DSL Cards">DSL Cards</option>
-                                        <option value="PPCCs">PPCCs</option>
-                                        <option value="SCOM SIMs">SCOM SIMs</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'Denom'))}}</label>
-                                <input type="number" name="denom" class="form-control" >
-                            </div>
-                        </div>
+                       @livewire('denom')
 
                         <div class="col-3">
                             <div class="form-group">

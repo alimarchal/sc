@@ -1,13 +1,13 @@
 @extends('layouts.page')
-@section('page-title', 'SNet')
+@section('page-title', 'SPhone')
 
-@section('breadcrumb-item','SNet')
+@section('breadcrumb-item','SPhone')
 
 @section('body-start')
     <div class="row">
         <div class="col-12">
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">SNet</h2>
+                <h2 class="text-center">SPhone</h2>
                 <br>
                 <form action="{{route('sphone.update',$sphone->id)}}" method="post">
                     @csrf

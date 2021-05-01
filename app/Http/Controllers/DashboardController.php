@@ -9,6 +9,7 @@ use App\Models\Sphone;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Monolog\Handler\IFTTTHandler;
 
 class DashboardController extends Controller
 {
@@ -24,8 +25,8 @@ class DashboardController extends Controller
         //whereMonth('date', '=', Carbon::parse($date)->format('m'))->whereYear('date', '=', Carbon::parse($date)->format('Y'));
 //
         $revenue_sum = RevenueTarget::whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
-        $revenue_sum_mpr = RevenueTarget::where('aor','AOTR MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
-        $revenue_sum_mzd = RevenueTarget::where('aor','AOTR MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+        $revenue_sum_mpr = RevenueTarget::where('aor', 'AOTR MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+        $revenue_sum_mzd = RevenueTarget::where('aor', 'AOTR MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         $revenue = [
             'scom_ach' => $revenue_sum->sum('scom_ach'),
             'snet_ach' => $revenue_sum->sum('snet_ach'),
@@ -33,14 +34,14 @@ class DashboardController extends Controller
             'dxx_ach' => $revenue_sum->sum('dxx_ach'),
         ];
         $revenue_total = null;
-        foreach($revenue as $x)
-           $revenue_total = $revenue_total + $x;
+        foreach ($revenue as $x)
+            $revenue_total = $revenue_total + $x;
 
         $sphone_wc = Sphone::whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('wc')->sum('wc');
         $snet_as = Snet::whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('active_subscriber')->sum('active_subscriber');
 
         $sphone = Sphone::whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
-        $working_slot = $sphone->sum('capacity');
+        $working_slot = $sphone->sum('wc');
         $free_slot = ($sphone->sum('capacity') - $sphone->sum('wc'));
         $slots = [
             'wroking_slot' => $working_slot,
@@ -50,28 +51,41 @@ class DashboardController extends Controller
 //        DB::enableQueryLog();
         $customer_trend = DB::table('sphones')
             ->select(DB::raw('MONTHNAME(date) as month, sum(pmc) as pmc, sum(ntc) as ntc'))
-            ->whereBetween('created_at',[Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(),Carbon::parse(now())->endOfMonth()->toDateString()])
+            ->whereBetween('created_at', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
             ->groupBy(DB::raw('YEAR(date), MONTH(date)'))
             ->get();
-
 
 
         $customer_trend_revenue_mpr = DB::table('revenue_targets')
             ->select(DB::raw('aor as unit, MONTHNAME(date) as month, (sum(scom_ach) + sum(snet_ach) + SUM(sphone_ach) + SUM(dxx_ach)) as total'))
             ->where('aor', 'AOTR MPR')
-            ->whereBetween('created_at',[Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(),Carbon::parse(now())->endOfMonth()->toDateString()])
+            ->whereBetween('created_at', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
             ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
             ->orderBy('date', 'desc')->get();
 
         $customer_trend_revenue_mzd = DB::table('revenue_targets')
             ->select(DB::raw('aor as unit, MONTHNAME(date) as month, (sum(scom_ach) + sum(snet_ach) + SUM(sphone_ach) + SUM(dxx_ach)) as total'))
             ->where('aor', 'AOTR MZD')
-            ->whereBetween('created_at',[Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(),Carbon::parse(now())->endOfMonth()->toDateString()])
+            ->whereBetween('created_at', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
             ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
             ->orderBy('date', 'desc')->get();
 
+        $customer_trend_revenue = DB::table('revenue_targets')
+            ->select(DB::raw('aor as unit, MONTHNAME(date) as month, (sum(scom_ach) + sum(snet_ach) + SUM(sphone_ach) + SUM(dxx_ach)) as total'))
+            ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+            ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
+            ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+            ->get();
 
-        return view('layouts.master',compact('customer_trend_revenue_mpr','customer_trend_revenue_mzd','bts_tower_count','revenue_total','sphone_wc','snet_as','slots','customer_trend'));
+        $month = [];
+        foreach ($customer_trend_revenue as $ct)
+        {
+            $month[$ct->month][$ct->unit] = $ct->total;
+        }
+
+//        dd($customer_trend);
+
+        return view('layouts.master', compact('month','customer_trend_revenue_mpr', 'customer_trend_revenue_mzd', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
     /**
@@ -87,7 +101,7 @@ class DashboardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -98,7 +112,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -109,7 +123,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -120,8 +134,8 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -132,7 +146,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

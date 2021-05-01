@@ -50,7 +50,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'client_name'))}}</label>
-                                <input type="number" name="client_name" value="{{$monthlyReportPostPaid->client_name}}"  class="form-control" >
+                                <input type="text" name="client_name" value="{{$monthlyReportPostPaid->client_name}}"  class="form-control" >
                             </div>
                         </div>
 

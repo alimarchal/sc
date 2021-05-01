@@ -66,12 +66,12 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'month'))}}</label>
-                                <input type="date" name="month" class="form-control" >
-                            </div>
-                        </div>
+{{--                        <div class="col-4">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label >{{strtoupper(str_replace('_',' ', 'month'))}}</label>--}}
+{{--                                <input type="date" name="month" class="form-control" >--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
                     </div>

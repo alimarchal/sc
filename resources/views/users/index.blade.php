@@ -39,7 +39,7 @@
                                     @csrf
                                     @method("delete")
 
-                                    <button class="btn btn-danger"
+                                    <button class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this item?');"
                                     @if(auth()->user()->id == $user->id) disabled @endif
                                     >Delete</button>
                                 </form>

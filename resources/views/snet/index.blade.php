@@ -6,7 +6,7 @@
 @section('body-start')
     <div class="row">
         <div class="col-12">
-            <form action="{{route('snet.index')}}" method="get">
+            <form action="{{route('snet.index')}}" class=" d-print-none" method="get">
                 <div class="row">
 
                     <div class="col-md-3">
@@ -41,12 +41,13 @@
 
                 </div>
 
-                <br>
                 <input type="submit" class="btn btn-danger" value="Search">
+                <br>
+            </form>
+                <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
                 <br>
                 <br>
 
-            </form>
             <div class="invoice p-3 mb-3 rounded">
                 <h2 class="text-center">SNet</h2>
                 <br>
@@ -58,13 +59,14 @@
                         <th>{{strtoupper(str_replace('_',' ', 'company'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'dsl_site'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'capacity'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'vacant'))}}</th>
+
                         <th>{{strtoupper(str_replace('_',' ', 'active_subscriber'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'cir_customers'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'other_customers'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'official_customers'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'vacant'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'remarks'))}}</th>
-                        <th colspan="2">Action</th>
+                        <th colspan="2" class=" d-print-none">Action</th>
                     </tr>
 
                     </thead>
@@ -76,18 +78,19 @@
                             <td>{{strtoupper($coll->company)}}</td>
                             <td>{{$coll->dsl_site}}</td>
                             <td>{{$coll->capacity}}</td>
-                            <td>{{$coll->vacant}}</td>
+
                             <td>{{$coll->active_subscriber}}</td>
                             <td>{{$coll->cir_customers}}</td>
                             <td>{{$coll->other_customers}}</td>
                             <td>{{$coll->official_customers}}</td>
+                            <td>{{$coll->vacant}}</td>
                             <td>{{$coll->remarks}}</td>
-                            <td class="text-center"><a href="{{route('snet.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
-                            <td class="text-center">
+                            <td class="text-center  d-print-none"><a href="{{route('snet.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
+                            <td class="text-center  d-print-none">
                                 <form action="{{route('snet.destroy',$coll->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>

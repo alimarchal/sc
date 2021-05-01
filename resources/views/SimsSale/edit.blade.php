@@ -40,7 +40,7 @@
 
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'name'))}}</label>
-                        <input type="number" name="name" value="{{$simSale->name}}" class="form-control" >
+                        <input type="text" name="name" value="{{$simSale->name}}" class="form-control" >
                     </div>
 
                     <div class="form-group">

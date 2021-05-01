@@ -6,7 +6,7 @@
 @section('body-start')
     <div class="row">
         <div class="col-12">
-            <form action="{{route('sphone.index')}}" method="get">
+            <form class="d-print-none" action="{{route('sphone.index')}}" method="get">
                 <div class="row">
 
                     <div class="col-md-3">
@@ -52,12 +52,14 @@
 
                 </div>
 
-                <br>
                 <input type="submit" class="btn btn-danger" value="Search">
+                <br>
+            </form>
+                <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
                 <br>
                 <br>
 
-            </form>
+
             <div class="invoice p-3 mb-3 rounded">
                 <h2 class="text-center">SPhone</h2>
                 <br>
@@ -77,7 +79,7 @@
                         <th>{{strtoupper(str_replace('_',' ', 'ntc'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'f/pd'))}}s</th>
                         <th>{{strtoupper(str_replace('_',' ', 'ldc/pd'))}}s</th>
-                        <th colspan="2">Action</th>
+                        <th colspan="2" class="d-print-none">Action</th>
                     </tr>
 
                     </thead>
@@ -97,12 +99,12 @@
                             <td>{{$coll->ntc}}</td>
                             <td>{{$coll->f_pds}}</td>
                             <td>{{$coll->ldc_pds}}</td>
-                            <td class="text-center"><a href="{{route('sphone.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
-                            <td class="text-center">
+                            <td class="text-center d-print-none"><a href="{{route('sphone.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
+                            <td class="text-center d-print-none" >
                                 <form action="{{route('sphone.destroy',$coll->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>

@@ -17,8 +17,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label >{{strtoupper(str_replace('_',' ', 'region'))}}</label>
-                        <select class="form-control" name="region">
+                        <label >{{strtoupper(str_replace('_',' ', 'aor'))}}</label>
+                        <select class="form-control" name="region" required>
+                            <option value="">None</option>
                             @foreach(\App\Models\User::region_court_case() as $region_court_case)
                                 <option value="{{$region_court_case}}">{{$region_court_case}}</option>
                             @endforeach
@@ -33,6 +34,11 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label >{{strtoupper(str_replace('_',' ', 'particulars'))}}</label>
+                        <input type="text" name="particulars" class="form-control" >
+                    </div>
+
 
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_pending_no'))}}</label>

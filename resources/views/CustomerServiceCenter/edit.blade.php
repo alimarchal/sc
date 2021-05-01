@@ -29,19 +29,28 @@
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'loc_of_csc'))}}</label>
                         <select class="form-control" name="loc_of_csc">
-                            @foreach(\App\Models\User::district() as $dist)
-                                <option value="{{$dist}}" @if($customerServiceCenter->loc_of_csc == $dist) selected @endif>{{$dist}}</option>
-                            @endforeach
+                                <option value="">None</option>
+                                @foreach (\App\Models\User::line_of_csc() as $key => $value)
+                                    @if($key == "Muzaffarabad")
+                                        @foreach ($value as $item)
+                                            <option value="{{$item}}" @if($customerServiceCenter->loc_of_csc == $item) selected @endif>{{$item}}</option>
+                                        @endforeach
+                                    @elseif($key == "Mirpur")
+                                        @foreach ($value as $item)
+                                            <option value="{{$item}}" @if($customerServiceCenter->loc_of_csc == $item) selected @endif>{{$item}}</option>
+                                        @endforeach
+                                    @endif
+                                @endforeach
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'svsc'))}}</label>
                         <select class="form-control" name="svsc">
-                            <option value="S Phone" @if($customerServiceCenter->svsc == "S Phone") selected @endif>S Phone</option>
-                            <option value="GSM" @if($customerServiceCenter->svsc == "GSM") selected @endif>GSM</option>
-                            <option value="CDMA/NW" @if($customerServiceCenter->svsc == "CDMA/NW") selected @endif>CDMA/NW</option>
-                            <option value="Snet" @if($customerServiceCenter->svsc == "Snet") selected @endif>Snet</option>
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::svsc() as $svsc)
+                                <option value="{{$svsc}}" @if($customerServiceCenter->svsc == $svsc) selected @endif>{{$svsc}}</option>
+                            @endforeach
                         </select>
                     </div>
 

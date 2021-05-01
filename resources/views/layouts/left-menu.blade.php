@@ -41,7 +41,7 @@
         @endhasrole
 
 
-        <li class="nav-header">Main Operations</li>
+        <li class="nav-header">Services</li>
 
 
         <li class="nav-item">
@@ -97,7 +97,7 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-broadcast-tower"></i>
                 <p>
-                    BTS Tower
+                    SCOM Tower
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
@@ -143,7 +143,7 @@
         </li>
 
 
-        <li class="nav-header">Operations</li>
+        <li class="nav-header">Reports and Returns</li>
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-balance-scale"></i>
@@ -180,7 +180,29 @@
                 </li>
             </ul>
         </li>
-
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-balance-scale"></i>
+                <p>
+                    Outstanding Dues
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('courtCaseAotr.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('courtCaseAotr.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         <li class="nav-item">
             <a href="#" class="nav-link">
@@ -331,7 +353,7 @@
         </li>
 
 
-        <li class="nav-header">Customer</li>
+        <li class="nav-header">Customer Care</li>
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user-alt"></i>

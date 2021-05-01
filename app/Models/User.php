@@ -156,6 +156,126 @@ class User extends Authenticatable
         return [
             'MSU',
             'RSU',
+            'RSM',
         ];
+    }
+
+
+    public static function line_of_csc(): array
+    {
+        return [
+            'Muzaffarabad' => [
+                'Dirkoot',
+                'Fwd Kahuta',
+                'Rawalakot',
+                'Paniola',
+                'Plandri',
+                'Hajira',
+                'Bandi Abbas Pur',
+            ]
+        ];
+    }
+
+
+    public static function svsc(): array
+    {
+        return [
+            'SPhone',
+            'GSM',
+            'CDMA',
+            'SNet',
+        ];
+    }
+
+    public static function cards_denom(): array
+    {
+        return $cards = [
+            'SCOM',
+            'CDMA',
+            'PPCCs',
+            'SCOM Sims',
+            'UBPs',
+            'S Net DSL',
+        ];
+    }
+
+    public static function denom_type($type): array
+    {
+        if ($type == '') {
+            return [
+                'None',
+            ];
+        }
+        if ($type == 'SCOM') {
+            return [
+                'Rs. 50',
+                'Rs. 100',
+                'Rs. 200',
+                'Rs. 300',
+                'Rs. 300 Super',
+                'Rs. 349 Super',
+                'Rs. 500',
+                'Rs. 500 Super',
+                'Rs. 549 S Gold',
+                'Rs. 1000',
+            ];
+        }
+        elseif($type == 'CDMA')
+        {
+            return [
+                'Rs. 100',
+                'Rs. 300',
+                '249 Unit',
+                '499 Unit',
+                '1499 Unit',
+                'Hourly Rs. 50',
+                'Hourly Rs. 100',
+                'Hourly Rs. 300',
+            ];
+        }
+
+        elseif($type == 'PPCCs')
+        {
+            return [
+                'Rs. 50',
+                'Rs. 100',
+                'Rs. 200',
+                'Rs. 300',
+            ];
+        }
+
+        elseif($type == 'SCOM Sims')
+        {
+            return [
+                'SIMs (Samsung Chip)',
+                'Golden',
+                'SIMs 4G',
+                'Blank 4G',
+                'Silver',
+                'Post Paid',
+            ];
+        }
+
+        elseif($type == 'UBPs')
+        {
+            return [
+                'Rs. 50',
+                'Rs. 100',
+                'Rs. 200',
+                'Rs. 300',
+                'Rs. 500',
+                'Rs. 1000',
+            ];
+        }
+
+        elseif($type == 'S Net DSL')
+        {
+            return [
+                'Rs. 100',
+                'Rs. 500',
+                'Rs. 1000',
+            ];
+        }
+
     }
 }

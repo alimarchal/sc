@@ -17,7 +17,7 @@ class MonthlySaleProgressController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(MonthlySaleProgress::class)
-            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+            ->allowedFilters(['btn', 'btn_name', AllowedFilter::scope('month')])
             ->get();
         return view('monthlySaleProgress.index', compact('collection'));
     }

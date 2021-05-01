@@ -11,7 +11,7 @@ class SiteState extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date','type','btn_name','site_name','total_monthly_revenue','total_number_of_hour_site_switched_off','month',];
+    protected $fillable = ['date','type','btn_name','site_name','total_monthly_revenue','total_number_of_hour_site_switched_off'];
 
     public function scopeMonth(Builder $query, $date): Builder
     {
