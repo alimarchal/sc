@@ -17,7 +17,7 @@ class FranchiseWiseRevenueController extends Controller
     public function index()
     {
         $collection = QueryBuilder::for(FranchiseWiseRevenue::class)
-            ->allowedFilters(['aor_district','name_of_franchise', 'btn_name',AllowedFilter::scope('month'),])
+            ->allowedFilters([ AllowedFilter::exact('aor_district'),'name_of_franchise','card_type', 'btn_name',AllowedFilter::scope('month'),])
             ->get();
         return view('franchiseWiseRevenue.index', compact('collection'));
     }

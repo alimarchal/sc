@@ -17,7 +17,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Complaints sruption in svcs, repeated fault/disruption in svcs, elec outage of svc.</td>
+                        <td>Complaints disruption in svcs, repeated fault/disruption in svcs, elec outage of svc.</td>
                         <td>{{$consumerComplaint->fault}}</td>
                     </tr>
 

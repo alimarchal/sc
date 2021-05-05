@@ -58,14 +58,14 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'no_of_connections'))}}</label>
-                                <input type="number" name="no_of_connections" value="{{$monthlyReportPostPaid->no_of_connections}}"  class="form-control" >
+                                <input type="text" name="no_of_connections" value="{{$monthlyReportPostPaid->no_of_connections}}"  class="form-control" >
                             </div>
                         </div>
 
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'remarks'))}}</label>
-                                <input type="number" name="remarks" value="{{$monthlyReportPostPaid->remarks}}"  class="form-control" >
+                                <input type="text" name="remarks" value="{{$monthlyReportPostPaid->remarks}}"  class="form-control" >
                             </div>
                         </div>
 

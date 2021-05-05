@@ -40,7 +40,6 @@ class SnetController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['vacant' => ($request->capacity - $request->active_subscriber)]);
         Snet::create($request->all());
         session()->flash('message', 'Record successfully saved.');
         return redirect()->route('snet.index');

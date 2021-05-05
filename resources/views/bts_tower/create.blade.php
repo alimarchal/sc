@@ -86,7 +86,7 @@
 
                         <div class="col-2">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'manned_unmanned'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'manned/unmanned'))}}</label>
 
                                 <select class="form-control" name="manned_unmanned">
                                     <option value="">None</option>

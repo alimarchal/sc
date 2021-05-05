@@ -11,11 +11,14 @@
                 <form action="{{route('courtCaseAotr.store')}}" method="post">
                     @csrf
 
+                    <div class="row">
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'date'))}}</label>
                         <input type="date" name="date" class="form-control" >
                     </div>
-
+                    </div>
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'aor'))}}</label>
                         <select class="form-control" name="region" required>
@@ -25,79 +28,114 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label >{{strtoupper(str_replace('_',' ', 'district'))}}</label>
-                        <select class="form-control" name="district">
-                            @foreach(\App\Models\User::district() as $dist)
-                            <option value="{{$dist}}">{{$dist}}</option>
-                            @endforeach
-                        </select>
                     </div>
+
+
+{{--                    <div class="form-group">--}}
+{{--                        <label >{{strtoupper(str_replace('_',' ', 'district'))}}</label>--}}
+{{--                        <select class="form-control" name="district">--}}
+{{--                            @foreach(\App\Models\User::district() as $dist)--}}
+{{--                            <option value="{{$dist}}">{{$dist}}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'particulars'))}}</label>
-                        <input type="text" name="particulars" class="form-control" >
+                        <input type="text" step="any"  name="particulars" class="form-control" >
+                    </div>
                     </div>
 
-
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_pending_no'))}}</label>
-                        <input type="number" name="case_pending_no" class="form-control" >
+                        <input type="number" step="any"  name="case_pending_no" class="form-control" >
+                    </div>
                     </div>
 
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_pending_amount'))}}</label>
-                        <input type="number"  name="case_pending_amount" class="form-control" >
+                        <input type="number" step="any"   name="case_pending_amount" class="form-control" >
+                    </div>
                     </div>
 
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_civs_suit_filed_no'))}}</label>
-                        <input type="number" name="case_civs_suit_filed_no" class="form-control" >
+                        <input type="number" step="any"  name="case_civs_suit_filed_no" class="form-control" >
                     </div>
+                    </div>
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_civs_suit_filed_amount'))}}</label>
-                        <input type="number" name="case_civs_suit_filed_amount" class="form-control" >
+                        <input type="number" step="any"  name="case_civs_suit_filed_amount" class="form-control" >
                     </div>
+                    </div>
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_pending_with_dues_no'))}}</label>
-                        <input type="number" name="case_pending_with_dues_no" class="form-control" >
+                        <input type="number" step="any"  name="case_pending_with_dues_no" class="form-control" >
                     </div>
+                    </div>
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_pending_with_dues_amount'))}}</label>
-                        <input type="number" name="case_pending_with_dues_amount" class="form-control" >
+                        <input type="number" step="any"  name="case_pending_with_dues_amount" class="form-control" >
                     </div>
+                    </div>
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'cases_req_written_off_no'))}}</label>
-                        <input type="number" name="cases_req_written_off_no" class="form-control" >
+                        <input type="number" step="any"  name="cases_req_written_off_no" class="form-control" >
+                    </div>
                     </div>
 
 
 
-
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'cases_req_written_off_amount'))}}</label>
-                        <input type="number" name="cases_req_written_off_amount" class="form-control" >
+                        <input type="number" step="any"  name="cases_req_written_off_amount" class="form-control" >
                     </div>
+                    </div>
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_pending_no_1'))}}</label>
-                        <input type="number" name="case_pending_no_1" class="form-control" >
+                        <input type="number" step="any"  name="case_pending_no_1" class="form-control" >
+                    </div>
                     </div>
 
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'case_pending_amount_1'))}}</label>
-                        <input type="number" name="case_pending_amount_1" class="form-control" >
+                        <input type="number" step="any"  name="case_pending_amount_1" class="form-control" >
                     </div>
+                    </div>
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'total_no'))}}</label>
-                        <input type="number" name="total_no" class="form-control" >
+                        <input type="number" step="any"  name="total_no" class="form-control" >
+                    </div>
                     </div>
 
+
+                    <div class="col-3">
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'total_amount'))}}</label>
-                        <input type="number" name="total_amount" class="form-control" >
+                        <input type="number" step="any" name="total_amount" class="form-control" >
+                    </div>
                     </div>
 
-
+                    </div>
 
 
                     <button type="submit" class="btn btn-danger">Save</button>

@@ -137,7 +137,7 @@
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'own_outlet_franchisee_total_cards'))}}</label>
+                                <label >{{strtoupper(str_replace('_',' ', 'own_outlet/_franchisee_total_cards'))}}</label>
                                 <br>
                                 <br>
                                 <input type="number" name="own_outlet_franchisee_total_cards" value="{{$monthlySaleProgress->own_outlet_franchisee_total_cards}}" class="form-control" >
@@ -146,7 +146,7 @@
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'own_outlet_franchisee_total_revenue'))}}</label>
+                                <label >{{strtoupper(str_replace('_',' ', 'own_outlet/_franchisee_total_revenue'))}}</label>
                                 <input type="number" name="own_outlet_franchisee_total_revenue" value="{{$monthlySaleProgress->own_outlet_franchisee_total_revenue}}" class="form-control" >
                             </div>
                         </div>

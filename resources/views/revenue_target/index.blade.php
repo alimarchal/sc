@@ -36,9 +36,10 @@
             <div class="invoice p-3 mb-3 rounded">
                 <h2 class="text-center">Revenue Target & Achieved</h2>
                 <br>
-                <table class="table table-bordered">
+
+                <table id="example" class="display nowrap table-striped table-bordered" >
                     <thead>
-                    <tr class="text-center">
+                    <tr>
                         <th>#</th>
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'aor'))}}</th>
@@ -51,9 +52,11 @@
                         <th>{{strtoupper(str_replace('_',' ', 'sphone_ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'dxx_asg'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'dxx_ach'))}}</th>
-                        <th colspan="2" class=" d-print-none">Action</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'total_asg'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'total_ach'))}}</th>
+                        <th class="d-print-none"  >{{strtoupper(str_replace('_',' ', 'EDIT'))}}</th>
+                        <th class="d-print-none" > {{strtoupper(str_replace('_',' ', 'DELETE'))}}</th>
                     </tr>
-
                     </thead>
                     <tbody>
                     @foreach($collection as $coll)
@@ -69,6 +72,8 @@
                             <td>{{number_format(($coll->sphone_ach/1000000),3)}} m</td>
                             <td>{{number_format(($coll->dxx_asg/1000000),3)}} m</td>
                             <td>{{number_format(($coll->dxx_ach/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->total_asg/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->total_ach/1000000),3)}} m</td>
 
                             <td class="text-center  d-print-none"><a href="{{route('revenue-target.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class="text-center  d-print-none">
@@ -81,6 +86,8 @@
                         </tr>
                     @endforeach
 
+                    </tbody>
+                    <tfoot>
                     @if($collection->isNotEmpty())
                         <tr>
                             <td colspan="3" class="text-right font-weight-bold">Total</td>
@@ -94,7 +101,7 @@
                             <td>{{number_format(($collection->sum('dxx_ach')/1000000),3)}} m</td>
                         </tr>
                     @endif
-                    </tbody>
+                    </tfoot>
                 </table>
             </div>
         </div>

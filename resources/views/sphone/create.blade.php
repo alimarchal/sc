@@ -73,6 +73,13 @@
                             </div>
                         </div>
 
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'vacant'))}}</label>
+                                <input type="number" name="vacant" class="form-control">
+                            </div>
+                        </div>
+
 
                         <div class="col-3">
                             <div class="form-group">

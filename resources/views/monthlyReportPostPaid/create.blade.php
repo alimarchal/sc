@@ -57,14 +57,14 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'no_of_connections'))}}</label>
-                                <input type="number" name="no_of_connections" class="form-control" >
+                                <input type="text" name="no_of_connections" class="form-control" >
                             </div>
                         </div>
 
                         <div class="col-4">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'remarks'))}}</label>
-                                <input type="number" name="remarks" class="form-control" >
+                                <input type="text" name="remarks" class="form-control" >
                             </div>
                         </div>
 

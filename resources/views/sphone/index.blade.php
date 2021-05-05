@@ -2,7 +2,6 @@
 @section('page-title', 'SPhone')
 
 @section('breadcrumb-item','')
-
 @section('body-start')
     <div class="row">
         <div class="col-12">
@@ -59,13 +58,12 @@
                 <br>
                 <br>
 
-
             <div class="invoice p-3 mb-3 rounded">
                 <h2 class="text-center">SPhone</h2>
                 <br>
-                <table class="table table-bordered">
+                <table id="example" class="display nowrap table-striped table-bordered">
                     <thead>
-                    <tr class="text-center">
+                    <tr>
                         <th>#</th>
                         <th>{{strtoupper(str_replace('_',' ', 'month'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'company'))}}</th>
@@ -79,9 +77,9 @@
                         <th>{{strtoupper(str_replace('_',' ', 'ntc'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'f/pd'))}}s</th>
                         <th>{{strtoupper(str_replace('_',' ', 'ldc/pd'))}}s</th>
-                        <th colspan="2" class="d-print-none">Action</th>
+                        <th class="d-print-none"  >{{strtoupper(str_replace('_',' ', 'EDIT'))}}</th>
+                        <th class="d-print-none" > {{strtoupper(str_replace('_',' ', 'DELETE'))}}</th>
                     </tr>
-
                     </thead>
                     <tbody>
                     @foreach($collection as $coll)
@@ -110,6 +108,8 @@
                         </tr>
                     @endforeach
 
+                    </tbody>
+                    <tfoot>
                     @if($collection->isNotEmpty())
                         <tr>
                             <td colspan="5" class="text-right font-weight-bold">Total</td>
@@ -123,7 +123,7 @@
                             <td>{{$collection->sum('ldc_pds')}}</td>
                         </tr>
                     @endif
-                    </tbody>
+                    </tfoot>
                 </table>
             </div>
         </div>

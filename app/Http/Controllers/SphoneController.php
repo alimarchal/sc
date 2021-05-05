@@ -40,7 +40,6 @@ class SphoneController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['vacant' => ($request->capacity - $request->wc)]);
         Sphone::create($request->all());
         session()->flash('message', 'Record successfully saved.');
         return redirect()->route('sphone.index');

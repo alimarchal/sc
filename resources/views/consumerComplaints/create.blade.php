@@ -43,7 +43,7 @@
 
 
                     <div class="form-group">
-                        <label >{{strtoupper(str_replace('_',' ', 'Complaints sruption in svcs, repeated fault/disruption in svcs, elec outage of svc.'))}}</label>
+                        <label >{{strtoupper(str_replace('_',' ', 'Complaints disruption in svcs, repeated fault/disruption in svcs, elec outage of svc.'))}}</label>
                         <input type="number" name="fault" class="form-control" >
                     </div>
 

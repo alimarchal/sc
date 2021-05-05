@@ -53,8 +53,8 @@
                         <th colspan="3">{{strtoupper(str_replace('_',' ', 'Card Sale Through Own Franchisee'))}}</th>
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'franchisee_total_cards'))}}</th>
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'franchisee_total_revenue'))}}</th>
-                        <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet_franchisee_total_cards'))}}</th>
-                        <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet_franchisee_total_revenue'))}}</th>
+                        <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet/_franchisee_total_cards'))}}</th>
+                        <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet/_franchisee_total_revenue'))}}</th>
                         <th rowspan="2" class=" d-print-none" colspan="3">Action</th>
                     </tr>
 

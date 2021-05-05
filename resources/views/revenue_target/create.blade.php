@@ -12,7 +12,7 @@
                 <form action="{{route('revenue-target.store')}}" method="post">
                     @csrf
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-2">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'date/month'))}}</label>
                                 <input type="date" name="date" class="form-control">
@@ -21,7 +21,7 @@
 
 
 
-                        <div class="col-3">
+                        <div class="col-2">
                             <label>{{strtoupper(str_replace('_',' ', 'aor'))}}</label>
                             <select class="form-control" name="aor">
                                 <option value="">None</option>
@@ -91,6 +91,22 @@
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'dxx_ach'))}}</label>
                                 <input type="number" step="any" min="0" name="dxx_ach" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'total_asg'))}}</label>
+                                <input type="number" step="any" min="0" name="total_asg" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'total_ach'))}}</label>
+                                <input type="number" step="any" min="0" name="total_ach" class="form-control">
                             </div>
                         </div>
 

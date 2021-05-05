@@ -181,21 +181,21 @@
 
                         <div class="col-4">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'MZD'))}}</label>
+                                <label >{{strtoupper(str_replace('_',' ', 'Unit Sold Franchisee MZD'))}}</label>
                                 <input type="number" name="sold_franchisee_mzd" class="form-control" >
                             </div>
                         </div>
 
                         <div class="col-4">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'BAGH'))}}</label>
+                                <label >{{strtoupper(str_replace('_',' ', 'Unit Sold Franchisee BAGH'))}}</label>
                                 <input type="number" name="sold_franchisee_bagh" class="form-control" >
                             </div>
                         </div>
 
                         <div class="col-4">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'RKT'))}}</label>
+                                <label >{{strtoupper(str_replace('_',' ', 'Unit Sold Franchisee RKT'))}}</label>
                                 <input type="number" name="sold_franchisee_rkt" class="form-control" >
                             </div>
                         </div>

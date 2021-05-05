@@ -32,6 +32,18 @@
                             </div>
                         </div>
 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'revenue_target'))}}</label>
+                                <select class="form-control" name="card_type">
+                                    <option value="">None</option>
+                                    @foreach(\App\Models\User::card_type() as $card_type)
+                                        <option value="{{$card_type}}" @if($card_type == $franchiseWiseRevenue->card_type) selected @endif>{{$card_type}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
 
                         <div class="col-6">
                             <div class="form-group">
@@ -43,12 +55,13 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'aor_district'))}}</label>
-                                <select class="form-control" name="aor_district">
-                                    @foreach(\App\Models\User::district() as $dist)
-                                        <option value="{{$dist}}" @if($franchiseWiseRevenue->aor_district == $dist) selected @endif>{{$dist}}</option>
-                                    @endforeach
-                                </select>
+                                <label>{{strtoupper(str_replace('_',' ', 'aor'))}}</label>
+                                <input type="text" name="aor_district" value="{{$franchiseWiseRevenue->aor_district}}"  class="form-control" >
+{{--                                <select class="form-control" name="aor_district">--}}
+{{--                                    @foreach(\App\Models\User::district() as $dist)--}}
+{{--                                        <option value="{{$dist}}" @if($franchiseWiseRevenue->aor_district == $dist) selected @endif>{{$dist}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
                             </div>
                         </div>
 
@@ -68,12 +81,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'month'))}}</label>
-                                <input type="date" name="month" value="{{$franchiseWiseRevenue->month}}"  class="form-control" >
-                            </div>
-                        </div>
+
 
 
                     </div>

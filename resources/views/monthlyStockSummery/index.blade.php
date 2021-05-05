@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('page-title', 'Court Case')
+@section('page-title', 'Stock Summery')
 
 @section('breadcrumb-item','')
 
@@ -30,34 +30,38 @@
                     <thead>
 
                     <tr class="text-center">
-                        <th>#</th>
-                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'Cards'))}}</th>
+                        <th rowspan="3" style="vertical-align: middle; horiz-align: center;" >#</th>
+                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'Types of Cards'))}}</th>
                         <th colspan="3">{{strtoupper(str_replace('_',' ', 'previous balance'))}}</th>
                         <th colspan="3">{{strtoupper(str_replace('_',' ', 'received during month'))}}</th>
                         <th colspan="6">{{strtoupper(str_replace('_',' ', 'SOLD'))}}</th>
                         <th colspan="6">{{strtoupper(str_replace('_',' ', 'balance in stores'))}}</th>
                     </tr>
                     <tr class="text-center">
-                        <th>#</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'type'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'denom'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '423'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '426'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '429'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '423'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '426'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '429'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '423'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '426'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '429'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'MZD'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'BAGH'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'RKT'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '423'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '426'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', '429'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'TOTAL'))}}</th>
-                        <th colspan="3" class=" d-print-none">Action</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" colspan="2">DENOM</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '423 CSC'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '426 CSC'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '423 CSC'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '426 CSC'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
+                        <th colspan="3" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Unit Outlets'))}}</th>
+                        <th colspan="3" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Franchisee'))}}</th>
+                        <th colspan="3">{{strtoupper(str_replace('_',' ', 'Balance In Store'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'TOTAL'))}}</th>
+                        <th colspan="3" rowspan="2" style="vertical-align: middle; horiz-align: center;"  class=" d-print-none">Action</th>
+                    </tr>
+
+                    <tr class="text-center">
+                        <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '423 CSC'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '426 CSC'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'MZD'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'BAGH'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'RKT'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '423 CSC'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '426 CSC'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
                     </tr>
                     </thead>
                     <tbody>

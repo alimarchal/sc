@@ -15,24 +15,41 @@
                         <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
                     </div>
 
+
                     <div class="col-md-3">
-                        <label>{{strtoupper(str_replace('_',' ', 'district'))}}</label>
-                        <select class="form-control" name="filter[aor_district]">
-                            <option value="">None</option>
-                            @foreach(\App\Models\User::district() as $dist)
-                                <option value="{{$dist}}">{{$dist}}</option>
-                            @endforeach
-                        </select>
+                        <label>AOR</label>
+                        <input class="form-control" type="text" name="filter[aor_district]">
                     </div>
+{{--                    <div class="col-md-3">--}}
+{{--                        <label>{{strtoupper(str_replace('_',' ', 'district'))}}</label>--}}
+{{--                        <select class="form-control" name="filter[aor_district]">--}}
+{{--                            <option value="">None</option>--}}
+{{--                            @foreach(\App\Models\User::district() as $dist)--}}
+{{--                                <option value="{{$dist}}">{{$dist}}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
 
                     <div class="col-md-3">
                         <label >{{strtoupper(str_replace('_',' ', 'btn_name'))}}</label>
-                        <select class="form-control" name="btn_name">
+                        <select class="form-control" name="filter[btn_name]">
                             <option value="">None</option>
                             @foreach(\App\Models\User::btn_name() as $btn_name)
                                 <option value="{{$btn_name}}">{{$btn_name}}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label>{{strtoupper(str_replace('_',' ', 'revenue_target'))}}</label>
+                            <select class="form-control" name="filter[card_type]">
+                                <option value="">None</option>
+                                @foreach(\App\Models\User::card_type() as $card_type)
+                                    <option value="{{$card_type}}">{{$card_type}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                     <div class="col-md-3">
@@ -60,8 +77,9 @@
 
                     <tr class="text-center">
                         <th>#</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'revenue_target'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'name_of_franchise'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'aor_district'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'aor'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'asg'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
@@ -72,10 +90,11 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                            <td>{{$coll->card_type}}</td>
                             <td>{{$coll->name_of_franchise}}</td>
                             <td>{{$coll->aor_district}}</td>
-                            <td>{{$coll->asg}}</td>
-                            <td>{{$coll->ach}}</td>
+                            <td>{{number_format(($coll->asg/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->ach/1000000),3)}} m</td>
                             <td>{{\Carbon\Carbon::parse($coll->date)->format('d-M-Y')}}</td>
                             <td class="text-center d-print-none"><a href="{{route('franchiseWiseRevenue.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td  class="text-center  d-print-none">

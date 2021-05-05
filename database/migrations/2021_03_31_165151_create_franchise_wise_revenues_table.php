@@ -18,9 +18,10 @@ class CreateFranchiseWiseRevenuesTable extends Migration
             $table->date('date')->nullable();
             $table->string('btn_name')->nullable();
             $table->string('name_of_franchise')->nullable();
+            $table->string('card_type')->nullable();
             $table->string('aor_district')->nullable();
-            $table->string('asg')->nullable();
-            $table->string('ach')->nullable();
+            $table->decimal('asg',14,3)->nullable();
+            $table->decimal('ach',14,3)->nullable();
             $table->date('month')->nullable();
             $table->timestamps();
         });

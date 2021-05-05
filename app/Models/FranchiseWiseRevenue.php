@@ -12,7 +12,7 @@ class FranchiseWiseRevenue extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'btn_name', 'name_of_franchise', 'aor_district', 'asg', 'ach', 'month',];
+    protected $fillable = ['date', 'btn_name', 'card_type', 'name_of_franchise', 'aor_district', 'asg', 'ach', 'month',];
 
     public function scopeMonth(Builder $query, $date): Builder
     {

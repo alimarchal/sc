@@ -20,17 +20,17 @@ class CreateCourtCaseAotrsTable extends Migration
             $table->string('district')->nullable();
             $table->string('particulars')->nullable();
             $table->string('case_pending_no')->nullable();
-            $table->string('case_pending_amount')->nullable();
+            $table->decimal('case_pending_amount',14,3)->nullable();
             $table->string('case_civs_suit_filed_no')->nullable();
-            $table->string('case_civs_suit_filed_amount')->nullable();
+            $table->decimal('case_civs_suit_filed_amount',14,3)->nullable();
             $table->string('case_pending_with_dues_no')->nullable();
-            $table->string('case_pending_with_dues_amount')->nullable();
+            $table->decimal('case_pending_with_dues_amount',14,3)->nullable();
             $table->string('cases_req_written_off_no')->nullable();
-            $table->string('cases_req_written_off_amount')->nullable();
+            $table->decimal('cases_req_written_off_amount',14,3)->nullable();
             $table->string('case_pending_no_1')->nullable();
-            $table->string('case_pending_amount_1')->nullable();
+            $table->decimal('case_pending_amount_1',14,3)->nullable();
             $table->string('total_no')->nullable();
-            $table->string('total_amount')->nullable();
+            $table->decimal('total_amount',14,3)->nullable();
             $table->timestamps();
         });
     }

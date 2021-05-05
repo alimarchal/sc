@@ -51,9 +51,9 @@
             <div class="invoice p-3 mb-3 rounded">
                 <h2 class="text-center">SNet</h2>
                 <br>
-                <table class="table table-bordered">
+                <table id="example" class="display nowrap table-striped table-bordered" >
                     <thead>
-                    <tr class="text-center">
+                    <tr>
                         <th>#</th>
                         <th>{{strtoupper(str_replace('_',' ', 'month'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'company'))}}</th>
@@ -66,9 +66,9 @@
                         <th>{{strtoupper(str_replace('_',' ', 'official_customers'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'vacant'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'remarks'))}}</th>
-                        <th colspan="2" class=" d-print-none">Action</th>
+                        <th class="d-print-none"  >{{strtoupper(str_replace('_',' ', 'EDIT'))}}</th>
+                        <th class="d-print-none" > {{strtoupper(str_replace('_',' ', 'DELETE'))}}</th>
                     </tr>
-
                     </thead>
                     <tbody>
                     @foreach($collection as $coll)
@@ -96,6 +96,8 @@
                         </tr>
                     @endforeach
 
+                    </tbody>
+                    <tfoot>
                     @if($collection->isNotEmpty())
                         <tr>
                             <td colspan="4" class="text-right font-weight-bold">Total</td>
@@ -107,7 +109,7 @@
                             <td>{{$collection->sum('official_customers')}}</td>
                         </tr>
                     @endif
-                    </tbody>
+                    </tfoot>
                 </table>
             </div>
         </div>

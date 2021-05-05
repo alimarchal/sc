@@ -219,9 +219,7 @@ class User extends Authenticatable
                 'Rs. 549 S Gold',
                 'Rs. 1000',
             ];
-        }
-        elseif($type == 'CDMA')
-        {
+        } elseif ($type == 'CDMA') {
             return [
                 'Rs. 100',
                 'Rs. 300',
@@ -232,20 +230,14 @@ class User extends Authenticatable
                 'Hourly Rs. 100',
                 'Hourly Rs. 300',
             ];
-        }
-
-        elseif($type == 'PPCCs')
-        {
+        } elseif ($type == 'PPCCs') {
             return [
                 'Rs. 50',
                 'Rs. 100',
                 'Rs. 200',
                 'Rs. 300',
             ];
-        }
-
-        elseif($type == 'SCOM Sims')
-        {
+        } elseif ($type == 'SCOM Sims') {
             return [
                 'SIMs (Samsung Chip)',
                 'Golden',
@@ -254,10 +246,7 @@ class User extends Authenticatable
                 'Silver',
                 'Post Paid',
             ];
-        }
-
-        elseif($type == 'UBPs')
-        {
+        } elseif ($type == 'UBPs') {
             return [
                 'Rs. 50',
                 'Rs. 100',
@@ -266,16 +255,21 @@ class User extends Authenticatable
                 'Rs. 500',
                 'Rs. 1000',
             ];
-        }
-
-        elseif($type == 'S Net DSL')
-        {
+        } elseif ($type == 'S Net DSL') {
             return [
                 'Rs. 100',
                 'Rs. 500',
                 'Rs. 1000',
             ];
         }
-
     }
+
+    public static function card_type(): array
+    {
+        return [
+            'SCOM CARDS',
+            'S-Load',
+        ];
+    }
+
 }

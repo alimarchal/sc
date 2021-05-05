@@ -48,32 +48,31 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr class="text-center">
-                        <th>#</th>
+                        <th rowspan="2"  style="vertical-align: middle; horiz-align: center;">#</th>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'particulars'))}}</th>
-                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'case_pending_no'))}}</th>
-                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'case_civs_suit_filed_no'))}}</th>
-                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'case_pending_with_dues_no'))}}</th>
-                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'cases_req_written_off_no'))}}</th>
-                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'case_pending_no'))}}</th>
-                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'total_no'))}}</th>
-                        <th colspan="2">{{strtoupper(str_replace('_',' ', 'Action'))}}</th>
+                        <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'case_pending'))}}</th>
+                        <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'case_civs_suit_filed'))}}</th>
+                        <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'case_pending_with_dues'))}}</th>
+                        <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'cases_req_written_off'))}}</th>
+                        <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'case_pending'))}}</th>
+                        <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'total'))}}</th>
+                        <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'Action'))}}</th>
                     </tr>
                     <tr class="text-center">
-                        <th>#</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'No'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'No'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'No'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'No'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'No'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'No'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
-                        <th class=" d-print-none">Edit</th>
-                        <th class=" d-print-none">Delete</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'No'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'No'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'No'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'No'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'No'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'No'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;"  class=" d-print-none">Edit</th>
+                        <th   style="vertical-align: middle; horiz-align: center;" class=" d-print-none">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -82,17 +81,17 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$coll->particulars}}</td>
                             <td>{{$coll->case_pending_no}}</td>
-                            <td>{{$coll->case_pending_amount}}</td>
+                            <td>{{number_format(($coll->case_pending_amount/1000000),3)}} m</td>
                             <td>{{$coll->case_civs_suit_filed_no}}</td>
-                            <td>{{$coll->case_civs_suit_filed_amount}}</td>
+                            <td>{{number_format(($coll->case_civs_suit_filed_amount/1000000),3)}} m</td>
                             <td>{{$coll->case_pending_with_dues_no}}</td>
-                            <td>{{$coll->case_pending_with_dues_amount}}</td>
+                            <td>{{number_format(($coll->case_pending_with_dues_amount/1000000),3)}} m</td>
                             <td>{{$coll->cases_req_written_off_no}}</td>
-                            <td>{{$coll->cases_req_written_off_amount}}</td>
+                            <td>{{number_format(($coll->cases_req_written_off_amount/1000000),3)}} m</td>
                             <td>{{$coll->case_pending_no_1}}</td>
-                            <td>{{$coll->case_pending_amount_1}}</td>
+                            <td>{{number_format(($coll->case_pending_amount_1/1000000),3)}} m</td>
                             <td>{{$coll->total_no}}</td>
-                            <td>{{$coll->total_amount}}</td>
+                            <td>{{number_format(($coll->total_amount/1000000),3)}} m</td>
                             <td class=" d-print-none"><a href="{{route('courtCaseAotr.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class=" d-print-none">
                                 <form action="{{route('courtCaseAotr.destroy',$coll->id)}}" method="post">

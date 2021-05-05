@@ -25,6 +25,8 @@ class CreateRevenueTargetsTable extends Migration
             $table->decimal('sphone_ach',14,3)->nullable();
             $table->decimal('dxx_asg',14,3)->nullable();
             $table->decimal('dxx_ach',14,3)->nullable();
+            $table->decimal('total_asg',14,3)->nullable();
+            $table->decimal('total_ach',14,3)->nullable();
             $table->timestamps();
         });
     }
