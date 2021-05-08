@@ -32,15 +32,9 @@
                         <select class="form-control" name="loc_of_csc">
                             <option value="">None</option>
                             @foreach (\App\Models\User::line_of_csc() as $key => $value)
-                                @if($key == "Muzaffarabad")
                                     @foreach ($value as $item)
                                         <option value="{{$item}}">{{$item}}</option>
                                     @endforeach
-                                @elseif($key == "Mirpur")
-                                    @foreach ($value as $item)
-                                        <option value="{{$item}}">{{$item}}</option>
-                                    @endforeach
-                                @endif
                             @endforeach
                         </select>
                     </div>

@@ -94,9 +94,12 @@ class User extends Authenticatable
     public static function company_name(): array
     {
         return [
-            '423 CSC',
-            '426 CSC',
-            '429 CSC',
+                '423 CSC',
+                '426 CSC',
+                '429 CSC',
+                '424 CSC',
+                '428 CSC',
+                '432 CSC',
         ];
     }
 
@@ -172,6 +175,28 @@ class User extends Authenticatable
                 'Plandri',
                 'Hajira',
                 'Bandi Abbas Pur',
+                'MZD Old',
+                'MZD New',
+                'Hattian',
+                'Kel',
+                'Athmuqam',
+                'Bagh',
+            ],
+
+            'Mirpur' => [
+                'Chaksawari',
+                'Dudyal',
+                'Islamgarh',
+                'Jatlan',
+                'Mirpur',
+                'Barnala',
+                'Bhimber',
+                'Samahni',
+                'Khuiratta',
+                'Kotli',
+                'Nakial',
+                'Nar',
+                'Sehnsa',
             ]
         ];
     }

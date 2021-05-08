@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'btn_name'))}}</label>
+                                <label >{{strtoupper(str_replace('_',' ', 'bn_name'))}}</label>
                                 <select class="form-control" name="btn_name">
                                     @foreach(\App\Models\User::btn_name() as $btn_name)
                                         <option value="{{$btn_name}}">{{$btn_name}}</option>

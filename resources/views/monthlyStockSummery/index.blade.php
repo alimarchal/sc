@@ -47,7 +47,9 @@
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
                         <th colspan="3" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Unit Outlets'))}}</th>
                         <th colspan="3" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Franchisee'))}}</th>
-                        <th colspan="3">{{strtoupper(str_replace('_',' ', 'Balance In Store'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '423 CSC'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '426 CSC'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'TOTAL'))}}</th>
                         <th colspan="3" rowspan="2" style="vertical-align: middle; horiz-align: center;"  class=" d-print-none">Action</th>
                     </tr>
@@ -59,9 +61,7 @@
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'MZD'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'BAGH'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'RKT'))}}</th>
-                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '423 CSC'))}}</th>
-                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '426 CSC'))}}</th>
-                        <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
+
                     </tr>
                     </thead>
                     <tbody>

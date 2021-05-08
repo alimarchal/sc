@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="col-3">
-                            <label>{{strtoupper(str_replace('_',' ', 'btn'))}}</label>
+                            <label>{{strtoupper(str_replace('_',' ', 'bn'))}}</label>
                             <select class="form-control" name="btn">
                                 <option value="">None</option>
                                 @foreach(\App\Models\User::btn_name() as $btn_name)
