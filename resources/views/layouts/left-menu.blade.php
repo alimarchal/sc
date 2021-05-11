@@ -141,7 +141,30 @@
 
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-money-bill"></i>
+                <p>
+                    Monthly Status Report
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('monthly-network-status.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('monthly-network-status.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
 
+            </ul>
+        </li>
 
         <li class="nav-header">Reports and Returns</li>
         <li class="nav-item">
