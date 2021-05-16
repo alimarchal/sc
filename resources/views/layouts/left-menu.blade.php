@@ -53,12 +53,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('sphone.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('sphone.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('sphone.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -78,12 +80,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('snet.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('snet.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('snet.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -102,12 +106,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('bts-tower.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('bts-tower.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('bts-tower.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -126,12 +132,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('revenue-target.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('revenue-target.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('revenue-target.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -141,32 +149,10 @@
 
             </ul>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-money-bill"></i>
-                <p>
-                    Monthly Status Report
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('monthly-network-status.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('monthly-network-status.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
 
         <li class="nav-header">Reports and Returns</li>
+
+
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-balance-scale"></i>
@@ -176,12 +162,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('courtCaseSecs.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('courtCaseSecs.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('courtCaseSecs.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -200,12 +188,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('courtCaseAotr.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('courtCaseAotr.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('courtCaseAotr.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -219,17 +209,46 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-money-bill"></i>
                 <p>
+                    Monthly Status Report
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('monthly-network-status.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
+                <li class="nav-item">
+                    <a href="{{route('monthly-network-status.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Show All</p>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-money-bill"></i>
+                <p>
                     Franchise Wise Revenue
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('franchiseWiseRevenue.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('franchiseWiseRevenue.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('franchiseWiseRevenue.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -248,12 +267,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('siteState.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('siteState.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('siteState.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -263,6 +284,7 @@
 
             </ul>
         </li>
+
 
         <li class="nav-header">Marketing</li>
 
@@ -275,12 +297,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('monthlySaleProgress.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
+                @if(auth()->user()->role != 'Sector HQ')
+                    <li class="nav-item">
+                        <a href="{{route('monthlySaleProgress.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -299,12 +323,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+@if(auth()->user()->role != 'Sector HQ')
                 <li class="nav-item">
                     <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create</p>
                     </a>
                 </li>
+@endif
                 <li class="nav-item">
                     <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -323,12 +349,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+@if(auth()->user()->role != 'Sector HQ')
                 <li class="nav-item">
                     <a href="{{route('corporateCustomer.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create</p>
                     </a>
                 </li>
+@endif
                 <li class="nav-item">
                     <a href="{{route('corporateCustomer.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -347,12 +375,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+@if(auth()->user()->role != 'Sector HQ')
                 <li class="nav-item">
                     <a href="{{route('monthlyReportPostPaid.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create</p>
                     </a>
                 </li>
+@endif
                 <li class="nav-item">
                     <a href="{{route('monthlyReportPostPaid.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -374,12 +404,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+@if(auth()->user()->role != 'Sector HQ')
                 <li class="nav-item">
                     <a href="{{route('customerServiceCenter.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create</p>
                     </a>
                 </li>
+@endif
                 <li class="nav-item">
                     <a href="{{route('customerServiceCenter.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -400,12 +432,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+                @if(auth()->user()->role != 'Sector HQ')
                 <li class="nav-item">
                     <a href="{{route('simSale.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create</p>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('simSale.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -425,12 +459,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+                @if(auth()->user()->role != 'Sector HQ')
                 <li class="nav-item">
                     <a href="{{route('consumerComplaints.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create</p>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{route('consumerComplaints.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>

@@ -16,9 +16,27 @@ class SiteStateController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(SiteState::class)
-            ->allowedFilters(['type', 'btn_name', 'type','site_name', AllowedFilter::scope('month')])
-            ->get();
+        $collection = null;
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $collection = QueryBuilder::for(SiteState::class)
+                ->allowedFilters(['type', 'btn_name', 'type','site_name', AllowedFilter::scope('month')])
+                ->where('btn_name', '61 CSB MZD')
+                ->get();
+
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
+            $collection = QueryBuilder::for(SiteState::class)
+                ->allowedFilters(['type', 'btn_name', 'type','site_name', AllowedFilter::scope('month')])
+                ->where('btn_name', '64 CSB MPR')
+                ->get();
+
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(SiteState::class)
+                ->allowedFilters(['type', 'btn_name', 'type','site_name', AllowedFilter::scope('month')])
+                ->get();
+        }
+
         return view('siteState.index', compact('collection'));
     }
 

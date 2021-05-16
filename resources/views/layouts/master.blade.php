@@ -42,14 +42,37 @@
         google.charts.setOnLoadCallback(drawChart223);
         function drawChart223() {
             var data = google.visualization.arrayToDataTable([
-                ['Month', 'AOR MZD', 'AOR MPR'],
+
+                @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
+                    ['Month', 'AOR MZD'],
                 @foreach ($month as $key => $value)
                     ['{{$key}}',
-                @foreach ($value as $k => $v)
-                    {{$v}},
-                @endforeach
+                        @foreach ($value as $k => $v)
+                            {{$v}},
+                        @endforeach
                     ],
                 @endforeach
+                @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
+                        ['Month', 'AOR MPR'],
+                    @foreach ($month as $key => $value)
+                                ['{{$key}}',
+                            @foreach ($value as $k => $v)
+                                {{$v}},
+                            @endforeach
+                        ],
+                    @endforeach
+                @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                    ['Month', 'AOR MZD', 'AOR MPR'],
+                        @foreach ($month as $key => $value)
+                    ['{{$key}}',
+                        @foreach ($value as $k => $v)
+                            {{$v}},
+                        @endforeach
+                    ],
+                    @endforeach
+                @endif
+
+
                 // ['2014', 1000, 700, 300],
                 // ['2015', 1170, 460, 250],
                 // ['2016', 660, 1120, -300],
@@ -297,15 +320,6 @@
                     @endforeach
                         "#b87333"],
                 @endforeach
-
-                {{--                    @foreach($month as $key => $value)--}}
-                {{--                    @foreach ($value as $k => $v)--}}
-                {{--                ["{{$ct->month}}", {{$ct->total}}, "blue"],--}}
-                {{--                    @endforeach--}}
-                {{--                    @endforeach--}}
-                {{--                @foreach($customer_trend_revenue_mzd as $ct)--}}
-                {{--                    ["{{$ct->month}}", {{$ct->total}} ,{{$ct->total}}, "blue"],--}}
-                {{--                @endforeach--}}
                 // ["Jan", 5000, "#b87333"],
                 // ["Feb", 8000, "silver"],
                 // ["March", 19000, "gold"],
@@ -542,6 +556,7 @@
 
         <!-- Main content -->
         <section class="content">
+            @if(auth()->user()->designation != "Clerk")
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
@@ -631,7 +646,17 @@
                     <!-- right col -->
                 </div>
                 <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
+
+        @else
+                <div class="container-fluid">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        Please use the left menu for navagation
+                    </div>
+                </div>
+            @endif
+            <!-- /.container-fluid -->
         </section>
 
         <br>

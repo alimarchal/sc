@@ -16,9 +16,23 @@ class BtsTowerController extends Controller
      */
     public function index()
     {
-         $collection = QueryBuilder::for(BtsTower::class)
-            ->allowedFilters(['service_type', 'btn', 'connectivity','manned_unmanned', 'district', 'location_site', 'company',AllowedFilter::exact('connectivity'), AllowedFilter::exact('manned_unmanned'),AllowedFilter::exact('service_type'), AllowedFilter::scope('month')])
-            ->get();
+         $collection = null;
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $collection = QueryBuilder::for(BtsTower::class)
+                ->allowedFilters(['service_type', 'btn', 'connectivity','manned_unmanned', 'district', 'location_site', 'company',AllowedFilter::exact('connectivity'), AllowedFilter::exact('manned_unmanned'),AllowedFilter::exact('service_type'), AllowedFilter::scope('month')])
+                ->where('btn', '61 CSB MZD')
+                ->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            $collection = QueryBuilder::for(BtsTower::class)
+                ->allowedFilters(['service_type', 'btn', 'connectivity','manned_unmanned', 'district', 'location_site', 'company',AllowedFilter::exact('connectivity'), AllowedFilter::exact('manned_unmanned'),AllowedFilter::exact('service_type'), AllowedFilter::scope('month')])
+                ->where('btn', '64 CSB MPR')
+                ->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(BtsTower::class)
+                ->allowedFilters(['service_type', 'btn', 'connectivity','manned_unmanned', 'district', 'location_site', 'company',AllowedFilter::exact('connectivity'), AllowedFilter::exact('manned_unmanned'),AllowedFilter::exact('service_type'), AllowedFilter::scope('month')])
+                ->get();
+        }
         return view('bts_tower.index', compact('collection'));
     }
 

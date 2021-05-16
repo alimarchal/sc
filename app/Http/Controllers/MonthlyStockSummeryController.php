@@ -16,9 +16,28 @@ class MonthlyStockSummeryController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(MonthlyStockSummery::class)
-            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
-            ->get();
+        $collection = null;
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+
+            $collection = QueryBuilder::for(MonthlyStockSummery::class)
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+                ->where('btn', '61 CSB MZD')
+                ->get();
+
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
+            $collection = QueryBuilder::for(MonthlyStockSummery::class)
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+                ->where('btn', '64 CSB MPR')
+                ->get();
+
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(MonthlyStockSummery::class)
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+                ->get();
+        }
+
         return view('monthlyStockSummery.index', compact('collection'));
     }
 

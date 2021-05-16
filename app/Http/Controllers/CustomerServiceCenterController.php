@@ -21,6 +21,30 @@ class CustomerServiceCenterController extends Controller
         $collection = QueryBuilder::for(CustomerServiceCenter::class)
             ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
             ->get();
+
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+
+            $collection = QueryBuilder::for(CustomerServiceCenter::class)
+                ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
+                ->where('region', 'AOTR MZD')
+                ->get();
+
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
+            $collection = QueryBuilder::for(CustomerServiceCenter::class)
+                ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
+                ->where('region', 'AOTR MPR')
+                ->get();
+
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(CustomerServiceCenter::class)
+                ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
+                ->get();
+        }
+
+
+
         return view('CustomerServiceCenter.index', compact('collection'));
     }
 
@@ -65,7 +89,7 @@ class CustomerServiceCenterController extends Controller
      */
     public function edit(CustomerServiceCenter $customerServiceCenter)
     {
-        return view('customerServiceCenter.edit',compact('customerServiceCenter'));
+        return view('CustomerServiceCenter.edit',compact('customerServiceCenter'));
     }
 
     /**

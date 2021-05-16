@@ -16,9 +16,26 @@ class SphoneController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(Sphone::class)
-            ->allowedFilters(['btn', 'location', 'type_of_exchange', 'company', AllowedFilter::scope('month')])
-            ->orderBy('date', 'desc')->get();
+        $collection = null;
+
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $collection = QueryBuilder::for(Sphone::class)
+                ->allowedFilters(['btn', 'location', 'type_of_exchange', 'company', AllowedFilter::scope('month')])
+                ->where('btn', '61 CSB MZD')
+                ->orderBy('date', 'desc')->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            $collection = QueryBuilder::for(Sphone::class)
+                ->allowedFilters(['btn', 'location', 'type_of_exchange', 'company', AllowedFilter::scope('month')])
+                ->where('btn', '64 CSB MPR')
+                ->orderBy('date', 'desc')->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(Sphone::class)
+                ->allowedFilters(['btn', 'location', 'type_of_exchange', 'company', AllowedFilter::scope('month')])
+                ->orderBy('date', 'desc')->get();
+        }
+
+
         return view('sphone.index', compact('collection'));
     }
 

@@ -27,12 +27,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
-        'battalion',
-        'district',
-        'section',
-        'user_type',
+        'role',
+        'designation',
     ];
 
     /**
@@ -82,25 +81,104 @@ class User extends Authenticatable
 
     public static function region_court_case(): array
     {
-        return $region_court_case = ['AOTR MZD', 'AOTR MPR'];
+        //lreturn $region_court_case = ['AOTR MZD', 'AOTR MPR'];
+
+        if (auth()->user()->role == "CSB 61")
+        {
+            return $region_court_case = ['AOTR MZD'];
+        }
+        elseif(auth()->user()->role == "CSB 64")
+        {
+            return $region_court_case = ['AOTR MPR'];
+        }
+        elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+        {
+            return $region_court_case = ['AOTR MZD', 'AOTR MPR'];
+        }
+        elseif(auth()->user()->role == "AOTR MPR")
+        {
+            return $region_court_case = ['AOTR MPR'];
+        }
+        elseif(auth()->user()->role == "AOTR MZD")
+        {
+            return $region_court_case = ['AOTR MPR'];
+        }
+
+
     }
 
     public static function btn_name(): array
     {
-        return ['61 CSB MZD', '64 CSB MPR'];
+        if (auth()->user()->role == "CSB 61")
+        {
+            return ['61 CSB MZD'];
+        }
+        elseif(auth()->user()->role == "CSB 64")
+        {
+            return ['64 CSB MPR'];
+        }
+        elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+        {
+            return ['61 CSB MZD', '64 CSB MPR'];
+        }
+        elseif(auth()->user()->role == "AOTR MPR")
+        {
+            return ['64 CSB MPR'];
+        }
+        elseif(auth()->user()->role == "AOTR MZD")
+        {
+            return ['61 CSB MZD'];
+        }
+
     }
 
 
     public static function company_name(): array
     {
-        return [
+
+
+        if (auth()->user()->role == "CSB 61")
+        {
+            return [
+                '423 CSC',
+                '426 CSC',
+                '429 CSC',
+            ];
+        } elseif(auth()->user()->role == "CSB 64")
+        {
+            return [
+                '424 CSC',
+                '428 CSC',
+                '432 CSC',
+            ];
+        }elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+        {
+            return [
                 '423 CSC',
                 '426 CSC',
                 '429 CSC',
                 '424 CSC',
                 '428 CSC',
                 '432 CSC',
-        ];
+            ];
+        }
+
+        elseif(auth()->user()->role == "AOTR MPR")
+        {
+            return [
+                '424 CSC',
+                '428 CSC',
+                '432 CSC',
+            ];
+        }
+        elseif(auth()->user()->role == "AOTR MZD")
+        {
+            return [
+                '423 CSC',
+                '426 CSC',
+                '429 CSC',
+            ];
+        }
     }
 
 
@@ -295,6 +373,68 @@ class User extends Authenticatable
             'SCOM CARDS',
             'S-Load',
         ];
+    }
+
+
+    public static function role_type($role): array
+    {
+        if ($role == '') {
+            return ['None'];
+        }
+        elseif ($role == 'Sector HQ') {
+            return [
+                'Sector Commander',
+                'G2',
+                'G3',
+                'ZSM',
+                'Clerk',
+            ];
+        }
+
+        elseif ($role == 'CSB 61') {
+            return [
+                'CO',
+                '2iC',
+                'OC 423',
+                'OC 426',
+                'OC 429',
+                'RSM',
+            ];
+        }
+
+        elseif ($role == 'AOTR MZD') {
+            return [
+                'AOTR MZD',
+                'Data Officer MZD',
+                'Clerk',
+            ];
+        }
+
+        elseif ($role == 'CSB 64') {
+            return [
+                'CO',
+                '2iC',
+                'OC 424',
+                'OC 428',
+                'OC 432',
+                'RSM',
+            ];
+        }
+
+        elseif ($role == 'AOTR MPR') {
+            return [
+                'AOTR MPR',
+                'Data Officer MZD',
+                'Clerk',
+            ];
+        }
+
+
+        elseif ($role == 'admin') {
+            return [
+                'Admin',
+            ];
+        }
     }
 
 }

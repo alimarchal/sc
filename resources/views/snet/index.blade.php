@@ -41,8 +41,10 @@
 
                 </div>
 
-                <input type="submit" class="btn btn-danger" value="Search">
+
                 <br>
+                <input type="submit" class="btn btn-danger" value="Search">
+
             </form>
                 <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
                 <br>
@@ -55,7 +57,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                         @if(auth()->user()->role != "Sector HQ")
                         <th>{{strtoupper(str_replace('_',' ', 'month'))}}</th>
+                         @endif
                         <th>{{strtoupper(str_replace('_',' ', 'company'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'dsl_site'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'capacity'))}}</th>
@@ -74,7 +78,9 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                            @if(auth()->user()->role != "Sector HQ")
                             <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('M-Y')}}</td>
+                            @endif
                             <td>{{strtoupper($coll->company)}}</td>
                             <td>{{$coll->dsl_site}}</td>
                             <td>{{$coll->capacity}}</td>

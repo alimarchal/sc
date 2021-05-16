@@ -14,9 +14,9 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Battalion</th>
-                        <th>District</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Designation</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -25,9 +25,9 @@
                     @foreach(\App\Models\User::all() as $user)
                         <tr>
                             <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->battalion}}</td>
-                            <td>{{$user->district}}</td>
+                            <td>{{$user->username}}</td>
+                            <td>{{$user->role}}</td>
+                            <td>{{$user->designation}}</td>
                             <td><a class="btn btn-warning">Edit</a></td>
                             <td>
                                 <form action="{{route('user.destroy',$user->id)}}" method="post">

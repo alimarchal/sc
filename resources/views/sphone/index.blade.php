@@ -65,7 +65,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                         @if(auth()->user()->role != "Sector HQ")
                         <th>{{strtoupper(str_replace('_',' ', 'month'))}}</th>
+                         @endif
                         <th>{{strtoupper(str_replace('_',' ', 'company'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'location'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'type_of_exchange'))}}</th>
@@ -85,7 +87,9 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                             @if(auth()->user()->role != "Sector HQ")
                             <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('M-Y')}}</td>
+                             @endif
                             <td>{{strtoupper($coll->company)}}</td>
                             <td>{{strtoupper($coll->location)}}</td>
                             <td>{{$coll->type_of_exchange}}</td>

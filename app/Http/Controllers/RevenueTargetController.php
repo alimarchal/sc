@@ -16,9 +16,24 @@ class RevenueTargetController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(RevenueTarget::class)
-            ->allowedFilters(['aor', AllowedFilter::scope('month')])
-            ->get();
+        $collection = null;
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $collection = QueryBuilder::for(RevenueTarget::class)
+                ->allowedFilters(['aor', AllowedFilter::scope('month')])
+                ->where('aor', 'AOTR MZD')
+                ->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            $collection = QueryBuilder::for(RevenueTarget::class)
+                ->allowedFilters(['aor', AllowedFilter::scope('month')])
+                ->where('aor', 'AOTR MPR')
+                ->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(RevenueTarget::class)
+                ->allowedFilters(['aor', AllowedFilter::scope('month')])
+                ->get();
+        }
+
         return view('revenue_target.index', compact('collection'));
     }
 

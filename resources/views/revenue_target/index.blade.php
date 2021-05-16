@@ -41,7 +41,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                         @if(auth()->user()->role != "Sector HQ")
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
+                         @endif
                         <th>{{strtoupper(str_replace('_',' ', 'aor'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'scom_asg'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'scom_ach'))}}</th>
@@ -62,7 +64,9 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                             @if(auth()->user()->role != "Sector HQ")
                             <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('M-Y')}}</td>
+                             @endif
                             <td>{{$coll->aor}}</td>
                             <td>{{number_format(($coll->scom_asg/1000000),3)}} m</td>
                             <td>{{number_format(($coll->scom_ach/1000000),3)}} m</td>
@@ -99,6 +103,10 @@
                             <td>{{number_format(($collection->sum('sphone_ach')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('dxx_asg')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('dxx_ach')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('total_asg')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('total_ach')/1000000),3)}} m</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     @endif
                     </tfoot>

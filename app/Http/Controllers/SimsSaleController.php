@@ -19,10 +19,28 @@ class SimsSaleController extends Controller
     {
 
         //simSale
-        $collection = QueryBuilder::for(SimsSale::class)
-            ->allowedFilters(['type', 'btn_name', 'name', AllowedFilter::scope('month')])
-            ->get();
-//        $collection = CourtCaseSec::all();
+        $collection = null;
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+
+            $collection = QueryBuilder::for(SimsSale::class)
+                ->allowedFilters(['type', 'btn_name', 'name', AllowedFilter::scope('month')])
+                ->where('btn_name', '61 CSB MZD')
+                ->get();
+
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
+            $collection = QueryBuilder::for(SimsSale::class)
+                ->allowedFilters(['type', 'btn_name', 'name', AllowedFilter::scope('month')])
+                ->where('btn_name', '64 CSB MPR')
+                ->get();
+
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(SimsSale::class)
+                ->allowedFilters(['type', 'btn_name', 'name', AllowedFilter::scope('month')])
+                ->get();
+        }
+
         return view('SimsSale.index', compact('collection'));
     }
 

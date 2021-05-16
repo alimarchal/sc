@@ -16,9 +16,28 @@ class ConsumerComplaintsController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(ConsumerComplaints::class)
-            ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('month')])
-            ->get();
+        $collection = null;
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+
+            $collection = QueryBuilder::for(ConsumerComplaints::class)
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('month')])
+                ->where('btn_name', '61 CSB MZD')
+                ->get();
+
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
+            $collection = QueryBuilder::for(ConsumerComplaints::class)
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('month')])
+                ->where('btn_name', '64 CSB MPR')
+                ->get();
+
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(ConsumerComplaints::class)
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('month')])
+                ->get();
+        }
+
         return view('consumerComplaints.index', compact('collection'));
     }
 
@@ -35,7 +54,7 @@ class ConsumerComplaintsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,31 +66,31 @@ class ConsumerComplaintsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ConsumerComplaints  $consumerComplaints
+     * @param \App\Models\ConsumerComplaints $consumerComplaints
      * @return \Illuminate\Http\Response
      */
     public function show(ConsumerComplaints $consumerComplaint)
     {
-        return view('consumerComplaints.show',compact('consumerComplaint'));
+        return view('consumerComplaints.show', compact('consumerComplaint'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ConsumerComplaints  $consumerComplaints
+     * @param \App\Models\ConsumerComplaints $consumerComplaints
      * @return \Illuminate\Http\Response
      */
     public function edit(ConsumerComplaints $consumerComplaint)
     {
         $consumerComplaints = $consumerComplaint;
-        return view('consumerComplaints.edit',compact('consumerComplaints'));
+        return view('consumerComplaints.edit', compact('consumerComplaints'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ConsumerComplaints  $consumerComplaints
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\ConsumerComplaints $consumerComplaints
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ConsumerComplaints $consumerComplaint)
@@ -83,7 +102,7 @@ class ConsumerComplaintsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ConsumerComplaints  $consumerComplaints
+     * @param \App\Models\ConsumerComplaints $consumerComplaints
      * @return \Illuminate\Http\Response
      */
     public function destroy(ConsumerComplaints $consumerComplaint)

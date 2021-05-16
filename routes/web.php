@@ -41,6 +41,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [\App\Http\Co
 Route::resource('courtCaseSecs', \App\Http\Controllers\CourtCaseSecController::class);
 Route::resource('courtCaseAotr', \App\Http\Controllers\CourtCaseAotrController::class);
 Route::resource('franchiseWiseRevenue', \App\Http\Controllers\FranchiseWiseRevenueController::class);
+
 Route::resource('siteState', \App\Http\Controllers\SiteStateController::class);
 
 Route::resource('monthlySaleProgress', \App\Http\Controllers\MonthlySaleProgressController::class);
@@ -53,41 +54,59 @@ Route::resource('simSale', \App\Http\Controllers\SimsSaleController::class);
 Route::resource('consumerComplaints', \App\Http\Controllers\ConsumerComplaintsController::class);
 
 // main dashboard
-Route::resource('snet-sphone', \App\Http\Controllers\SnetSphoneController::class);
+//Route::resource('snet-sphone', \App\Http\Controllers\SnetSphoneController::class);
 Route::resource('bts-tower', \App\Http\Controllers\BtsTowerController::class);
 Route::resource('revenue-target', \App\Http\Controllers\RevenueTargetController::class);
 Route::resource('snet', \App\Http\Controllers\SnetController::class);
 Route::resource('sphone', \App\Http\Controllers\SphoneController::class);
 Route::resource('monthly-network-status', \App\Http\Controllers\MonthlyNetworkStatusController::class);
 
-Route::resource('user', \App\Http\Controllers\UserController::class);
+Route::resource('user', \App\Http\Controllers\UserController::class)->middleware('role:admin');
 
 
 
 //Route::get('/role', function () {
-//    $role1 = Role::create(['name' => 'admin']);
-//    $role2 = Role::create(['name' => 'user']);
+//    app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+//
+//    $role1 = Role::create(['name' => 'Sector HQ']);
+//    $role2 = Role::create(['name' => 'CSB 61']);
+//    $role3 = Role::create(['name' => 'CSB 64']);
+//    $role4 = Role::create(['name' => 'AOTR MZD']);
+//    $role5 = Role::create(['name' => 'AOTR MPR']);
+//    $role6 = Role::create(['name' => 'admin']);
+//
 //    $permission1 = Permission::create(['name' => 'create']);
 //    $permission2 = Permission::create(['name' => 'read']);
 //    $permission3 = Permission::create(['name' => 'update']);
 //    $permission4 = Permission::create(['name' => 'delete']);
-//    $permission5 = Permission::create(['name' => '61csc']);
-//    $permission6 = Permission::create(['name' => '64csb']);
-//    $permission7 = Permission::create(['name' => 'aotr_mzd']);
-//    $permission8 = Permission::create(['name' => 'aotr_mpr']);
 //
-//    $role1->givePermissionTo($permission1);
 //    $role1->givePermissionTo($permission2);
 //    $role1->givePermissionTo($permission3);
-//    $role1->givePermissionTo($permission4);
-//    $role1->givePermissionTo($permission5);
-//    $role1->givePermissionTo($permission6);
-//    $role1->givePermissionTo($permission7);
-//    $role1->givePermissionTo($permission8);
-//
 //
 //    $role2->givePermissionTo($permission1);
 //    $role2->givePermissionTo($permission2);
+//    $role2->givePermissionTo($permission3);
+//
+//
+//    $role3->givePermissionTo($permission1);
+//    $role3->givePermissionTo($permission2);
+//    $role4->givePermissionTo($permission3);
+//
+//
+//    $role4->givePermissionTo($permission1);
+//    $role4->givePermissionTo($permission2);
+//    $role4->givePermissionTo($permission3);
+//
+//
+//    $role5->givePermissionTo($permission1);
+//    $role5->givePermissionTo($permission2);
+//    $role5->givePermissionTo($permission3);
+//
+//
+//    $role6->givePermissionTo($permission1);
+//    $role6->givePermissionTo($permission2);
+//    $role6->givePermissionTo($permission3);
+//    $role6->givePermissionTo($permission4);
 //
 //});
 

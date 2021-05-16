@@ -51,7 +51,9 @@
                     <thead>
                     <tr>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center; text-align: center;">#</th>
+
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center; text-align: center;">{{strtoupper(str_replace('_',' ', 'month'))}}</th>
+
                         <th colspan="5" style="vertical-align: middle; horiz-align: center; text-align: center;">{{str_replace('_',' ', 'S-Phone')}}</th>
                         <th colspan="7" style="vertical-align: middle; horiz-align: center; text-align: center;">{{strtoupper(str_replace('_',' ', 'GSM'))}}</th>
                         <th colspan="4" style="vertical-align: middle; horiz-align: center; text-align: center;">{{strtoupper(str_replace('_',' ', 'DSL'))}}</th>

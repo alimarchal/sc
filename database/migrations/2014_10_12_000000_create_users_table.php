@@ -9,17 +9,17 @@ class CreateUsersTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return voidew
      */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('battalion')->nullable();
-            $table->string('district')->nullable();
-            $table->string('section')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
+            $table->string('username')->unique();
+            $table->string('role')->nullable();
+            $table->string('designation')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('user_type')->nullable();

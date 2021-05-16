@@ -40,18 +40,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-
+//dd($request->role);
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
-            'battalion' => $request->battalion,
-            'district' => $request->district,
-            'section' => $request->section,
-            'user_type' => $request->user_type,
+            'username' => $request->username,
+            'role' => $request->role,
+            'designation' => $request->designation,
             'password' => Hash::make($request->password),
         ]);
 
-        $role = Role::findByName('admin');
+        $role = Role::findByName($request->role);
         $user->assignRole($role->name);
 
         session()->flash('message', 'User successfully created.');

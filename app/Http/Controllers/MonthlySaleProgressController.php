@@ -16,9 +16,30 @@ class MonthlySaleProgressController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(MonthlySaleProgress::class)
-            ->allowedFilters(['btn', 'btn_name', AllowedFilter::scope('month')])
-            ->get();
+        $collection = null;
+
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+
+            $collection = QueryBuilder::for(MonthlySaleProgress::class)
+                ->allowedFilters(['btn', 'btn_name', AllowedFilter::scope('month')])
+                ->where('btn', '61 CSB MZD')
+                ->get();
+
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
+            $collection = QueryBuilder::for(MonthlySaleProgress::class)
+                ->allowedFilters(['btn', 'btn_name', AllowedFilter::scope('month')])
+                ->where('btn', '64 CSB MPR')
+                ->get();
+
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(MonthlySaleProgress::class)
+                ->allowedFilters(['btn', 'btn_name', AllowedFilter::scope('month')])
+                ->get();
+        }
+
+
         return view('monthlySaleProgress.index', compact('collection'));
     }
 

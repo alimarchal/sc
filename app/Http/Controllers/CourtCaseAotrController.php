@@ -17,10 +17,26 @@ class CourtCaseAotrController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(CourtCaseAotr::class)
-            ->allowedFilters(['district','region','particulars', AllowedFilter::scope('month')])
-            ->get();
-//        $collection = CourtCaseSec::all();
+        $collection = null;
+
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $collection = QueryBuilder::for(CourtCaseAotr::class)
+                ->allowedFilters(['district','region','particulars', AllowedFilter::scope('month')])
+                ->where('region', 'AOTR MZD')
+                ->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
+            $collection = QueryBuilder::for(CourtCaseAotr::class)
+                ->allowedFilters(['district','region','particulars', AllowedFilter::scope('month')])
+                ->where('region', 'AOTR MPR')
+                ->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(CourtCaseAotr::class)
+                ->allowedFilters(['district','region','particulars', AllowedFilter::scope('month')])
+                ->get();
+        }
+
         return view('court.court-case-aotr.index', compact('collection'));
     }
 

@@ -87,9 +87,9 @@
                 </div>
 
                 <br>
-
-            </form>
                 <input type="submit" class="btn btn-danger" value="Search">
+            </form>
+
                 <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
                 <br>
                 <br>
@@ -100,7 +100,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                         @if(auth()->user()->role != "Sector HQ")
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
+                         @endif
                         <th>{{strtoupper(str_replace('_',' ', 'district'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'location_site'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'service_type'))}}</th>
@@ -115,7 +117,9 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                             @if(auth()->user()->role != "Sector HQ")
                             <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('M-Y')}}</td>
+                             @endif
                             <td>{{$coll->district}}</td>
                             <td>{{$coll->location_site}}</td>
                             <td>{{$coll->service_type}}</td>

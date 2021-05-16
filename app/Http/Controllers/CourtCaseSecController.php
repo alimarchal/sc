@@ -16,10 +16,24 @@ class CourtCaseSecController extends Controller
      */
     public function index()
     {
-        $collection = QueryBuilder::for(CourtCaseSec::class)
-            ->allowedFilters(['district','region','date',AllowedFilter::scope('starts_between')])
-            ->get();
-//        $collection = CourtCaseSec::all();
+        $collection = null;
+        
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $collection = QueryBuilder::for(CourtCaseSec::class)
+                ->allowedFilters(['district', 'region', 'date', AllowedFilter::scope('starts_between')])
+                ->where('region', 'AOTR MZD')
+                ->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
+            $collection = QueryBuilder::for(CourtCaseSec::class)
+                ->allowedFilters(['district', 'region', 'date', AllowedFilter::scope('starts_between')])
+                ->where('region', 'AOTR MPR')
+                ->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(CourtCaseSec::class)
+                ->allowedFilters(['district', 'region', 'date', AllowedFilter::scope('starts_between')])
+                ->get();
+        }
         return view('court.court-case-secs.index', compact('collection'));
     }
 
@@ -64,7 +78,7 @@ class CourtCaseSecController extends Controller
      */
     public function edit(CourtCaseSec $courtCaseSec)
     {
-        return view('court.court-case-secs.edit',compact('courtCaseSec'));
+        return view('court.court-case-secs.edit', compact('courtCaseSec'));
     }
 
     /**
