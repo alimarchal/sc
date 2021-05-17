@@ -83,11 +83,11 @@ class User extends Authenticatable
     {
         //lreturn $region_court_case = ['AOTR MZD', 'AOTR MPR'];
 
-        if (auth()->user()->role == "CSB 61")
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
         {
             return $region_court_case = ['AOTR MZD'];
         }
-        elseif(auth()->user()->role == "CSB 64")
+        elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
         {
             return $region_court_case = ['AOTR MPR'];
         }
@@ -95,39 +95,23 @@ class User extends Authenticatable
         {
             return $region_court_case = ['AOTR MZD', 'AOTR MPR'];
         }
-        elseif(auth()->user()->role == "AOTR MPR")
-        {
-            return $region_court_case = ['AOTR MPR'];
-        }
-        elseif(auth()->user()->role == "AOTR MZD")
-        {
-            return $region_court_case = ['AOTR MPR'];
-        }
 
 
     }
 
     public static function btn_name(): array
     {
-        if (auth()->user()->role == "CSB 61")
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
         {
             return ['61 CSB MZD'];
         }
-        elseif(auth()->user()->role == "CSB 64")
+        elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
         {
             return ['64 CSB MPR'];
         }
         elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
         {
             return ['61 CSB MZD', '64 CSB MPR'];
-        }
-        elseif(auth()->user()->role == "AOTR MPR")
-        {
-            return ['64 CSB MPR'];
-        }
-        elseif(auth()->user()->role == "AOTR MZD")
-        {
-            return ['61 CSB MZD'];
         }
 
     }
@@ -137,14 +121,14 @@ class User extends Authenticatable
     {
 
 
-        if (auth()->user()->role == "CSB 61")
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
         {
             return [
                 '423 CSC',
                 '426 CSC',
                 '429 CSC',
             ];
-        } elseif(auth()->user()->role == "CSB 64")
+        } elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
         {
             return [
                 '424 CSC',
@@ -160,23 +144,6 @@ class User extends Authenticatable
                 '424 CSC',
                 '428 CSC',
                 '432 CSC',
-            ];
-        }
-
-        elseif(auth()->user()->role == "AOTR MPR")
-        {
-            return [
-                '424 CSC',
-                '428 CSC',
-                '432 CSC',
-            ];
-        }
-        elseif(auth()->user()->role == "AOTR MZD")
-        {
-            return [
-                '423 CSC',
-                '426 CSC',
-                '429 CSC',
             ];
         }
     }
