@@ -54,7 +54,10 @@
                         <th>{{strtoupper(str_replace('_',' ', 'type'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'btn_name'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total'))}}</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                         <th colspan="3" class=" d-print-none">Action</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -65,6 +68,9 @@
                             <td>{{$coll->btn_name}}</td>
                             <td>{{$coll->total}}</td>
                             <td class="text-center"><a href="{{route('consumerComplaints.show',$coll->id)}}" class="btn btn-success" role="button">Detail</a></td>
+
+                           @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                             <td class="text-center d-print-none"><a href="{{route('consumerComplaints.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
 
                             <td class="text-center d-print-none">
@@ -75,6 +81,7 @@
                                     <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

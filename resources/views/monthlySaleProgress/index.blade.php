@@ -26,17 +26,15 @@
                     </div>
 
 
-
                 </div>
 
                 <br>
                 <input type="submit" class="btn btn-danger" value="Search">
             </form>
 
-            <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
+            <button onclick="window.print()" class="btn btn-primary float-right">Print</button>
             <br>
             <br>
-
 
 
             <div class="invoice p-3 mb-3 rounded">
@@ -45,7 +43,7 @@
                     <tr class="text-center">
                         <th rowspan="2">#</th>
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'services'))}}</th>
-                        <th  rowspan="2">{{strtoupper(str_replace('_',' ', 'denom'))}}</th>
+                        <th rowspan="2">{{strtoupper(str_replace('_',' ', 'denom'))}}</th>
                         <th colspan="3">{{strtoupper(str_replace('_',' ', 'Card Sale Through Own Outlets'))}}</th>
 
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet_total_cards'))}}</th>
@@ -55,7 +53,10 @@
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'franchisee_total_revenue'))}}</th>
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet/_franchisee_total_cards'))}}</th>
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet/_franchisee_total_revenue'))}}</th>
-                        <th rowspan="2" class=" d-print-none" colspan="3">Action</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
+                            <th rowspan="2" class=" d-print-none" colspan="3">Action</th>
+                        @endif
                     </tr>
 
 
@@ -89,16 +90,19 @@
                             <td>{{$coll->franchisee_total_revenue}}</td>
                             <td>{{$coll->own_outlet_franchisee_total_cards}}</td>
                             <td>{{$coll->own_outlet_franchisee_total_revenue}}</td>
-                            <td class="text-center  d-print-none"><a href="{{route('monthlySaleProgress.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
+                            @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
+                                <td class="text-center  d-print-none"><a href="{{route('monthlySaleProgress.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
 
-                            <td  class="text-center  d-print-none">
+                                <td class="text-center  d-print-none">
 
-                                <form action="{{route('monthlySaleProgress.destroy',$coll->id)}}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
+                                    <form action="{{route('monthlySaleProgress.destroy',$coll->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

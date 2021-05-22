@@ -652,7 +652,15 @@
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
+
+                        <div class="col-12">
+                            <div style="margin: auto;">
+                                <img class="w-auto h-auto" src="{{url('SCO-Logo.png')}}" />
+                            </div>
+                        </div>
+
                         Please use the left menu for navagation
+
                     </div>
                 </div>
             @endif

@@ -54,8 +54,11 @@
                         <th>{{strtoupper(str_replace('_',' ', 'outstanding_amount_against_regd_cases'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'amount_recovered_through_tri'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'cases_settled'))}}</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                        @else
                         <th class=" d-print-none">Edit</th>
                         <th class=" d-print-none">Delete</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -70,6 +73,7 @@
                             <td>{{$coll->outstanding_amount_against_regd_cases}}</td>
                             <td>{{$coll->amount_recovered_through_tri}}</td>
                             <td>{{$coll->cases_settled}}</td>
+                            @if(auth()->user()->role != "Sector HQ" || auth()->user()->designation == 'Clerk' )
                             <td class=" d-print-none"><a href="{{route('courtCaseSecs.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class=" d-print-none">
                                 <form action="{{route('courtCaseSecs.destroy',$coll->id)}}" method="post">
@@ -78,6 +82,7 @@
                                     <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

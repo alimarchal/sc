@@ -66,16 +66,42 @@ class User extends Authenticatable
 
     public static function district(): array
     {
-        return $districts = ['Muzaffarabad',
-            'Hattian Bala',
-            'Neelum',
-            'Mirpur',
-            'Bhimber',
-            'Kotli',
-            'Poonch',
-            'Bagh',
-            'Haveli',
-            'Sudhnati'];
+
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
+        {
+            return $districts = [
+                'Muzaffarabad',
+                'Hattian Bala',
+                'Neelum',
+                'Poonch',
+                'Bagh',
+                'Haveli',
+                'Sudhnati'];
+        }
+        elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
+        {
+            return $districts = [
+                'Mirpur',
+                'Bhimber',
+                'Kotli',];
+        }
+        elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+        {
+            return $districts = [
+                'Muzaffarabad',
+                'Hattian Bala',
+                'Neelum',
+                'Mirpur',
+                'Bhimber',
+                'Kotli',
+                'Poonch',
+                'Bagh',
+                'Haveli',
+                'Sudhnati'];
+        }
+
+
     }
 
 
@@ -120,30 +146,29 @@ class User extends Authenticatable
     public static function company_name(): array
     {
 
-
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
         {
             return [
-                '423 CSC',
-                '426 CSC',
-                '429 CSC',
+                '423 CSC Muzaffarabad',
+                '426 CSC Bagh',
+                '429 CSC Rawalakot',
             ];
         } elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
         {
             return [
-                '424 CSC',
-                '428 CSC',
-                '432 CSC',
+                '424 CSC Mirpur',
+                '428 CSC Kotli',
+                '432 CSC Bhimber',
             ];
         }elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
         {
             return [
-                '423 CSC',
-                '426 CSC',
-                '429 CSC',
-                '424 CSC',
-                '428 CSC',
-                '432 CSC',
+                '423 CSC Muzaffarabad',
+                '426 CSC Bagh',
+                '429 CSC Rawalakot',
+                '424 CSC Mirpur',
+                '428 CSC Kotli',
+                '432 CSC Bhimber',
             ];
         }
     }
@@ -366,6 +391,7 @@ class User extends Authenticatable
                 'OC 426',
                 'OC 429',
                 'RSM',
+                'Clerk',
             ];
         }
 
@@ -385,6 +411,7 @@ class User extends Authenticatable
                 'OC 428',
                 'OC 432',
                 'RSM',
+                'Clerk',
             ];
         }
 

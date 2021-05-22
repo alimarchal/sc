@@ -62,7 +62,10 @@
                         <th>{{strtoupper(str_replace('_',' ', 'total_monthly_revenue'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total_number_of_hour_site_switched_off'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                         <th colspan="3" class=" d-print-none">Action</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -75,6 +78,8 @@
                             <td>{{$coll->total_monthly_revenue}}</td>
                             <td>{{$coll->total_number_of_hour_site_switched_off}}</td>
                             <td>{{\Carbon\Carbon::parse($coll->date)->format('d-M-Y')}}</td>
+                            @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                             <td class="text-center  d-print-none"><a href="{{route('siteState.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class="text-center  d-print-none">
                                 <form action="{{route('siteState.destroy',$coll->id)}}" method="post">
@@ -83,6 +88,7 @@
                                     <button type="submit"   onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

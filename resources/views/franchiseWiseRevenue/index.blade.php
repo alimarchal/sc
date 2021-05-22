@@ -83,7 +83,10 @@
                         <th>{{strtoupper(str_replace('_',' ', 'asg'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                         <th colspan="3" class=" d-print-none">Action</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -96,6 +99,8 @@
                             <td>{{number_format(($coll->asg/1000000),3)}} m</td>
                             <td>{{number_format(($coll->ach/1000000),3)}} m</td>
                             <td>{{\Carbon\Carbon::parse($coll->date)->format('d-M-Y')}}</td>
+                            @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                             <td class="text-center d-print-none"><a href="{{route('franchiseWiseRevenue.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td  class="text-center  d-print-none">
                                 <form action="{{route('franchiseWiseRevenue.destroy',$coll->id)}}" method="post">
@@ -104,6 +109,7 @@
                                     <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

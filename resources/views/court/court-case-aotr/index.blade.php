@@ -56,7 +56,10 @@
                         <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'cases_req_written_off'))}}</th>
                         <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'case_pending'))}}</th>
                         <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'total'))}}</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                        @else
                         <th colspan="2"  style="vertical-align: middle; horiz-align: center;">{{strtoupper(str_replace('_',' ', 'Action'))}}</th>
+                        @endif
                     </tr>
                     <tr class="text-center">
                         <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'No'))}}</th>
@@ -71,8 +74,11 @@
                         <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
                         <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'No'))}}</th>
                         <th  style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Amount'))}}</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                        @else
                         <th  style="vertical-align: middle; horiz-align: center;"  class=" d-print-none">Edit</th>
                         <th   style="vertical-align: middle; horiz-align: center;" class=" d-print-none">Delete</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -92,6 +98,8 @@
                             <td>{{number_format(($coll->case_pending_amount_1/1000000),3)}} m</td>
                             <td>{{$coll->total_no}}</td>
                             <td>{{number_format(($coll->total_amount/1000000),3)}} m</td>
+                            @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                             <td class=" d-print-none"><a href="{{route('courtCaseAotr.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class=" d-print-none">
                                 <form action="{{route('courtCaseAotr.destroy',$coll->id)}}" method="post">
@@ -100,6 +108,7 @@
                                     <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

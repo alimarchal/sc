@@ -58,7 +58,11 @@
                         <th colspan="7" style="vertical-align: middle; horiz-align: center; text-align: center;">{{strtoupper(str_replace('_',' ', 'GSM'))}}</th>
                         <th colspan="4" style="vertical-align: middle; horiz-align: center; text-align: center;">{{strtoupper(str_replace('_',' ', 'DSL'))}}</th>
                         <th colspan="4" style="vertical-align: middle; horiz-align: center; text-align: center;">{{strtoupper(str_replace('_',' ', 'DXX'))}}</th>
+
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                        @else
                         <th colspan="2" rowspan="2" style="vertical-align: middle; horiz-align: center; text-align: center;" class="d-print-none"  >{{strtoupper(str_replace('_',' ', 'action'))}}</th>
+                        @endif
                     </tr>
 
                     <tr>
@@ -111,6 +115,8 @@
                             <td>{{$coll->dxx_active_subs}}</td>
                             <td>{{$coll->dxx_provided_during_the_month}}</td>
 
+                            @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                             <td class="text-center d-print-none"><a href="{{route('monthly-network-status.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class="text-center d-print-none" >
                                 <form action="{{route('monthly-network-status.destroy',$coll->id)}}" method="post">
@@ -119,6 +125,7 @@
                                     <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
 

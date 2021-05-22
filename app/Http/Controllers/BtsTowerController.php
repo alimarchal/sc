@@ -33,6 +33,8 @@ class BtsTowerController extends Controller
                 ->allowedFilters(['service_type', 'btn', 'connectivity','manned_unmanned', 'district', 'location_site', 'company',AllowedFilter::exact('connectivity'), AllowedFilter::exact('manned_unmanned'),AllowedFilter::exact('service_type'), AllowedFilter::scope('month')])
                 ->get();
         }
+
+//        dd($collection);
         return view('bts_tower.index', compact('collection'));
     }
 

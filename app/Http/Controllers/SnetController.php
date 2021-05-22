@@ -33,6 +33,8 @@ class SnetController extends Controller
                 ->allowedFilters(['btn','dsl_site', 'company', AllowedFilter::scope('month')])
                 ->get();
         }
+
+
         return view('snet.index', compact('collection'));
     }
 

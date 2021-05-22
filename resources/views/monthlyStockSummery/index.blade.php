@@ -51,7 +51,10 @@
                         <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '426 CSC'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'TOTAL'))}}</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                        @else
                         <th colspan="3" rowspan="2" style="vertical-align: middle; horiz-align: center;"  class=" d-print-none">Action</th>
+                        @endif
                     </tr>
 
                     <tr class="text-center">
@@ -86,6 +89,8 @@
                             <td>{{$coll->bal_in_stores_426_csc}}</td>
                             <td>{{$coll->bal_in_stores_429_csc}}</td>
                             <td>{{$coll->total}}</td>
+                            @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                             <td class="text-center  d-print-none"><a href="{{route('monthlyStockSummery.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
 
                             <td  class="text-center  d-print-none">
@@ -96,6 +101,7 @@
                                     <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

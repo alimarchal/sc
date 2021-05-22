@@ -59,8 +59,11 @@
                         <th>{{strtoupper(str_replace('_',' ', 'duplicate_sims'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'new_sims'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total'))}}</th>
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                         <th class=" d-print-none">Edit</th>
                         <th class=" d-print-none">Delete</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -74,6 +77,8 @@
                             <td>{{$coll->duplicate_sims}}</td>
                             <td>{{$coll->new_sims}}</td>
                             <td>{{$coll->total}}</td>
+                            @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                             <td class=" d-print-none"><a href="{{route('simSale.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
                             <td class=" d-print-none">
                                 <form action="{{route('simSale.destroy',$coll->id)}}" method="post">
@@ -82,6 +87,7 @@
                                     <button type="submit"   onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

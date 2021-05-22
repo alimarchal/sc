@@ -52,7 +52,11 @@
                         <th>{{strtoupper(str_replace('_',' ', 'revenue'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'package_offered'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'remarks'))}}</th>
+
+                        @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                        @else
                         <th colspan="3" class=" d-print-none">Action</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -65,6 +69,8 @@
                             <td>{{$coll->revenue}}</td>
                             <td>{{$coll->package_offered}}</td>
                             <td>{{$coll->remarks}}</td>
+                            @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
+                            @else
                             <td class="text-center  d-print-none"><a href="{{route('corporateCustomer.edit',$coll->id)}}" class="btn btn-info" role="button">EDIT</a></td>
 
                             <td class="text-center  d-print-none">
@@ -75,6 +81,7 @@
                                     <button type="submit"  onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

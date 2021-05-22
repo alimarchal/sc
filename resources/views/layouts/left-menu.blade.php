@@ -41,441 +41,892 @@
         @endhasrole
 
 
-        <li class="nav-header">Services</li>
 
 
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-mobile-alt"></i>
-                <p>
-                    SPhone
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+{{-- Clerk AOTR MPR and MZD --}}
+
+        @if((auth()->user()->role == 'AOTR MZD' || auth()->user()->role == 'AOTR MPR') && auth()->user()->designation == 'Clerk')
+            <li class="nav-header">Services</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    <p>
+                        Revenue Target
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ')
+                        <li class="nav-item">
+                            <a href="{{route('revenue-target.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('sphone.create')}}" class="nav-link">
+                        <a href="{{route('revenue-target.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('sphone.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
 
-
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-globe"></i>
-                <p>
-                    SNet
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-balance-scale"></i>
+                    <p>
+                        Court Cases
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ')
+                        <li class="nav-item">
+                            <a href="{{route('courtCaseSecs.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('snet.create')}}" class="nav-link">
+                        <a href="{{route('courtCaseSecs.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('snet.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
 
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-broadcast-tower"></i>
-                <p>
-                    SCOM Tower
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-balance-scale"></i>
+                    <p>
+                        Outstanding Dues
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ')
+                        <li class="nav-item">
+                            <a href="{{route('courtCaseAotr.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('bts-tower.create')}}" class="nav-link">
+                        <a href="{{route('courtCaseAotr.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('bts-tower.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-money-bill"></i>
-                <p>
-                    Revenue Target
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-clipboard"></i>
+                    <p>
+                        Consumer Complaints
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' )
+                        <li class="nav-item">
+                            <a href="{{route('consumerComplaints.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('revenue-target.create')}}" class="nav-link">
+                        <a href="{{route('consumerComplaints.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('revenue-target.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
 
-        <li class="nav-header">Reports and Returns</li>
+{{-- Clerk 61 CSB  --}}
+        @elseif(auth()->user()->role == 'CSB 61' || auth()->user()->role == 'CSB 64')
+            <li class="nav-header">Services</li>
 
-
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-balance-scale"></i>
-                <p>
-                    Court Cases
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        SPhone
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('sphone.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('courtCaseSecs.create')}}" class="nav-link">
+                        <a href="{{route('sphone.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('courtCaseSecs.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-balance-scale"></i>
-                <p>
-                    Outstanding Dues
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-globe"></i>
+                    <p>
+                        SNet
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('snet.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('courtCaseAotr.create')}}" class="nav-link">
+                        <a href="{{route('snet.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('courtCaseAotr.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-money-bill"></i>
-                <p>
-                    Monthly Status Report
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-broadcast-tower"></i>
+                    <p>
+                        SCOM Tower
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('bts-tower.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('monthly-network-status.create')}}" class="nav-link">
+                        <a href="{{route('bts-tower.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('monthly-network-status.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
 
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-money-bill"></i>
-                <p>
-                    Franchise Wise Revenue
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+
+            <li class="nav-header">Reports and Returns</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    <p>
+                        Monthly Status Report
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('monthly-network-status.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('franchiseWiseRevenue.create')}}" class="nav-link">
+                        <a href="{{route('monthly-network-status.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('franchiseWiseRevenue.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
 
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-location-arrow"></i>
-                <p>
-                    Site State
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    <p>
+                        Franchise Wise Revenue
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('franchiseWiseRevenue.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('siteState.create')}}" class="nav-link">
+                        <a href="{{route('franchiseWiseRevenue.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('siteState.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
 
-            </ul>
-        </li>
-
-
-        <li class="nav-header">Marketing</li>
-
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-sd-card"></i>
-                <p>
-                    Sale Progress
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-location-arrow"></i>
+                    <p>
+                        Site State
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('siteState.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('monthlySaleProgress.create')}}" class="nav-link">
+                        <a href="{{route('siteState.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>Show All</p>
                         </a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
 
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cubes"></i>
-                <p>
-                    Stock Summery
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-@if(auth()->user()->role != 'Sector HQ')
-                <li class="nav-item">
-                    <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
-@endif
-                <li class="nav-item">
-                    <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
+                </ul>
+            </li>
 
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-alt"></i>
-                <p>
-                    Corporate Customer
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-@if(auth()->user()->role != 'Sector HQ')
-                <li class="nav-item">
-                    <a href="{{route('corporateCustomer.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
-@endif
-                <li class="nav-item">
-                    <a href="{{route('corporateCustomer.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
+            <li class="nav-header">Marketing</li>
 
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-sim-card"></i>
-                <p>
-                    Report Post Paid
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-@if(auth()->user()->role != 'Sector HQ')
-                <li class="nav-item">
-                    <a href="{{route('monthlyReportPostPaid.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
-@endif
-                <li class="nav-item">
-                    <a href="{{route('monthlyReportPostPaid.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-sd-card"></i>
+                    <p>
+                        Sale Progress
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('monthlySaleProgress.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-cubes"></i>
+                    <p>
+                        Stock Summery
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Corporate Customer
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('corporateCustomer.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('corporateCustomer.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-sim-card"></i>
+                    <p>
+                        Report Post Paid
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('monthlyReportPostPaid.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('monthlyReportPostPaid.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="nav-header">Customer Care</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Customer
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('customerServiceCenter.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('customerServiceCenter.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-sim-card"></i>
+                    <p>
+                        New & Duplicate Sims
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('simSale.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('simSale.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-clipboard"></i>
+                    <p>
+                        Consumer Complaints
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('consumerComplaints.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('consumerComplaints.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+        @else
+            <li class="nav-header">Services</li>
 
 
-        <li class="nav-header">Customer Care</li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-alt"></i>
-                <p>
-                    Customer
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-@if(auth()->user()->role != 'Sector HQ')
-                <li class="nav-item">
-                    <a href="{{route('customerServiceCenter.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
-@endif
-                <li class="nav-item">
-                    <a href="{{route('customerServiceCenter.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        SPhone
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('sphone.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('sphone.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-globe"></i>
+                    <p>
+                        SNet
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('snet.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('snet.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-broadcast-tower"></i>
+                    <p>
+                        SCOM Tower
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('bts-tower.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('bts-tower.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    <p>
+                        Revenue Target
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('revenue-target.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('revenue-target.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="nav-header">Reports and Returns</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-balance-scale"></i>
+                    <p>
+                        Court Cases
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('courtCaseSecs.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('courtCaseSecs.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-balance-scale"></i>
+                    <p>
+                        Outstanding Dues
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('courtCaseAotr.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('courtCaseAotr.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    <p>
+                        Monthly Status Report
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('monthly-network-status.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('monthly-network-status.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    <p>
+                        Franchise Wise Revenue
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('franchiseWiseRevenue.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('franchiseWiseRevenue.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-location-arrow"></i>
+                    <p>
+                        Site State
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('siteState.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('siteState.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="nav-header">Marketing</li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-sd-card"></i>
+                    <p>
+                        Sale Progress
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('monthlySaleProgress.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-cubes"></i>
+                    <p>
+                        Stock Summery
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Corporate Customer
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('corporateCustomer.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('corporateCustomer.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-sim-card"></i>
+                    <p>
+                        Report Post Paid
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('monthlyReportPostPaid.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('monthlyReportPostPaid.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="nav-header">Customer Care</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Customer
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('customerServiceCenter.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('customerServiceCenter.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-sim-card"></i>
+                    <p>
+                        New & Duplicate Sims
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('simSale.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('simSale.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-clipboard"></i>
+                    <p>
+                        Consumer Complaints
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('consumerComplaints.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('consumerComplaints.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        @endif
 
 
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-sim-card"></i>
-                <p>
-                    New & Duplicate Sims
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
-                <li class="nav-item">
-                    <a href="{{route('simSale.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('simSale.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-clipboard"></i>
-                <p>
-                    Consumer Complaints
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @if(auth()->user()->role != 'Sector HQ')
-                <li class="nav-item">
-                    <a href="{{route('consumerComplaints.create')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{route('consumerComplaints.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Show All</p>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
 
 
     </ul>
