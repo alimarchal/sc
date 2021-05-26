@@ -17,7 +17,7 @@
                         <th>Username</th>
                         <th>Role</th>
                         <th>Designation</th>
-                        <th>Edit</th>
+{{--                        <th>Edit</th>--}}
                         <th>Delete</th>
                     </tr>
                     </thead>
@@ -28,7 +28,7 @@
                             <td>{{$user->username}}</td>
                             <td>{{$user->role}}</td>
                             <td>{{$user->designation}}</td>
-                            <td><a class="btn btn-warning">Edit</a></td>
+{{--                            <td><a class="btn btn-warning">Edit</a></td>--}}
                             <td>
                                 <form action="{{route('user.destroy',$user->id)}}" method="post">
                                     @csrf

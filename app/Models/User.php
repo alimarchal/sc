@@ -312,6 +312,7 @@ class User extends Authenticatable
                 'Rs. 500',
                 'Rs. 500 Super',
                 'Rs. 549 S Gold',
+                'Rs. 550 S Gold',
                 'Rs. 1000',
             ];
         } elseif ($type == 'CDMA') {

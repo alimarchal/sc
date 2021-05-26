@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="{{url('AdminLTE/plugins/summernote/summernote-bs4.min.css')}}">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
+    <link rel="shortcut icon" href="{{ asset('SCO-Logo.ico') }}">
     <script type="text/javascript">
         google.charts.load("current", {packages: ["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
@@ -457,7 +457,7 @@
                     {{--                    <span class="badge badge-warning navbar-badge">15</span>--}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">Profile</span>
+                    <span class="dropdown-item dropdown-header"><a href="{{url('user/profile')}}">Profile</a></span>
                     <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -468,17 +468,16 @@
 
 
                     <div class="dropdown-divider"></div>
-                    {{--                    <a href="#" class="dropdown-item">--}}
-                    {{--                        <i class="fas fa-users mr-2"></i> 8 friend requests--}}
-                    {{--                        <span class="float-right text-muted text-sm">12 hours</span>--}}
-                    {{--                    </a>--}}
-                    {{--                    <div class="dropdown-divider"></div>--}}
-                    {{--                    <a href="#" class="dropdown-item">--}}
-                    {{--                        <i class="fas fa-file mr-2"></i> 3 new reports--}}
-                    {{--                        <span class="float-right text-muted text-sm">2 days</span>--}}
-                    {{--                    </a>--}}
-                    {{--                    <div class="dropdown-divider"></div>--}}
-                    {{--                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
+                                        <a href="{{url('user/profile')}}" class="dropdown-item">
+                                            <i class="fas fa-key mr-2"></i> Change Password
+                                        </a>
+{{--                                        <div class="dropdown-divider"></div>--}}
+{{--                                        <a href="#" class="dropdown-item">--}}
+{{--                                            <i class="fas fa-file mr-2"></i> 3 new reports--}}
+{{--                                            <span class="float-right text-muted text-sm">2 days</span>--}}
+{{--                                        </a>--}}
+{{--                                        <div class="dropdown-divider"></div>--}}
+{{--                                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
                 </div>
             </li>
             <li class="nav-item">
@@ -508,7 +507,11 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{url('AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+
+{{--                    <div class="mt-2" x-show="! photoPreview">--}}
+{{--                        <img src="{{ auth()->user()->profile_photo_url }}" alt="{{ auth()->user()->name }}" class="rounded-full h-20 w-20 object-cover">--}}
+{{--                    </div>--}}
+                    <img src="{{auth()->user()->profile_photo_url}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">{{auth()->user()->name}}</a>

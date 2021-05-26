@@ -61,6 +61,10 @@ Route::resource('snet', \App\Http\Controllers\SnetController::class);
 Route::resource('sphone', \App\Http\Controllers\SphoneController::class);
 Route::resource('monthly-network-status', \App\Http\Controllers\MonthlyNetworkStatusController::class);
 
+Route::resource('monthlyDslRevAotr', \App\Http\Controllers\MonthlyDslRevAotrController::class);
+Route::resource('scoRevenueCollectionAotr', \App\Http\Controllers\ScoRevenueCollectionAotrController::class);
+Route::resource('cCaseAotr', \App\Http\Controllers\CCaseAotrController::class);
+
 Route::resource('user', \App\Http\Controllers\UserController::class)->middleware('role:admin');
 
 

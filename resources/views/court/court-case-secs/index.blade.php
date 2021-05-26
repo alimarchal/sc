@@ -46,6 +46,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'name_of_tri'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'district'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'tehsil'))}}</th>
@@ -65,6 +66,7 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                            <td>{{$coll->date}}</td>
                             <td>{{$coll->name_of_tri}}</td>
                             <td>{{$coll->district}}</td>
                             <td>{{$coll->tehsil}}</td>

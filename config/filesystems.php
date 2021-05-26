@@ -66,7 +66,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('C:\xampp\htdocs\sco-2\public\storage'),
     ],
 
 ];

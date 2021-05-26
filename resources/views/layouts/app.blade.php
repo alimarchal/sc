@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+        <link rel="shortcut icon" href="{{ asset('SCO-Logo.ico') }}">
         @livewireStyles
 
         <!-- Scripts -->
