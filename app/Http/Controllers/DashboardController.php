@@ -32,6 +32,8 @@ class DashboardController extends Controller
         }
 
 
+
+
         //whereMonth('date', '=', Carbon::parse($date)->format('m'))->whereYear('date', '=', Carbon::parse($date)->format('Y'));
 //
         $revenue_sum = RevenueTarget::whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
@@ -52,11 +54,13 @@ class DashboardController extends Controller
             'sphone_ach' => $revenue_sum->sum('sphone_ach'),
             'dxx_ach' => $revenue_sum->sum('dxx_ach'),
         ];
+
         $revenue_total = null;
         foreach ($revenue as $x)
             $revenue_total = $revenue_total + $x;
 
         $sphone_wc = null;
+
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             $sphone_wc = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('wc')->sum('wc');
