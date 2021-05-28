@@ -105,9 +105,9 @@
                             @endif
                             <td>{{number_format(($collection->sum('new_dsl_connections')))}}</td>
                             <td>{{number_format(($collection->sum('total_working_connection')))}}</td>
-                            <td>{{number_format(($collection->sum('snet_asg')/1000000),3)}} m</td>
-                            <td>{{number_format(($collection->sum('snet_ach')/1000000),3)}} m</td>
-                            <td>{{number_format(($collection->sum('sphone_asg')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('modem_charges')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('svc_charges')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('total')/1000000),3)}} m</td>
                         </tr>
                     @endif
                     </tfoot>

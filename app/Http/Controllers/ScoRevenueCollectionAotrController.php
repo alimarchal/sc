@@ -92,7 +92,7 @@ class ScoRevenueCollectionAotrController extends Controller
     {
         $scoRevenueCollectionAotr->update($request->all());
         session()->flash('message', 'Record successfully updated.');
-        return redirect()->route('cCaseAotr.index');
+        return redirect()->route('scoRevenueCollectionAotr.index');
     }
 
     /**

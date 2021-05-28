@@ -110,6 +110,14 @@
                             </div>
                         </div>
 
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'remarks'))}}</label>
+                                <textarea name="remarks" class="form-control"></textarea>
+                            </div>
+                        </div>
+
                     </div>
 
                     <button type="submit" class="btn btn-danger">Save</button>

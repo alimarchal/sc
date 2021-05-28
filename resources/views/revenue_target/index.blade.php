@@ -56,6 +56,7 @@
                         <th>{{strtoupper(str_replace('_',' ', 'dxx_ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total_asg'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total_ach'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'remarks'))}}</th>
                         @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                         @else
                             <th class="d-print-none">{{strtoupper(str_replace('_',' ', 'EDIT'))}}</th>
@@ -81,6 +82,7 @@
                             <td>{{number_format(($coll->dxx_ach/1000000),3)}} m</td>
                             <td>{{number_format(($coll->total_asg/1000000),3)}} m</td>
                             <td>{{number_format(($coll->total_ach/1000000),3)}} m</td>
+                            <td>{{ $coll->remarks }}</td>
 
                             @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                             @else

@@ -66,7 +66,7 @@
                             {{--                            @endif--}}
 
 
-                            <td>{{$coll->amount_trf_sco_main_acc}}</td>
+                            <td>{{number_format(($coll->amount_trf_sco_main_acc/1000000),3)}} m</td>
                             <td>{{$coll->remarks}}</td>
 
                             @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
@@ -93,7 +93,7 @@
                             @else
                                 <td colspan="4" class="text-right font-weight-bold">Total</td>
                             @endif
-                            <td>{{number_format(($collection->sum('snet_asg')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('amount_trf_sco_main_acc')/1000000),3)}} m</td>
                             <td></td>
                             <td></td>
                             <td></td>
