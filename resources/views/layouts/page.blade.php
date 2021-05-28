@@ -422,8 +422,10 @@
     $(document).ready(function() {
         $('#example').DataTable( {
             dom: 'Bfrtip',
+            "lengthMenu": [ 10, 25, 50, 100 ],
+            "pageLength": 25,
             buttons: [
-                'copy', 'csv', 'excel', 'print'
+                'copy', 'csv', 'excel', 'print','pageLength'
             ],
             responsive: true,
         } );
