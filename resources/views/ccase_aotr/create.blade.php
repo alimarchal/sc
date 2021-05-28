@@ -15,7 +15,7 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'year'))}}</label>
-                                <input type="date" name="date" class="form-control" >
+                                <input type="text" name="years" class="form-control" >
                             </div>
                         </div>
 

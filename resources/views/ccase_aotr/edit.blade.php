@@ -15,8 +15,8 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'year'))}}</label>
-                                <input type="date" name="date" value="{{$cCaseAotr->date}}" class="form-control" >
+                                <label>{{strtoupper(str_replace('_',' ', 'years'))}}</label>
+                                <input type="text" name="years" value="{{$cCaseAotr->date}}" class="form-control" >
                             </div>
                         </div>
 

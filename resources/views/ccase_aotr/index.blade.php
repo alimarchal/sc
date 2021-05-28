@@ -10,8 +10,8 @@
                 <div class="row">
 
                     <div class="col-md-3">
-                        <label>Enter Month</label>
-                        <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
+                        <label>Enter Years</label>
+                        <input class="form-control" type="text" name="filter[years]" placeholder="2015-2020">
                     </div>
 
                     <div class="col-md-3">
@@ -25,7 +25,7 @@
                     </div>
 
                 </div>
-
+                <br>
                 <input type="submit" class="btn btn-danger" value="Search">
                 <br>
             </form>
@@ -34,7 +34,7 @@
             <br>
 
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">SCO Revenue Collection</h2>
+                <h2 class="text-center">Court Cases Summery</h2>
                 <br>
 
                 <table id="example" class="display nowrap table-striped table-bordered">
@@ -62,7 +62,7 @@
                     @foreach($collection as $coll)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{\Carbon\Carbon::createFromDate($coll->date)->format('d-M-Y')}}</td>
+                            <td>{{$coll->years}}</td>
                             <td>{{$coll->aor}}</td>
                             <td>{{$coll->case_suited}}</td>
                             <td>{{$coll->settled}}</td>

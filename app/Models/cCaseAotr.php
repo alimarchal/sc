@@ -11,10 +11,10 @@ class cCaseAotr extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date','aor','case_suited','settled','bal','defaulted_amount','recovered_amount','amount_balance',];
+    protected $fillable = ['years','aor','case_suited','settled','bal','defaulted_amount','recovered_amount','amount_balance',];
 
-    public function scopeMonth(Builder $query, $date): Builder
-    {
-        return $query->whereMonth('date', '=', Carbon::parse($date)->format('m'))->whereYear('date', '=', Carbon::parse($date)->format('Y'));
-    }
+//    public function scopeMonth(Builder $query, $date): Builder
+//    {
+//        return $query->whereMonth('date', '=', Carbon::parse($date)->format('m'))->whereYear('date', '=', Carbon::parse($date)->format('Y'));
+//    }
 }

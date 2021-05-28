@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'date/month'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'REV TFR DATE'))}}</label>
                                 <input type="date" name="date" class="form-control" >
                             </div>
                         </div>

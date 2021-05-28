@@ -16,7 +16,7 @@ class CreateCCaseAotrsTable extends Migration
         Schema::create('c_case_aotrs', function (Blueprint $table) {
             $table->id();
 
-            $table->date('date')->nullable();
+            $table->date('years')->nullable();
             $table->string('aor')->nullable();
             $table->string('case_suited')->nullable();
             $table->string('settled')->nullable();

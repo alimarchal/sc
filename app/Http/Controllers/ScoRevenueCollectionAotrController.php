@@ -56,7 +56,7 @@ class ScoRevenueCollectionAotrController extends Controller
     {
         ScoRevenueCollectionAotr::create($request->all());
         session()->flash('message', 'Record successfully saved.');
-        return redirect()->route('cCaseAotr.index');
+        return redirect()->route('scoRevenueCollectionAotr.index');
     }
 
     /**

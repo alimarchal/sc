@@ -9,13 +9,13 @@
             <div class="invoice p-3 mb-3 rounded">
                 <h2 class="text-center">Monthly DSL Rev / Type of DSL Subs Report</h2>
                 <br>
-                <form action="{{route('monthlyDslRevAotr.store',$monthlyDslRevAotr->id)}}" method="post">
+                <form action="{{route('monthlyDslRevAotr.store')}}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'date/month'))}}</label>
-                                <input type="date" name="date" class="form-control" value="{{$monthlyDslRevAotr->date}}">
+                                <input type="date" name="date" class="form-control">
                             </div>
                         </div>
 
@@ -25,7 +25,7 @@
                             <select class="form-control" name="aor">
                                 <option value="">None</option>
                                 @foreach(\App\Models\User::region_court_case() as $region_court_case)
-                                    <option value="{{$region_court_case}}" @if($monthlyDslRevAotr->aor == $region_court_case) selected @endif >{{$region_court_case}}</option>
+                                    <option value="{{$region_court_case}}" >{{$region_court_case}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -36,7 +36,7 @@
                                 <select class="form-control" name="company">
                                     <option value="">None</option>
                                     @foreach(\App\Models\User::company_name() as $company_name)
-                                        <option value="{{$company_name}}" @if($monthlyDslRevAotr->company == $company_name) selected @endif >{{$company_name}}</option>
+                                        <option value="{{$company_name}}" >{{$company_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'new_dsl_connections'))}}</label>
-                                <input type="number" value="{{$monthlyDslRevAotr->new_dsl_connections}}" step="any" min="0" name="new_dsl_connections" class="form-control">
+                                <input type="number"  step="any" min="0" name="new_dsl_connections" class="form-control">
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'total_working_connection'))}}</label>
-                                <input type="number" step="any" value="{{$monthlyDslRevAotr->total_working_connection}}" min="0" name="total_working_connection" class="form-control">
+                                <input type="number" step="any"  min="0" name="total_working_connection" class="form-control">
                             </div>
                         </div>
 
@@ -62,7 +62,7 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'modem_charges'))}}</label>
-                                <input type="number" step="any" min="0" name="modem_charges" value="{{$monthlyDslRevAotr->modem_charges}}" class="form-control">
+                                <input type="number" step="any" min="0" name="modem_charges" class="form-control">
                             </div>
                         </div>
 
@@ -70,7 +70,7 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'svc_charges'))}}</label>
-                                <input type="number" step="any" min="0" name="svc_charges" value="{{$monthlyDslRevAotr->svc_charges}}" class="form-control">
+                                <input type="number" step="any" min="0" name="svc_charges" class="form-control">
                             </div>
                         </div>
 
@@ -78,14 +78,14 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'total'))}}</label>
-                                <input type="number" step="any" min="0" name="total" value="{{$monthlyDslRevAotr->total}}" class="form-control">
+                                <input type="number" step="any" min="0" name="total" class="form-control">
                             </div>
                         </div>
 
 
                     </div>
 
-                    <button type="submit" class="btn btn-danger">Update</button>
+                    <button type="submit" class="btn btn-danger">Create</button>
                 </form>
 
             </div>
