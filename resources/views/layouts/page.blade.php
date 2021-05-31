@@ -13,7 +13,14 @@
 
     @livewireStyles
 
+    <style>
+        @media print {
+            @page {
+                size: auto !important
+            }
+        }
 
+    </style>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -147,8 +154,7 @@
 {{--            --}}{{--            </li>--}}
 {{--        </ul>--}}
 {{--    </nav>--}}
-    <!-- /.navbar -->
-
+<!-- /.navbar -->
 
 
     <!-- Navbar -->
@@ -256,7 +262,6 @@
                     </form>
 
 
-
                     <div class="dropdown-divider"></div>
                     {{--                    <a href="#" class="dropdown-item">--}}
                     {{--                        <i class="fas fa-users mr-2"></i> 8 friend requests--}}
@@ -332,7 +337,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-{{--                        <h1 class="m-0">Dashboard</h1>--}}
+                        {{--                        <h1 class="m-0">Dashboard</h1>--}}
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -349,8 +354,6 @@
         <section class="content">
             @include('alert.alert')
             @yield('body-start')
-
-
 
 
         </section>
@@ -419,17 +422,17 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#example').DataTable( {
+    $(document).ready(function () {
+        $('#example').DataTable({
             dom: 'Bfrtip',
-            "lengthMenu": [ 10, 25, 50, 100 ],
+            "lengthMenu": [10, 25, 50, 100],
             "pageLength": 25,
             buttons: [
-                'copy', 'csv', 'excel', 'print','pageLength'
+                'copy', 'csv', 'excel', 'print', 'pageLength'
             ],
             responsive: true,
-        } );
-    } );
+        });
+    });
 </script>
 @livewireScripts
 </body>

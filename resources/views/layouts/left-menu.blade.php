@@ -41,9 +41,7 @@
         @endhasrole
 
 
-
-
-{{-- Clerk AOTR MPR and MZD --}}
+        {{-- Clerk AOTR MPR and MZD --}}
 
         @if((auth()->user()->role == 'AOTR MZD' || auth()->user()->role == 'AOTR MPR') && auth()->user()->designation == 'Clerk')
             <li class="nav-header">Services</li>
@@ -230,7 +228,7 @@
                 </ul>
             </li>
 
-{{-- Clerk 61 CSB  --}}
+            {{-- Clerk 61 CSB  --}}
         @elseif(auth()->user()->role == 'CSB 61' || auth()->user()->role == 'CSB 64')
             <li class="nav-header">Services</li>
 
@@ -405,17 +403,34 @@
                 <ul class="nav nav-treeview">
                     @if(auth()->user()->designation == 'Clerk')
                         <li class="nav-item">
-                            <a href="{{route('monthlySaleProgress.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create</p>
-                            </a>
+                            @if(auth()->user()->role == 'CSB 64' || auth()->user()->role == 'Sector HQ')
+                                <a href="{{route('monthlySaleProgressMpr.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            @else
+                                <a href="{{route('monthlySaleProgress.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            @endif
+
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Show All</p>
-                        </a>
+
+                        @if(auth()->user()->role == 'CSB 64' || auth()->user()->role == 'Sector HQ')
+                            <a href="{{route('monthlySaleProgressMpr.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Show All</p>
+                            </a>
+                        @else
+                            <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Show All</p>
+                            </a>
+                        @endif
+
                     </li>
 
                 </ul>
@@ -438,10 +453,20 @@
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Show All</p>
-                        </a>
+
+                        @if(auth()->user()->role == 'CSB 64')
+                            <a href="{{route('monthlyStockSummeryMpr.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Show All</p>
+                            </a>
+                        @else
+                            <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Show All</p>
+                            </a>
+                        @endif
+
+
                     </li>
 
                 </ul>
@@ -723,7 +748,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
                         <li class="nav-item">
                             <a href="{{route('courtCaseSecs.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -774,7 +799,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
                         <li class="nav-item">
                             <a href="{{route('monthly-network-status.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -880,7 +905,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
                         <li class="nav-item">
                             <a href="{{route('siteState.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -960,7 +985,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
                         <li class="nav-item">
                             <a href="{{route('corporateCustomer.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -1014,7 +1039,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                   @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
                         <li class="nav-item">
                             <a href="{{route('customerServiceCenter.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -1084,8 +1109,6 @@
                 </ul>
             </li>
         @endif
-
-
 
 
     </ul>

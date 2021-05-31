@@ -28,6 +28,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <link rel="shortcut icon" href="{{ asset('SCO-Logo.ico') }}">
+
     <script type="text/javascript">
         google.charts.load("current", {packages: ["corechart"]});
         google.charts.setOnLoadCallback(drawChart);

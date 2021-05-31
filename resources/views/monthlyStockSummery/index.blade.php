@@ -6,20 +6,20 @@
 @section('body-start')
     <div class="row">
         <div class="col-12">
-            <form class=" d-print-none" action="{{route('consumerComplaints.index')}}" method="get">
-                <div class="form-group">
-                    <label>{{strtoupper(str_replace('_',' ', 'loc_of_csc'))}}</label>
-                    <select class="form-control" name="filter[loc_of_csc]">
-                        @foreach(\App\Models\User::district() as $dist)
-                            <option value="{{$dist}}">{{$dist}}</option>
-                        @endforeach
-                    </select>
-                    <br>
-                    <input type="submit" class="btn btn-danger">
+{{--            <form class=" d-print-none" action="{{route('consumerComplaints.index')}}" method="get">--}}
+{{--                <div class="form-group">--}}
+{{--                    <label>{{strtoupper(str_replace('_',' ', 'loc_of_csc'))}}</label>--}}
+{{--                    <select class="form-control" name="filter[loc_of_csc]">--}}
+{{--                        @foreach(\App\Models\User::district() as $dist)--}}
+{{--                            <option value="{{$dist}}">{{$dist}}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+{{--                    <br>--}}
+{{--                    <input type="submit" class="btn btn-danger">--}}
 
-                </div>
+{{--                </div>--}}
 
-            </form>   <br>
+{{--            </form>   <br>--}}
             <br>
 
             <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
