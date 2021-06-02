@@ -444,27 +444,61 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
+
+
                     @if(auth()->user()->designation == 'Clerk')
                         <li class="nav-item">
-                            <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create</p>
-                            </a>
+                            @if(auth()->user()->role == 'CSB 64' || auth()->user()->role == 'Sector HQ')
+                                <a href="{{route('monthlyStockSummeryMpr.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            @else
+                                <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            @endif
+
                         </li>
                     @endif
+
+
+{{--                    @if(auth()->user()->designation == 'Clerk')--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Create</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
                     <li class="nav-item">
 
-                        @if(auth()->user()->role == 'CSB 64')
+
+                        @if(auth()->user()->role == 'CSB 64' || auth()->user()->role == 'Sector HQ')
                             <a href="{{route('monthlyStockSummeryMpr.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All</p>
                             </a>
                         @else
-                            <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
+                            <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All</p>
                             </a>
                         @endif
+
+{{--                        --}}
+{{--                        @if(auth()->user()->role == 'CSB 64')--}}
+{{--                            <a href="{{route('monthlyStockSummeryMpr.index')}}" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Show All</p>--}}
+{{--                            </a>--}}
+{{--                        @else--}}
+{{--                            <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Show All</p>--}}
+{{--                            </a>--}}
+{{--                        @endif--}}
 
 
                     </li>
