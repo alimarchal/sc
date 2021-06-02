@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="invoice p-3 mb-3 rounded">
 
-                <form action="{{route('courtCaseAotr.update',$courtCaseSec->id)}}" method="post">
+                <form action="{{route('courtCaseSecs.update',$courtCaseSec->id)}}" method="post">
                     @csrf
                     @method('put')
                     <div class="form-group">

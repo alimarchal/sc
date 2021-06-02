@@ -58,9 +58,9 @@
                     </tr>
 
                     <tr class="text-center">
-                        <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '423 CSC'))}}</th>
-                        <th style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '426 CSC'))}}</th>
-                        <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '429 CSC'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '424 CSC'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '428 CSC'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '432 CSC'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'jarral_mpr'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'kti'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'fahad_bhr'))}}</th>
