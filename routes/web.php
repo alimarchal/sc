@@ -71,6 +71,12 @@ Route::resource('cCaseAotr', \App\Http\Controllers\CCaseAotrController::class);
 
 Route::resource('weeklyProgressSpc', \App\Http\Controllers\WeeklyProgressSpcController::class);
 
+Route::resource('fortnightlyReportSphone', \App\Http\Controllers\FortnightlyReportSphoneController::class);
+Route::resource('fortnightlyReportCdma', \App\Http\Controllers\FortnightlyReportCdmaController::class);
+Route::resource('fortnightlyReportPmc', \App\Http\Controllers\FortnightlyReportPmcController::class);
+
+Route::resource('allocationSaleTgtMzd', \App\Http\Controllers\AllocationSaleTgtMzdController::class);
+
 Route::resource('user', \App\Http\Controllers\UserController::class)->middleware('role:admin');
 
 
