@@ -69,6 +69,8 @@ Route::resource('monthlyDslRevAotr', \App\Http\Controllers\MonthlyDslRevAotrCont
 Route::resource('scoRevenueCollectionAotr', \App\Http\Controllers\ScoRevenueCollectionAotrController::class);
 Route::resource('cCaseAotr', \App\Http\Controllers\CCaseAotrController::class);
 
+Route::resource('weeklyProgressSpc', \App\Http\Controllers\WeeklyProgressSpcController::class);
+
 Route::resource('user', \App\Http\Controllers\UserController::class)->middleware('role:admin');
 
 
