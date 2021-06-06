@@ -75,7 +75,7 @@ Route::resource('fortnightlyReportSphone', \App\Http\Controllers\FortnightlyRepo
 Route::resource('fortnightlyReportCdma', \App\Http\Controllers\FortnightlyReportCdmaController::class);
 Route::resource('fortnightlyReportPmc', \App\Http\Controllers\FortnightlyReportPmcController::class);
 
-Route::resource('allocationSaleTgtMzd', \App\Http\Controllers\AllocationSaleTgtMzdController::class);
+Route::resource('allocationSaleTgt', \App\Http\Controllers\AllocationSaleTgtController::class);
 
 Route::resource('user', \App\Http\Controllers\UserController::class)->middleware('role:admin');
 

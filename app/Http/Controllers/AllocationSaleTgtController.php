@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AllocationSaleTgt;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class AllocationSaleTgtController extends Controller
 {
@@ -18,23 +20,23 @@ class AllocationSaleTgtController extends Controller
 
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
-            $collection = QueryBuilder::for(Sphone::class)
+            $collection = QueryBuilder::for(AllocationSaleTgt::class)
                 ->allowedFilters(['btn', 'location', 'type_of_exchange', 'company', AllowedFilter::scope('month')])
                 ->where('btn', '61 CSB MZD')
                 ->orderBy('date', 'desc')->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
-            $collection = QueryBuilder::for(Sphone::class)
+            $collection = QueryBuilder::for(AllocationSaleTgt::class)
                 ->allowedFilters(['btn', 'location', 'type_of_exchange', 'company', AllowedFilter::scope('month')])
                 ->where('btn', '64 CSB MPR')
                 ->orderBy('date', 'desc')->get();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
-            $collection = QueryBuilder::for(Sphone::class)
+            $collection = QueryBuilder::for(AllocationSaleTgt::class)
                 ->allowedFilters(['btn', 'location', 'type_of_exchange', 'company', AllowedFilter::scope('month')])
                 ->orderBy('date', 'desc')->get();
         }
 
 
-        return view('sphone.index', compact('collection'));
+        return view('allocation_sale_tgt_mzd.index', compact('collection'));
     }
 
     /**
@@ -44,7 +46,7 @@ class AllocationSaleTgtController extends Controller
      */
     public function create()
     {
-        return view('sphone.create');
+        return view('allocation_sale_tgt_mzd.create');
     }
 
     /**
@@ -55,9 +57,9 @@ class AllocationSaleTgtController extends Controller
      */
     public function store(Request $request)
     {
-        Sphone::create($request->all());
+        AllocationSaleTgt::create($request->all());
         session()->flash('message', 'Record successfully saved.');
-        return redirect()->route('sphone.index');
+        return redirect()->route('allocationSaleTgt.index');
     }
 
     /**
@@ -79,7 +81,7 @@ class AllocationSaleTgtController extends Controller
      */
     public function edit(AllocationSaleTgt $allocationSaleTgt)
     {
-        return view('sphone.edit', compact('sphone'));
+        return view('allocation_sale_tgt_mzd.edit', compact('allocationSaleTgt'));
     }
 
     /**
@@ -91,9 +93,9 @@ class AllocationSaleTgtController extends Controller
      */
     public function update(Request $request, AllocationSaleTgt $allocationSaleTgt)
     {
-        $sphone->update($request->all());
+        $allocationSaleTgt->update($request->all());
         session()->flash('message', 'Record successfully updated.');
-        return redirect()->route('sphone.index');
+        return redirect()->route('allocationSaleTgt.index');
     }
 
     /**
@@ -104,8 +106,8 @@ class AllocationSaleTgtController extends Controller
      */
     public function destroy(AllocationSaleTgt $allocationSaleTgt)
     {
-        $sphone->delete();
+        $allocationSaleTgt->delete();
         session()->flash('message', 'Record successfully deleted.');
-        return redirect()->route('sphone.index');
+        return redirect()->route('allocationSaleTgt.index');
     }
 }

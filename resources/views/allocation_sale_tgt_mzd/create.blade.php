@@ -1,93 +1,76 @@
 @extends('layouts.page')
-@section('page-title', 'Weekly Progress of SPC')
+@section('page-title', 'Allocation of Sale TGT - WLL / SCO CDMA')
 
-@section('breadcrumb-item','Weekly Progress of SPC')
+@section('breadcrumb-item','Allocation of Sale TGT - WLL / SCO CDMA')
 
 @section('body-start')
     <div class="row">
         <div class="col-12">
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">Fortnightly Report Cdma</h2>
+                <h2 class="text-center">Allocation of Sale TGT - WLL / SCO CDMA</h2>
                 <br>
-                <form action="{{route('fortnightlyReportCdma.store')}}" method="post">
+                <form action="{{route('allocationSaleTgt.store')}}" method="post">
                     @csrf
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-4">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'date'))}}</label>
                                 <input type="date" name="date" class="form-control">
                             </div>
                         </div>
 
-
                         <div class="col-3">
-                            <label>{{strtoupper(str_replace('_',' ', 'aor'))}}</label>
-                            <select class="form-control" name="aor">
+                            <label>{{strtoupper(str_replace('_',' ', 'bn'))}}</label>
+                            <select class="form-control" name="btn">
                                 <option value="">None</option>
-                                @foreach(\App\Models\User::region_court_case() as $region_court_case)
-                                    <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                                @foreach(\App\Models\User::btn_name() as $btn_name)
+                                    <option value="{{$btn_name}}">{{$btn_name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'name'))}}</label>
+                                <select class="form-control" name="name">
+                                    <option value="">None</option>
+                                    @foreach(\App\Models\User::location() as $location)
+                                        <option value="{{$location}}">{{$location}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'previous_hh'))}}</label>
-                                <input type="number" step="any" min="0" name="previous_hh" class="form-control">
+                                <label>{{strtoupper(str_replace('_',' ', 'will_cards_tgt'))}}</label>
+                                <input type="number" step="any" min="0" name="will_cards_tgt" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'will_cards_achieved'))}}</label>
+                                <input type="number" step="any" min="0" name="will_cards_achieved" class="form-control">
                             </div>
                         </div>
 
 
-
-
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'previous_dt'))}}</label>
-                                <input type="number" step="any" min="0" name="previous_dt" class="form-control">
+                                <label>{{strtoupper(str_replace('_',' ', 'will_connection_tgt'))}}</label>
+                                <input type="number" step="any" min="0" name="will_connection_tgt" class="form-control">
                             </div>
                         </div>
 
 
-
-
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'fortnightly_hh'))}}</label>
-                                <input type="number" step="any" min="0" name="fortnightly_hh" class="form-control">
+                                <label>{{strtoupper(str_replace('_',' ', 'will_connection_achieved'))}}</label>
+                                <input type="number" step="any" min="0" name="will_connection_achieved" class="form-control">
                             </div>
                         </div>
-
-
-
-
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'fortnightly_dt'))}}</label>
-                                <input type="number" step="any" min="0" name="fortnightly_dt" class="form-control">
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'total_hh'))}}</label>
-                                <input type="number" step="any" min="0" name="total_hh" class="form-control">
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'total_dt'))}}</label>
-                                <input type="number" step="any" min="0" name="total_dt" class="form-control">
-                            </div>
-                        </div>
-
-
                     </div>
 
                     <button type="submit" class="btn btn-danger">Save</button>

@@ -15,20 +15,14 @@ class CreateAllocationSaleTgtsTable extends Migration
     {
         Schema::create('allocation_sale_tgts', function (Blueprint $table) {
             $table->id();
+
             $table->date('date')->nullable();
             $table->string('btn')->nullable();
-
-            $table->decimal('will_cards_tgt_neelum', 14,2)->nullable();
-            $table->decimal('will_connection_achived_neelum', 14,2)->nullable();
-
-            $table->decimal('will_cards_tgt_atb', 14,2)->nullable();
-            $table->decimal('will_connection_achived_atb', 14,2)->nullable();
-
-            $table->decimal('will_cards_tgt_rcgp', 14,2)->nullable();
-            $table->decimal('will_connection_rcgp', 14,2)->nullable();
-
-            $table->decimal('will_cards_tgt_total', 14,2)->nullable();
-            $table->decimal('will_connection_rcgp_total', 14,2)->nullable();
+            $table->string('name')->nullable();
+            $table->string('will_cards_tgt')->nullable();
+            $table->string('will_cards_achieved')->nullable();
+            $table->string('will_connection_tgt')->nullable();
+            $table->string('will_connection_achieved')->nullable();
 
             $table->timestamps();
         });

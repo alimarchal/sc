@@ -139,7 +139,6 @@ class User extends Authenticatable
         {
             return ['61 CSB MZD', '64 CSB MPR'];
         }
-
     }
 
 
@@ -432,4 +431,35 @@ class User extends Authenticatable
         }
     }
 
+
+    public static function location(): array
+    {
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
+        {
+            return [
+                'Neelum Comm Mzd',
+                'Ahmed Traders Bagh',
+                'Rawalakot Comm Gp',
+            ];
+        }
+        elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
+        {
+            return [
+                'Jarral MPR',
+                'KTI',
+                'Fahad BHR',
+            ];
+        }
+        elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+        {
+            return [
+                'Neelum Comm Mzd',
+                'Ahmed Traders Bagh',
+                'Rawalakot Comm Gp',
+                'Jarral MPR',
+                'KTI',
+                'Fahad BHR',
+            ];
+        }
+    }
 }
