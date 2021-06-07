@@ -30,15 +30,6 @@
                             </select>
                         </div>
 
-                        <div class="col-3">
-                            <label>{{strtoupper(str_replace('_',' ', 'company'))}}</label>
-                            <select class="form-control" name="company">
-                                <option value="">None</option>
-                                @foreach(\App\Models\User::company_name() as $company_name)
-                                    <option value="{{$company_name}}"  @if($monthlyNetworkStatus->company == $company_name) selected @endif>{{$company_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                     <br>
                     <h2 class="text-center">S-Phone</h2>
@@ -47,7 +38,7 @@
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'total_exc'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'total_exch'))}}</label>
                                 <input type="number" name="sphone_total_exc" value="{{$monthlyNetworkStatus->sphone_total_exc}}" class="form-control">
                             </div>
                         </div>
@@ -178,7 +169,7 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'total_dss_sites'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'total_dxx_sites'))}}</label>
                                 <input type="number" name="dxx_total_dss_sites" value="{{$monthlyNetworkStatus->dxx_total_dss_sites}}" class="form-control">
                             </div>
                         </div>

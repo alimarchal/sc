@@ -76,7 +76,7 @@
                         <th>SIMs Sold till Date</th>
                         <th>Total Subs</th>
                         <th>Active Subs</th>
-                        <th>Avg VLS Subs</th>
+                        <th>Avg VLR Subs</th>
                         <th>SIMs sold During Month</th>
                         <th>Total DSL Sites</th>
                         <th>Cap</th>

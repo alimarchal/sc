@@ -20,8 +20,8 @@
                     <div class="form-group">
                         <label >{{strtoupper(str_replace('_',' ', 'region'))}}</label>
                         <select class="form-control" name="region">
-                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
-                                <option value="{{$region_court_case}}" @if($region_court_case == $customerServiceCenter->region) selected @endif>{{$region_court_case}}</option>
+                            @foreach(\App\Models\User::btn_name() as $region)
+                                <option value="{{$region}}" @if($region == $customerServiceCenter->region) selected @endif>{{$region}}</option>
                             @endforeach
                         </select>
                     </div>

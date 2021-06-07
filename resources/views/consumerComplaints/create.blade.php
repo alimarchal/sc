@@ -21,7 +21,17 @@
 {{--                    </div>--}}
 
 
+
+
                     <div class="row">
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', 'Date/Month'))}}</label>
+                                <input type="date" name="date" class="form-control" >
+                            </div>
+                        </div>
+
                         <div class="col-3">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'Type'))}}</label>

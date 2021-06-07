@@ -12,13 +12,13 @@
                 <form action="{{route('scoRevenueCollectionAotr.store')}}" method="post">
                     @csrf
                     <div class="row">
+
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'REV TFR DATE'))}}</label>
-                                <input type="date" name="date" class="form-control" >
+                                <label>{{strtoupper(str_replace('_',' ', 'month_date'))}}</label>
+                                <input type="date" name="month_date" class="form-control" >
                             </div>
                         </div>
-
 
                         <div class="col-3">
                             <label>{{strtoupper(str_replace('_',' ', 'aor'))}}</label>
@@ -37,7 +37,12 @@
                                 <input type="text"  name="detail" class="form-control">
                             </div>
                         </div>
-
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'REV TFR DATE'))}}</label>
+                                <input type="date" name="date" class="form-control" >
+                            </div>
+                        </div>
 
                         <div class="col-3">
                             <div class="form-group">

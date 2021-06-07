@@ -19,17 +19,20 @@ class CCaseAotrController extends Controller
         $collection = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             $collection = QueryBuilder::for(cCaseAotr::class)
-                ->allowedFilters(['aor', 'years'])
+                ->allowedFilters(['aor', 'years', AllowedFilter::scope('month')])
                 ->where('aor', 'AOTR MZD')
+                ->orderBy('month_date', 'desc')
                 ->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             $collection = QueryBuilder::for(cCaseAotr::class)
-                ->allowedFilters(['aor', 'years'])
+                ->allowedFilters(['aor', 'years', AllowedFilter::scope('month')])
                 ->where('aor', 'AOTR MPR')
+                ->orderBy('month_date', 'desc')
                 ->get();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             $collection = QueryBuilder::for(cCaseAotr::class)
-                ->allowedFilters(['aor', 'years'])
+                ->allowedFilters(['aor', 'years', AllowedFilter::scope('month')])
+                ->orderBy('month_date', 'desc')
                 ->get();
         }
 

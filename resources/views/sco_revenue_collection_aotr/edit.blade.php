@@ -12,6 +12,15 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
+
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'month_date'))}}</label>
+                                <input type="date" name="month_date"  value="{{$scoRevenueCollectionAotr->month_date}}" class="form-control" >
+                            </div>
+                        </div>
+
                         <div class="col-3">
                             <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'date/month'))}}</label>

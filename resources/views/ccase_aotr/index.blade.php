@@ -10,9 +10,15 @@
                 <div class="row">
 
                     <div class="col-md-3">
+                        <label>Enter Month</label>
+                        <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
+                    </div>
+
+                    <div class="col-md-3">
                         <label>Enter Years</label>
                         <input class="form-control" type="text" name="filter[years]" placeholder="2015-2020">
                     </div>
+
 
                     <div class="col-md-3">
                         <label>{{strtoupper(str_replace('_',' ', 'AOR'))}}</label>
@@ -97,7 +103,7 @@
                             @else
                                 <td colspan="5" class="text-right font-weight-bold">Total</td>
                             @endif
-                            <td>{{number_format(($collection->sum('bal')/1000000),3)}} m</td>
+                            <td>{{$collection->sum('bal')}} </td>
                             <td>{{number_format(($collection->sum('defaulted_amount')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('recovered_amount')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('amount_balance')/1000000),3)}} m</td>

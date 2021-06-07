@@ -339,6 +339,7 @@ class User extends Authenticatable
                 'SIMs 4G',
                 'Blank 4G',
                 'Silver',
+                'Platinum',
                 'Post Paid',
             ];
         } elseif ($type == 'UBPs') {

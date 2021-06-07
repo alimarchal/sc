@@ -17,8 +17,8 @@
                         <label>{{strtoupper(str_replace('_',' ', 'region'))}}</label>
                         <select class="form-control" name="filter[region]">
                             <option value="">None</option>
-                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
-                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                            @foreach(\App\Models\User::btn_name() as $btn_name)
+                                <option value="{{$btn_name}}">{{$btn_name}}</option>
                             @endforeach
                         </select>
                     </div>
