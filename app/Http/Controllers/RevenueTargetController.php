@@ -22,15 +22,18 @@ class RevenueTargetController extends Controller
             $collection = QueryBuilder::for(RevenueTarget::class)
                 ->allowedFilters(['aor', AllowedFilter::scope('month')])
                 ->where('aor', 'AOTR MZD')
+                ->orderBy('date', 'desc')
                 ->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             $collection = QueryBuilder::for(RevenueTarget::class)
                 ->allowedFilters(['aor', AllowedFilter::scope('month')])
                 ->where('aor', 'AOTR MPR')
+                ->orderBy('date', 'desc')
                 ->get();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             $collection = QueryBuilder::for(RevenueTarget::class)
                 ->allowedFilters(['aor', AllowedFilter::scope('month')])
+                ->orderBy('date', 'desc')
                 ->get();
         }
 
