@@ -464,14 +464,14 @@
                     @endif
 
 
-{{--                    @if(auth()->user()->designation == 'Clerk')--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Create</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    @endif--}}
+                    {{--                    @if(auth()->user()->designation == 'Clerk')--}}
+                    {{--                        <li class="nav-item">--}}
+                    {{--                            <a href="{{route('monthlyStockSummery.create')}}" class="nav-link">--}}
+                    {{--                                <i class="far fa-circle nav-icon"></i>--}}
+                    {{--                                <p>Create</p>--}}
+                    {{--                            </a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
                     <li class="nav-item">
 
 
@@ -487,18 +487,18 @@
                             </a>
                         @endif
 
-{{--                        --}}
-{{--                        @if(auth()->user()->role == 'CSB 64')--}}
-{{--                            <a href="{{route('monthlyStockSummeryMpr.index')}}" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Show All</p>--}}
-{{--                            </a>--}}
-{{--                        @else--}}
-{{--                            <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Show All</p>--}}
-{{--                            </a>--}}
-{{--                        @endif--}}
+                        {{--                        --}}
+                        {{--                        @if(auth()->user()->role == 'CSB 64')--}}
+                        {{--                            <a href="{{route('monthlyStockSummeryMpr.index')}}" class="nav-link">--}}
+                        {{--                                <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                <p>Show All</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        @else--}}
+                        {{--                            <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">--}}
+                        {{--                                <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                <p>Show All</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        @endif--}}
 
 
                     </li>
@@ -637,6 +637,147 @@
 
                 </ul>
             </li>
+
+
+            <li class="nav-header">Fortnightly Reports</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Fortnightly SPhone
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('fortnightlyReportSphone.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('fortnightlyReportSphone.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Fortnightly CDMA
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('fortnightlyReportCdma.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('fortnightlyReportCdma.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Fortnightly PMC
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('fortnightlyReportPmc.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('fortnightlyReportPmc.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="nav-header">Weekly Progress SPC</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Weekly Progress SPC
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('weeklyProgressSpc.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('weeklyProgressSpc.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li class="nav-header">Allocation Sale Tgt</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Allocation Sale Tgt
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('allocationSaleTgt.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('allocationSaleTgt.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
 
         @else
             <li class="nav-header">Services</li>
@@ -1142,6 +1283,139 @@
 
                 </ul>
             </li>
+
+
+            <li class="nav-header">Fortnightly Reports</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        Fortnightly SPhone
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('fortnightlyReportSphone.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('fortnightlyReportSphone.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        Fortnightly CDMA
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('fortnightlyReportCdma.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('fortnightlyReportCdma.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        Fortnightly PMC
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('fortnightlyReportPmc.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('fortnightlyReportPmc.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-header">Weekly Progress SPC</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        Weekly Progress SPC
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('weeklyProgressSpc.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('weeklyProgressSpc.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-header">Allocation Sale Tgt</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        Allocation Sale Tgt
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('allocationSaleTgt.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('allocationSaleTgt.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
         @endif
 
 
