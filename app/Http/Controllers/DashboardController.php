@@ -85,11 +85,11 @@ class DashboardController extends Controller
         $sphone = null;
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
-            $sphone = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $sphone = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
-            $sphone = Sphone::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $sphone = Sphone::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
-            $sphone = Sphone::whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $sphone = Sphone::whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         }
 
 
