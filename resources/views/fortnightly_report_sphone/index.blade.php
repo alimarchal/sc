@@ -101,7 +101,7 @@
                         <tr>
 
                             @if((auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
-                                <td colspan="2" class="text-right font-weight-bold">Total</td>
+                                <td colspan="3" class="text-right font-weight-bold">Total</td>
                             @else
                                 <td colspan="3" class="text-right font-weight-bold">Total</td>
                             @endif
