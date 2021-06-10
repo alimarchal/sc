@@ -21,12 +21,12 @@ class FortnightlyReportCdmaController extends Controller
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             $collection = QueryBuilder::for(FortnightlyReportCdma::class)
                 ->allowedFilters(['aor', AllowedFilter::scope('month')])
-                ->where('aor', 'AOTR MZD')
+                ->whereIn('aor', ['Muzaffarabad', 'Bagh', 'Rawalakot'])
                 ->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             $collection = QueryBuilder::for(FortnightlyReportCdma::class)
                 ->allowedFilters(['aor', AllowedFilter::scope('month')])
-                ->where('aor', 'AOTR MPR')
+                ->whereIn('aor', ['Mirpur', 'Kotli', 'Bhimber'])
                 ->get();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             $collection = QueryBuilder::for(FortnightlyReportCdma::class)
