@@ -24,8 +24,8 @@
                             <label>{{strtoupper(str_replace('_',' ', 'aor'))}}</label>
                             <select class="form-control" name="aor">
                                 <option value="">None</option>
-                                @foreach(\App\Models\User::region_court_case() as $region_court_case)
-                                    <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                                @foreach(\App\Models\User::company_name_without_code() as $company_name_without_code)
+                                    <option value="{{$company_name_without_code}}">{{$company_name_without_code}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -24,8 +24,8 @@
                             <label>{{strtoupper(str_replace('_',' ', 'btn'))}}</label>
                             <select class="form-control" name="btn">
                                 <option value="">None</option>
-                                @foreach(\App\Models\User::company_name() as $company_name)
-                                    <option value="{{$company_name}}" @if($company_name == $allocationSaleTgt->btn) selected @endif>{{$company_name}}</option>
+                                @foreach(\App\Models\User::btn_name() as $btn_name)
+                                    <option value="{{$btn_name}}" @if($btn_name == $allocationSaleTgt->btn) selected @endif>{{$btn_name}}</option>
                                 @endforeach
                             </select>
                         </div>

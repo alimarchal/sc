@@ -32,8 +32,8 @@
                     <tr class="text-center">
                         <th rowspan="3" style="vertical-align: middle; horiz-align: center;" >#</th>
                         <th colspan="2">{{strtoupper(str_replace('_',' ', 'Types of Cards'))}}</th>
-                        <th colspan="3">{{strtoupper(str_replace('_',' ', 'previous balance'))}}</th>
-                        <th colspan="3">{{strtoupper(str_replace('_',' ', 'received during month'))}}</th>
+                        <th colspan="5">{{strtoupper(str_replace('_',' ', 'previous balance'))}}</th>
+                        <th colspan="4">{{strtoupper(str_replace('_',' ', 'received during month'))}}</th>
                         <th colspan="6">{{strtoupper(str_replace('_',' ', 'SOLD'))}}</th>
                         <th colspan="6">{{strtoupper(str_replace('_',' ', 'balance in stores'))}}</th>
                     </tr>
@@ -42,15 +42,20 @@
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '424 CSC'))}}</th>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '428 CSC'))}}</th>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '432 CSC'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '64 CSB'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Total'))}}</th>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '424 CSC'))}}</th>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '428 CSC'))}}</th>
                         <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '432 CSC'))}}</th>
-                        <th colspan="3" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Unit Outlets'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', '64 CSB'))}}</th>
+                        <th colspan="5" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Unit Outlets'))}}</th>
                         <th colspan="5" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Franchisee'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '424 CSC'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '428 CSC'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '432 CSC'))}}</th>
-                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'TOTAL'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', '64 CSB'))}}</th>
+                        <th style="vertical-align: middle; horiz-align: center;" rowspan="2" >{{strtoupper(str_replace('_',' ', 'Total'))}}</th>
+                        <th rowspan="2" style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'Grand TOTAL'))}}</th>
                         @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                         @else
                         <th colspan="3" rowspan="2" style="vertical-align: middle; horiz-align: center;"  class=" d-print-none">Action</th>
@@ -61,6 +66,8 @@
                         <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '424 CSC'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '428 CSC'))}}</th>
                         <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '432 CSC'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', '64 CSB'))}}</th>
+                        <th  style="vertical-align: middle; horiz-align: center;"  rowspan="2">{{strtoupper(str_replace('_',' ', 'Total'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'jarral_mpr'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'kti'))}}</th>
                         <th style="vertical-align: middle; horiz-align: center;" >{{strtoupper(str_replace('_',' ', 'fahad_bhr'))}}</th>
@@ -78,12 +85,17 @@
                             <td>{{$coll->previous_balance_424_csc}}</td>
                             <td>{{$coll->previous_balance_428_csc}}</td>
                             <td>{{$coll->previous_balance_432_csc}}</td>
+                            <td>{{$coll->previous_balance_64csb}}</td>
+                            <td>{{$coll->previous_balance_total}}</td>
                             <td>{{$coll->received_during_month_424_csc}}</td>
                             <td>{{$coll->received_during_month_428_csc}}</td>
                             <td>{{$coll->received_during_month_432_csc}}</td>
+                            <td>{{$coll->received_during_month_64csb}}</td>
                             <td>{{$coll->sold_unit_outlets_424_csc}}</td>
                             <td>{{$coll->sold_unit_outlets_428_csc}}</td>
                             <td>{{$coll->sold_unit_outlets_432_csc}}</td>
+                            <td>{{$coll->sold_unit_outlets_64csb}}</td>
+                            <td>{{$coll->sold_unit_outlets_total}}</td>
                             <td>{{$coll->sold_franchisee_jarral_mpr}}</td>
                             <td>{{$coll->sold_franchisee_kti}}</td>
                             <td>{{$coll->sold_franchisee_fahad_bhr}}</td>
@@ -92,6 +104,8 @@
                             <td>{{$coll->bal_in_stores_424_csc}}</td>
                             <td>{{$coll->bal_in_stores_428_csc}}</td>
                             <td>{{$coll->bal_in_stores_432_csc}}</td>
+                            <td>{{$coll->bal_in_stores_64csb}}</td>
+                            <td>{{$coll->bal_in_stores_total}}</td>
                             <td>{{$coll->total}}</td>
                             @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                             @else

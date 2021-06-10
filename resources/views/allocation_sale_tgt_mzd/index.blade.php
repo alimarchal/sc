@@ -45,10 +45,10 @@
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'btn'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'exchange name'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'will_cards_tgt (m)'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'will_cards_achieved (m)'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'will_connection_tgt (m)'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'will_connection_achieved (m)'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'WLL_cards_tgt (m)'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'WLL_cards_achieved (m)'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'WLL_connection_tgt'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'WLL_connection_achieved '))}}</th>
                         @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                         @else
                             <th class="d-print-none">{{strtoupper(str_replace('_',' ', 'EDIT'))}}</th>
@@ -67,8 +67,8 @@
                             <td>{{$coll->name}}</td>
                             <td>{{number_format(($coll->will_cards_tgt/1000000),3)}} </td>
                             <td>{{number_format(($coll->will_cards_achieved/1000000),3)}} </td>
-                            <td>{{number_format(($coll->will_connection_tgt/1000000),3)}} </td>
-                            <td>{{number_format(($coll->will_connection_achieved/1000000),3)}} </td>
+                            <td>{{number_format($coll->will_connection_tgt,2)}} </td>
+                            <td>{{number_format($coll->will_connection_achieved,2)}} </td>
 
                             @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                             @else
@@ -96,8 +96,8 @@
                             @endif
                             <td>{{number_format(($collection->sum('will_cards_tgt')/1000000),3)}}</td>
                             <td>{{number_format(($collection->sum('will_cards_achieved')/1000000),3)}}</td>
-                            <td>{{number_format(($collection->sum('will_connection_tgt')/1000000),3)}}</td>
-                            <td>{{number_format(($collection->sum('will_connection_achieved')/1000000),3)}}</td>
+                            <td>{{number_format($collection->sum('will_connection_tgt'),2)}}</td>
+                            <td>{{number_format($collection->sum('will_connection_achieved'),2)}}</td>
                         </tr>
                     @endif
                     </tfoot>

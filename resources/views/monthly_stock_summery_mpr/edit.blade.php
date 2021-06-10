@@ -137,6 +137,21 @@
 
                         <div class="col-4">
                             <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', '64 csb'))}}</label>
+                                <input type="number" name="previous_balance_64csb"  value="{{$monthlyStockSummeryMpr->previous_balance_64csb}}" class="form-control" >
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', 'Total'))}}</label>
+                                <input type="number" name="previous_balance_total"  value="{{$monthlyStockSummeryMpr->previous_balance_total}}" class="form-control" >
+                            </div>
+                        </div>
+
+
+                        <div class="col-4">
+                            <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'received_during_month_424_csc'))}}</label>
                                 <input type="number" name="received_during_month_424_csc" value="{{$monthlyStockSummeryMpr->received_during_month_424_csc}}" class="form-control" >
                             </div>
@@ -156,7 +171,12 @@
                             </div>
                         </div>
 
-
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', '64 csb'))}}</label>
+                                <input type="number" name="received_during_month_64csb" value="{{$monthlyStockSummeryMpr->received_during_month_64csb}}"  class="form-control" >
+                            </div>
+                        </div>
 
                         <div class="col-4">
                             <div class="form-group">
@@ -179,7 +199,19 @@
                             </div>
                         </div>
 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', '64 csb'))}}</label>
+                                <input type="number" name="sold_unit_outlets_64csb" value="{{$monthlyStockSummeryMpr->sold_unit_outlets_64csb}}" class="form-control" >
+                            </div>
+                        </div>
 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', 'total'))}}</label>
+                                <input type="number" name="sold_unit_outlets_total" value="{{$monthlyStockSummeryMpr->sold_unit_outlets_total}}" class="form-control" >
+                            </div>
+                        </div>
 
 
                         <div class="col-4">
@@ -242,11 +274,23 @@
                             </div>
                         </div>
 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', '64 csb'))}}</label>
+                                <input type="number" name="bal_in_stores_64csb" value="{{$monthlyStockSummeryMpr->bal_in_stores_64csb}}" class="form-control" >
+                            </div>
+                        </div>
 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label >{{strtoupper(str_replace('_',' ', 'total'))}}</label>
+                                <input type="number" name="bal_in_stores_total" value="{{$monthlyStockSummeryMpr->bal_in_stores_total}}" class="form-control" >
+                            </div>
+                        </div>
 
                         <div class="col-12">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'total'))}}</label>
+                                <label >{{strtoupper(str_replace('_',' ', 'grand total'))}}</label>
                                 <input type="number" name="total" value="{{$monthlyStockSummeryMpr->total}}" class="form-control" >
                             </div>
                         </div>
