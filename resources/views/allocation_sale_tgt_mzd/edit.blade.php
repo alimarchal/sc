@@ -21,7 +21,7 @@
 
 
                         <div class="col-4">
-                            <label>{{strtoupper(str_replace('_',' ', 'btn'))}}</label>
+                            <label>{{strtoupper(str_replace('_',' ', 'bn'))}}</label>
                             <select class="form-control" name="btn">
                                 <option value="">None</option>
                                 @foreach(\App\Models\User::btn_name() as $btn_name)
@@ -45,14 +45,14 @@
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'will_cards_tgt'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'wll_cards_tgt'))}}</label>
                                 <input type="number" step="any" min="0"  value="{{$allocationSaleTgt->will_cards_tgt}}" name="will_cards_tgt" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'will_cards_achieved'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'wll_cards_achieved'))}}</label>
                                 <input type="number" step="any" min="0" value="{{$allocationSaleTgt->will_cards_achieved}}" name="will_cards_achieved" class="form-control">
                             </div>
                         </div>
@@ -60,7 +60,7 @@
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'will_connection_tgt'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'wll_connection_tgt'))}}</label>
                                 <input type="number" step="any" min="0" value="{{$allocationSaleTgt->will_connection_tgt}}" name="will_connection_tgt" class="form-control">
                             </div>
                         </div>
@@ -68,7 +68,7 @@
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'will_connection_achieved'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'wll_connection_achieved'))}}</label>
                                 <input type="number" step="any" min="0" value="{{$allocationSaleTgt->will_connection_achieved}}" name="will_connection_achieved" class="form-control">
                             </div>
                         </div>

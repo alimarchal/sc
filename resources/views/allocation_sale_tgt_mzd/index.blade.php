@@ -43,7 +43,7 @@
                     <tr>
                         <th>#</th>
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'btn'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'bn'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'exchange name'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'WLL_cards_tgt (m)'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'WLL_cards_achieved (m)'))}}</th>
