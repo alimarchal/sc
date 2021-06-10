@@ -6,7 +6,7 @@
 @section('body-start')
     <div class="row">
         <div class="col-12">
-            <form class=" d-print-none" action="{{route('weeklyProgressSpc.index')}}" method="get">
+            <form class=" d-print-none" action="{{route('fortnightlyReportCdma.index')}}" method="get">
                 <div class="row">
 
                     <div class="col-md-3">
@@ -18,8 +18,8 @@
                         <label>{{strtoupper(str_replace('_',' ', 'AOR'))}}</label>
                         <select class="form-control" name="filter[aor]">
                             <option value="">None</option>
-                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
-                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                            @foreach(\App\Models\User::company_name_without_code() as $company_name_without_code)
+                                <option value="{{$company_name_without_code}}">{{$company_name_without_code}}</option>
                             @endforeach
                         </select>
                     </div>

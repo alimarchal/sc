@@ -18,8 +18,8 @@
                         <label>{{strtoupper(str_replace('_',' ', 'AOR'))}}</label>
                         <select class="form-control" name="filter[aor]">
                             <option value="">None</option>
-                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
-                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                            @foreach(\App\Models\User::company_name_without_code() as $company_name_without_code)
+                                <option value="{{$company_name_without_code}}">{{$company_name_without_code}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -43,7 +43,8 @@
 
                     <tr>
                         <th>#</th>
-                        <th colspan="6">&nbsp;</th>
+                        <th colspan="4">&nbsp;</th>
+                        <th colspan="2" style="vertical-align: center; horiz-align: center;">Fortnightly</th>
                         <th colspan="3">NTCs / PMC Restored Till Date</th>
                     </tr>
                     <tr>
@@ -53,7 +54,7 @@
                         <th>{{strtoupper(str_replace('_',' ', 'cap'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'working_connection'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'ntc'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'pmc'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'pmc_restored'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'ntcs'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'pmc_restored'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total'))}}</th>

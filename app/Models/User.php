@@ -463,4 +463,35 @@ class User extends Authenticatable
             ];
         }
     }
+
+
+    public static function company_name_without_code(): array
+    {
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
+        {
+            return [
+                'Muzaffarabad',
+                'Bagh',
+                'Rawalakot',
+            ];
+        } elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
+        {
+            return [
+                'Mirpur',
+                'Kotli',
+                'Bhimber',
+            ];
+        }elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+        {
+            return [
+                'Muzaffarabad',
+                'Bagh',
+                'Rawalakot',
+                'Mirpur',
+                'Kotli',
+                'Bhimber',
+            ];
+        }
+    }
 }

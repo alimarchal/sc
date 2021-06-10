@@ -1,12 +1,12 @@
 @extends('layouts.page')
-@section('page-title', 'Weekly Progress of SPC')
+@section('page-title', 'Fortnightly Report PMC')
 
 @section('breadcrumb-item','')
 
 @section('body-start')
     <div class="row">
         <div class="col-12">
-            <form class=" d-print-none" action="{{route('weeklyProgressSpc.index')}}" method="get">
+            <form class=" d-print-none" action="{{route('fortnightlyReportPmc.index')}}" method="get">
                 <div class="row">
 
                     <div class="col-md-3">
@@ -18,8 +18,8 @@
                         <label>{{strtoupper(str_replace('_',' ', 'AOR'))}}</label>
                         <select class="form-control" name="filter[aor]">
                             <option value="">None</option>
-                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
-                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                            @foreach(\App\Models\User::company_name_without_code() as $company_name_without_code)
+                                <option value="{{$company_name_without_code}}">{{$company_name_without_code}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -42,9 +42,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>{{strtoupper(str_replace('_',' ', ''))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'aor'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'PMC'))}}</th>
                         @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                         @else
                             <th class="d-print-none">{{strtoupper(str_replace('_',' ', 'EDIT'))}}</th>
@@ -86,7 +86,7 @@
                             @else
                                 <td colspan="3" class="text-right font-weight-bold">Total</td>
                             @endif
-{{--                            <td>{{$collection->sum('aor')}}</td>--}}
+                            <td>{{$collection->sum('pmc_closed')}}</td>
                         </tr>
                     @endif
                     </tfoot>
