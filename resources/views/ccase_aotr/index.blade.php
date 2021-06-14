@@ -40,7 +40,7 @@
             <br>
 
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">Court Cases Summery</h2>
+                <h2 class="text-center">Court Cases Summary </h2>
                 <br>
 
                 <table id="example" class="display nowrap table-striped table-bordered">
@@ -99,10 +99,12 @@
                         <tr>
 
                             @if((auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
-                                <td colspan="5" class="text-right font-weight-bold">Total</td>
+                                <td colspan="3" class="text-right font-weight-bold">Total</td>
                             @else
-                                <td colspan="5" class="text-right font-weight-bold">Total</td>
+                                <td colspan="3" class="text-right font-weight-bold">Total</td>
                             @endif
+                            <td>{{$collection->sum('case_suited')}} </td>
+                            <td>{{$collection->sum('settled')}} </td>
                             <td>{{$collection->sum('bal')}} </td>
                             <td>{{number_format(($collection->sum('defaulted_amount')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('recovered_amount')/1000000),3)}} m</td>
