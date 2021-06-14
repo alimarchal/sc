@@ -462,6 +462,8 @@ class User extends Authenticatable
                 'Jarral MPR',
                 'KTI',
                 'Fahad BHR',
+                'Baig KRT',
+                'Dadyal',
             ];
         }
     }
