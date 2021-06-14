@@ -32,7 +32,7 @@
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'sphone_instl_through_spo'))}}</label>
+                                <label>{{strtoupper(str_replace('_',' ', 'sphone_instl_through_spc'))}}</label>
                                 <input type="number" step="any" min="0" name="sphone_instl_through_spo" class="form-control">
                             </div>
                         </div>

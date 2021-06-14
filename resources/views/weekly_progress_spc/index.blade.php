@@ -44,7 +44,7 @@
                         <th>#</th>
                         <th>{{strtoupper(str_replace('_',' ', 'date'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'aor'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'sphone_instl_through_spo'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'sphone_instl_through_spc'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'instl_during_week'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'remarks'))}}</th>

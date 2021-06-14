@@ -449,6 +449,8 @@ class User extends Authenticatable
                 'Jarral MPR',
                 'KTI',
                 'Fahad BHR',
+                'Baig KRT',
+                'Dadyal',
             ];
         }
         elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
