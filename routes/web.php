@@ -69,8 +69,6 @@ Route::resource('monthlyDslRevAotr', \App\Http\Controllers\MonthlyDslRevAotrCont
 Route::resource('scoRevenueCollectionAotr', \App\Http\Controllers\ScoRevenueCollectionAotrController::class);
 Route::resource('cCaseAotr', \App\Http\Controllers\CCaseAotrController::class);
 
-Route::resource('weeklyProgressSpc', \App\Http\Controllers\WeeklyProgressSpcController::class);
-
 Route::resource('fortnightlyReportSphone', \App\Http\Controllers\FortnightlyReportSphoneController::class);
 Route::resource('fortnightlyReportCdma', \App\Http\Controllers\FortnightlyReportCdmaController::class);
 Route::resource('fortnightlyReportPmc', \App\Http\Controllers\FortnightlyReportPmcController::class);
@@ -78,6 +76,11 @@ Route::resource('fortnightlyReportPmc', \App\Http\Controllers\FortnightlyReportP
 Route::resource('allocationSaleTgt', \App\Http\Controllers\AllocationSaleTgtController::class);
 
 Route::resource('user', \App\Http\Controllers\UserController::class)->middleware('role:admin');
+
+Route::resource('weeklyProgressSpc', \App\Http\Controllers\WeeklyProgressSpcController::class);
+Route::resource('weeklyProgressSpcSphone', \App\Http\Controllers\WeeklyProgressSpcSphoneController::class);
+
+Route::resource('revCollN', \App\Http\Controllers\RevCollNController::class);
 
 
 

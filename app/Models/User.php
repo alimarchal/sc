@@ -68,8 +68,7 @@ class User extends Authenticatable
     {
 
 
-        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
-        {
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             return $districts = [
                 'Muzaffarabad',
                 'Hattian Bala',
@@ -78,16 +77,12 @@ class User extends Authenticatable
                 'Bagh',
                 'Haveli',
                 'Sudhnati'];
-        }
-        elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
-        {
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             return $districts = [
                 'Mirpur',
                 'Bhimber',
                 'Kotli',];
-        }
-        elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
-        {
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             return $districts = [
                 'Muzaffarabad',
                 'Hattian Bala',
@@ -109,16 +104,11 @@ class User extends Authenticatable
     {
         //lreturn $region_court_case = ['AOTR MZD', 'AOTR MPR'];
 
-        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
-        {
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             return $region_court_case = ['AOTR MZD'];
-        }
-        elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
-        {
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             return $region_court_case = ['AOTR MPR'];
-        }
-        elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
-        {
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             return $region_court_case = ['AOTR MZD', 'AOTR MPR'];
         }
 
@@ -127,16 +117,11 @@ class User extends Authenticatable
 
     public static function btn_name(): array
     {
-        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
-        {
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             return ['61 CSB MZD'];
-        }
-        elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
-        {
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             return ['64 CSB MPR'];
-        }
-        elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
-        {
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             return ['61 CSB MZD', '64 CSB MPR'];
         }
     }
@@ -145,22 +130,19 @@ class User extends Authenticatable
     public static function company_name(): array
     {
 
-        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
-        {
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             return [
                 '423 CSC Muzaffarabad',
                 '426 CSC Bagh',
                 '429 CSC Rawalakot',
             ];
-        } elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
-        {
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             return [
                 '424 CSC Mirpur',
                 '428 CSC Kotli',
                 '432 CSC Bhimber',
             ];
-        }elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
-        {
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             return [
                 '423 CSC Muzaffarabad',
                 '426 CSC Bagh',
@@ -322,6 +304,7 @@ class User extends Authenticatable
                 'Rs. 300',
                 '499 Unit',
                 'Rs. 500',
+                'Rs. 1000',
                 '1499 Unit',
                 'Hourly Rs. 50',
                 'Hourly Rs. 100',
@@ -375,8 +358,7 @@ class User extends Authenticatable
     {
         if ($role == '') {
             return ['None'];
-        }
-        elseif ($role == 'Sector HQ') {
+        } elseif ($role == 'Sector HQ') {
             return [
                 'Sector Commander',
                 'G2',
@@ -384,9 +366,7 @@ class User extends Authenticatable
                 'ZSM',
                 'Clerk',
             ];
-        }
-
-        elseif ($role == 'CSB 61') {
+        } elseif ($role == 'CSB 61') {
             return [
                 'CO',
                 '2iC',
@@ -396,17 +376,13 @@ class User extends Authenticatable
                 'RSM',
                 'Clerk',
             ];
-        }
-
-        elseif ($role == 'AOTR MZD') {
+        } elseif ($role == 'AOTR MZD') {
             return [
                 'AOTR MZD',
                 'Data Officer MZD',
                 'Clerk',
             ];
-        }
-
-        elseif ($role == 'CSB 64') {
+        } elseif ($role == 'CSB 64') {
             return [
                 'CO',
                 '2iC',
@@ -416,18 +392,13 @@ class User extends Authenticatable
                 'RSM',
                 'Clerk',
             ];
-        }
-
-        elseif ($role == 'AOTR MPR') {
+        } elseif ($role == 'AOTR MPR') {
             return [
                 'AOTR MPR',
                 'Data Officer MZD',
                 'Clerk',
             ];
-        }
-
-
-        elseif ($role == 'admin') {
+        } elseif ($role == 'admin') {
             return [
                 'Admin',
             ];
@@ -437,16 +408,13 @@ class User extends Authenticatable
 
     public static function location(): array
     {
-        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
-        {
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             return [
                 'Neelum Comm Mzd',
                 'Ahmed Traders Bagh',
                 'Rawalakot Comm Gp',
             ];
-        }
-        elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
-        {
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             return [
                 'Jarral MPR',
                 'KTI',
@@ -454,9 +422,7 @@ class User extends Authenticatable
                 'Baig KRT',
                 'Dadyal',
             ];
-        }
-        elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
-        {
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             return [
                 'Neelum Comm Mzd',
                 'Ahmed Traders Bagh',
@@ -474,22 +440,19 @@ class User extends Authenticatable
     public static function company_name_without_code(): array
     {
 
-        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
-        {
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             return [
                 'Muzaffarabad',
                 'Bagh',
                 'Rawalakot',
             ];
-        } elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
-        {
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             return [
                 'Mirpur',
                 'Kotli',
                 'Bhimber',
             ];
-        }elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
-        {
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             return [
                 'Muzaffarabad',
                 'Bagh',
@@ -497,6 +460,48 @@ class User extends Authenticatable
                 'Mirpur',
                 'Kotli',
                 'Bhimber',
+            ];
+        }
+    }
+
+
+    public static function card_type_revN($type): array
+    {
+        if ($type == '') {
+            return [
+                'None',
+            ];
+        }
+        if ($type == 'SCOM') {
+            return [
+                'Rs. 1000',
+                '549 Super',
+                '500 Super',
+                'Rs. 500',
+                'Rs. 349 Super',
+                'Rs. 300',
+                'Rs. 200',
+                'Rs. 100',
+                'Rs. 50',
+                'S Load',
+                'New SIM',
+                'Postpaid SIM',
+            ];
+        } elseif ($type == 'CDMA') {
+            return [
+                'Rs. 100',
+                'Rs. 100 Internet',
+            ];
+        } elseif ($type == 'PPCCs') {
+            return [
+                'Rs. 50',
+                'Rs. 100',
+            ];
+        } elseif ($type == 'DSL Card') {
+            return [
+                'Rs. 100',
+                'Rs. 500',
+                'Rs. 1000',
             ];
         }
     }
