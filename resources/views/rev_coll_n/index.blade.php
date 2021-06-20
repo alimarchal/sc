@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('page-title', 'Weekly Progress of SPC')
+@section('page-title', 'Rev Collection')
 
 @section('breadcrumb-item','')
 
@@ -35,7 +35,7 @@
             <br>
 
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">Weekly Progress of SPC</h2>
+                <h2 class="text-center">Rev Collection</h2>
                 <br>
 
                 <table  id="example"  class="display nowrap table-striped table-bordered">
