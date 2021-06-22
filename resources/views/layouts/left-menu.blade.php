@@ -1,5 +1,5 @@
-<nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+v<nav c0lass="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" d000000ata-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item menu-open">
@@ -308,7 +308,6 @@
 
                 </ul>
             </li>
-
 
             <li class="nav-header">Reports and Returns</li>
             <li class="nav-item">
@@ -739,6 +738,60 @@
                     @endif
                     <li class="nav-item">
                         <a href="{{route('weeklyProgressSpc.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Weekly Progress SPhone
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('weeklyProgressSpcSphone.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('weeklyProgressSpcSphone.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="nav-header">Revenue Collection</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>
+                        Revenue Collection
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('revCollN.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('revCollN.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Show All</p>
                         </a>
@@ -1388,6 +1441,60 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        Weekly Progress SPhone
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('weeklyProgressSpcSphone.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('weeklyProgressSpcSphone.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="nav-header">Revenue Collection</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        Revenue Collection
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('revCollN.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('revCollN.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
 
             <li class="nav-header">Allocation Sale Tgt</li>
             <li class="nav-item">

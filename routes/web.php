@@ -78,8 +78,8 @@ Route::resource('allocationSaleTgt', \App\Http\Controllers\AllocationSaleTgtCont
 Route::resource('user', \App\Http\Controllers\UserController::class)->middleware('role:admin');
 
 Route::resource('weeklyProgressSpc', \App\Http\Controllers\WeeklyProgressSpcController::class);
-Route::resource('weeklyProgressSpcSphone', \App\Http\Controllers\WeeklyProgressSpcSphoneController::class);
 
+Route::resource('weeklyProgressSpcSphone', \App\Http\Controllers\WeeklyProgressSpcSphoneController::class);
 Route::resource('revCollN', \App\Http\Controllers\RevCollNController::class);
 
 

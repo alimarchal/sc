@@ -35,7 +35,7 @@
             <br>
 
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">Weekly Progress of SPC</h2>
+                <h2 class="text-center">Weekly Progress of SPC SPhone</h2>
                 <br>
 
                 <table id="example" class="display nowrap table-striped table-bordered">
