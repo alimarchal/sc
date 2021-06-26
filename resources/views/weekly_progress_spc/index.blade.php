@@ -66,7 +66,7 @@
                             <td>{{$coll->sphone_instl_through_spo}} </td>
                             <td>{{$coll->instl_during_week}}</td>
                             <td>{{$coll->total}} </td>
-                            <td>{{$coll->remarks}} </td>
+                            <td><a href="{{route('weeklyProgressSpcSphone.index',['filter[month]'=> $coll->date])}}">{{$coll->remarks}}</a> </td>
 
                             @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                             @else
