@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('page-title', 'Weekly Progress of SPC')
+@section('page-title', 'Weekly Progress of (Annexure A)')
 
 @section('breadcrumb-item','')
 
@@ -35,7 +35,7 @@
             <br>
 
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">Weekly Progress of SPC SPhone</h2>
+                <h2 class="text-center">Weekly Progress SPhone (Annexure A)</h2>
                 <br>
 
                 <table id="example" class="display nowrap table-striped table-bordered">
@@ -81,21 +81,6 @@
                     @endforeach
 
                     </tbody>
-                    <tfoot>
-                    @if($collection->isNotEmpty())
-                        <tr>
-
-                            @if((auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
-                                <td colspan="2" class="text-right font-weight-bold">Total</td>
-                            @else
-                                <td colspan="3" class="text-right font-weight-bold">Total</td>
-                            @endif
-                            <td>{{$collection->sum('telephone_no')}}</td>
-                            <td>{{$collection->sum('name_and_address')}}</td>
-                            <td>{{$collection->sum('security_fee')}}</td>
-                        </tr>
-                    @endif
-                    </tfoot>
                 </table>
             </div>
         </div>

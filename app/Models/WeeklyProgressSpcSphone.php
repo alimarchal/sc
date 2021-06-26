@@ -11,7 +11,7 @@ class WeeklyProgressSpcSphone extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date','aor','telephone_no','name_and_address','security_fee',];
+    protected $fillable = ['date','date_of_instl','aor','telephone_no','name_and_address','security_fee',];
 
     public function scopeMonth(Builder $query, $date): Builder
     {

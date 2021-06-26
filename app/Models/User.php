@@ -211,6 +211,7 @@ class User extends Authenticatable
             'MSU',
             'RSU',
             'RSM',
+            'FTTC',
         ];
     }
 

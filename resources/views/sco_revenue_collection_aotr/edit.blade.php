@@ -21,12 +21,6 @@
                             </div>
                         </div>
 
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label>{{strtoupper(str_replace('_',' ', 'date/month'))}}</label>
-                                <input type="date" name="date" value="{{$scoRevenueCollectionAotr->date}}" class="form-control">
-                            </div>
-                        </div>
 
 
                         <div class="col-3">
@@ -46,6 +40,14 @@
                                 <input type="text" name="detail" value="{{$scoRevenueCollectionAotr->detail}}" class="form-control">
                             </div>
                         </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'Rev Tfr Date'))}}</label>
+                                <input type="date" name="date" value="{{$scoRevenueCollectionAotr->date}}" class="form-control">
+                            </div>
+                        </div>
+
 
 
                         <div class="col-3">

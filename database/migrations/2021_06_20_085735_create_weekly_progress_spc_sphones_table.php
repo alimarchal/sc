@@ -16,6 +16,7 @@ class CreateWeeklyProgressSpcSphonesTable extends Migration
         Schema::create('weekly_progress_spc_sphones', function (Blueprint $table) {
             $table->id();
             $table->date('date')->nullable();
+            $table->date('date_of_instl')->nullable();
             $table->string('aor')->nullable();
             $table->string('telephone_no')->nullable();
             $table->string('name_and_address')->nullable();

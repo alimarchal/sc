@@ -58,16 +58,20 @@
                                         <option value="Rs. 50">Rs. 50</option>
                                         <option value="S Load">S Load</option>
                                         <option value="New SIM">New SIM</option>
+                                        <option value="Blank Sim">Blank Sim</option>
                                         <option value="Postpaid SIM">Postpaid SIM</option>
                                     </optgroup>
 
                                     <optgroup label="CDMA">
                                         <option value="Rs. 100">Rs. 100</option>
                                         <option value="Rs. 100 Internet">Rs. 100 Internet</option>
+                                        <option value="249 Units">249 Units</option>
                                     </optgroup>
 
                                     <optgroup label="PPCCs">
                                         <option value="Rs. 50">Rs. 50</option>
+                                        <option value="Rs. 300">Rs. 300</option>
+                                        <option value="Rs. 500">Rs. 500</option>
                                         <option value="Rs. 100">Rs. 100</option>
                                     </optgroup>
 

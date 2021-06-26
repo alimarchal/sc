@@ -747,9 +747,9 @@ v<nav c0lass="mt-2">
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user-alt"></i>
+                    <i class="nav-icon fas "></i>
                     <p>
-                        Weekly Progress SPhone
+                        Weekly Progress <br>SPhone (Annexure A)
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -772,12 +772,12 @@ v<nav c0lass="mt-2">
                 </ul>
             </li>
 
-            <li class="nav-header">Revenue Collection</li>
+            <li class="nav-header">Revenue Report</li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-user-alt"></i>
                     <p>
-                        Revenue Collection
+                        Revenue Report
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -1443,9 +1443,9 @@ v<nav c0lass="mt-2">
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <i class="nav-icon fas"></i>
                     <p>
-                        Weekly Progress SPhone
+                        Weekly Progress<br> SPhone (Annexure A)
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -1468,12 +1468,12 @@ v<nav c0lass="mt-2">
             </li>
 
 
-            <li class="nav-header">Revenue Collection</li>
+            <li class="nav-header">Revenue Report</li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-mobile-alt"></i>
                     <p>
-                        Revenue Collection
+                        Revenue Report
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
