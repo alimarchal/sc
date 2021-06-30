@@ -1,7 +1,7 @@
 @extends('layouts.page')
-@section('page-title', 'Weekly Progress of SPC')
+@section('page-title', 'Fortnightly PMC')
 
-@section('breadcrumb-item','Weekly Progress of SPC')
+@section('breadcrumb-item','Fortnightly PMC')
 
 @section('body-start')
     <div class="row">

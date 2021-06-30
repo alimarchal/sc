@@ -1,7 +1,7 @@
 @extends('layouts.page')
-@section('page-title', 'Customer')
+@section('page-title', ' New & Duplicate Sims')
 
-@section('breadcrumb-item','Customer')
+@section('breadcrumb-item',' New & Duplicate Sims')
 
 @section('body-start')
     <div class="row">

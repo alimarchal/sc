@@ -1,7 +1,7 @@
 @extends('layouts.page')
-@section('page-title', 'Consumer')
+@section('page-title', 'Sale Progress')
 
-@section('breadcrumb-item','Consumer')
+@section('breadcrumb-item','Sale Progress')
 
 @section('body-start')
     <div class="row">
@@ -67,7 +67,7 @@
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label >{{strtoupper(str_replace('_',' ', 'sales_card'))}}</label>
+                                <label >{{strtoupper(str_replace('_',' ', 'sale coord'))}}</label>
                                 <input type="number" name="sales_card" class="form-control"  value="{{$monthlySaleProgressMpr->sales_card}}" >
                             </div>
                         </div>

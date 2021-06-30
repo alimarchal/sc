@@ -1,7 +1,7 @@
 @extends('layouts.page')
-@section('page-title', 'Monthly DSL Rev')
+@section('page-title', 'Revenue Collection AOTR')
 
-@section('breadcrumb-item','Monthly DSL Rev')
+@section('breadcrumb-item','Revenue Collection AOTR')
 
 @section('body-start')
     <div class="row">

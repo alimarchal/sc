@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('page-title', 'Fortnightly Report PMC')
+@section('page-title', 'Fortnightly PMC')
 
 @section('breadcrumb-item','')
 

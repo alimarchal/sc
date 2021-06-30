@@ -1,7 +1,7 @@
 @extends('layouts.page')
-@section('page-title', 'Monthly Sale Progress')
+@section('page-title', 'Sale Progress')
 
-@section('breadcrumb-item','')
+@section('breadcrumb-item','Sale Progress')
 
 @section('body-start')
     <div class="row">
@@ -64,7 +64,7 @@
                         <th>{{strtoupper(str_replace('_',' ', '424'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', '428'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', '432'))}}</th>
-                        <th>{{strtoupper(str_replace('_',' ', 'Card Sale'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'sales coord'))}}</th>
 
 
                         <th>{{strtoupper(str_replace('_',' ', 'jarral_mpr'))}}</th>

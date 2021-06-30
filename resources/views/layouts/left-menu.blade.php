@@ -749,7 +749,7 @@ v<nav c0lass="mt-2">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas "></i>
                     <p>
-                        Weekly Progress <br>SPhone (Annexure A)
+                        Weekly Progress <br>SPhone (Anx A)
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -1445,7 +1445,7 @@ v<nav c0lass="mt-2">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas"></i>
                     <p>
-                        Weekly Progress<br> SPhone (Annexure A)
+                        Weekly Progress<br> SPhone (Anx A)
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>

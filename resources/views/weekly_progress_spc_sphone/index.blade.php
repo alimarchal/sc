@@ -47,6 +47,7 @@
                         <th>{{strtoupper(str_replace('_',' ', 'telephone_no'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'name_and_address'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'security_fee'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'date of install'))}}</th>
                         @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                         @else
                             <th class="d-print-none">{{strtoupper(str_replace('_',' ', 'EDIT'))}}</th>
@@ -65,6 +66,7 @@
                             <td>{{$coll->telephone_no}} </td>
                             <td>{{$coll->name_and_address}}</td>
                             <td>{{$coll->security_fee}} </td>
+                            <td>{{\Carbon\Carbon::createFromDate($coll->date_of_instl)->format('d-m-Y')}}</td>
 
                             @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
                             @else

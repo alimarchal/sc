@@ -27,6 +27,13 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="col-md-3">
+                        <label>Enter Month</label>
+                        <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
+                    </div>
+
+
                     <div class="col-md-3">
                         <label>Enter a Date YYYY-MM-DD,YYYY-MM-DD:</label>
                         <input class="form-control" type="text" name="filter[starts_between]" placeholder="YYYY-MM-DD,YYYY-MM-DD">

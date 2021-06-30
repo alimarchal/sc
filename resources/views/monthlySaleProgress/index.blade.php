@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('page-title', 'Monthly Sale Progress')
+@section('page-title', 'Sale Progress')
 
 @section('breadcrumb-item','')
 

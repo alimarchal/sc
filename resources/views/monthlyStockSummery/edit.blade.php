@@ -1,7 +1,7 @@
 @extends('layouts.page')
-@section('page-title', 'Consumer')
+@section('page-title', 'Stock Summery')
 
-@section('breadcrumb-item','Consumer')
+@section('breadcrumb-item','Stock Summery')
 
 @section('body-start')
     <div class="row">

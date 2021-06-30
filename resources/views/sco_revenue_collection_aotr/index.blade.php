@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('page-title', 'SCO Revenue Collection')
+@section('page-title', 'Revenue Collection AOTR')
 
 @section('breadcrumb-item','')
 

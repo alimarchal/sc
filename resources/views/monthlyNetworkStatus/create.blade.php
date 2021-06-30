@@ -1,7 +1,7 @@
 @extends('layouts.page')
-@section('page-title', 'Monthly Network Status Report')
+@section('page-title', 'Monthly network status report')
 
-@section('breadcrumb-item','Monthly Network Status Report')
+@section('breadcrumb-item','Monthly network status report')
 
 @section('body-start')
     <div class="row">

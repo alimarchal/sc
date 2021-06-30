@@ -1,7 +1,7 @@
 @extends('layouts.page')
-@section('page-title', 'Court Case')
+@section('page-title', 'Outstanding dues')
 
-@section('breadcrumb-item','')
+@section('breadcrumb-item','Outstanding dues')
 
 @section('body-start')
     <div class="row">
