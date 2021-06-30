@@ -39,6 +39,9 @@
             <br>
 
             <div class="invoice p-3 mb-3 rounded">
+
+                <h2 class="text-center">Stock Summary MPR</h2>
+                <br>
                 <table class="table table-bordered">
                     <thead>
 
