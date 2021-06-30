@@ -21,20 +21,20 @@ class MonthlyStockSummeryController extends Controller
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
 
             $collection = QueryBuilder::for(MonthlyStockSummery::class)
-                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between'), AllowedFilter::scope('month')])
                 ->where('btn', '61 CSB MZD')
                 ->get();
 
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
 
             $collection = QueryBuilder::for(MonthlyStockSummery::class)
-                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between'), AllowedFilter::scope('month')])
                 ->where('btn', '64 CSB MPR')
                 ->get();
 
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             $collection = QueryBuilder::for(MonthlyStockSummery::class)
-                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between')])
+                ->allowedFilters(['type', 'btn_name', AllowedFilter::scope('starts_between'), AllowedFilter::scope('month')])
                 ->get();
         }
 

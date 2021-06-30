@@ -6,23 +6,35 @@
 @section('body-start')
     <div class="row">
         <div class="col-12">
-{{--            <form class=" d-print-none" action="{{route('consumerComplaints.index')}}" method="get">--}}
-{{--                <div class="form-group">--}}
-{{--                    <label>{{strtoupper(str_replace('_',' ', 'loc_of_csc'))}}</label>--}}
-{{--                    <select class="form-control" name="filter[loc_of_csc]">--}}
-{{--                        @foreach(\App\Models\User::district() as $dist)--}}
-{{--                            <option value="{{$dist}}">{{$dist}}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
-{{--                    <br>--}}
-{{--                    <input type="submit" class="btn btn-danger">--}}
+            <form class="d-print-none" action="{{route('monthlyStockSummery.index')}}" method="get">
+                <div class="row">
 
-{{--                </div>--}}
+                    @if(auth()->user()->role == "admin")
+                        <div class="col-md-3">
+                            <label>{{strtoupper(str_replace('_',' ', 'Battalion Name'))}}</label>
+                            <select class="form-control" name="filter[btn]">
+                                <option value="">None</option>
+                                @foreach(\App\Models\User::btn_name() as $btn_name)
+                                    <option value="{{$btn_name}}">{{$btn_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
 
-{{--            </form>   <br>--}}
-            <br>
 
-            <button onclick="window.print()" class="btn btn-primary float-right" >Print</button>
+                    <div class="col-md-3">
+                        <label>Enter Month</label>
+                        <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
+                    </div>
+
+
+                </div>
+
+                <br>
+                <input type="submit" class="btn btn-danger" value="Search">
+            </form>
+
+            <button onclick="window.print()" class="btn btn-primary float-right">Print</button>
             <br>
             <br>
             <div class="invoice p-3 mb-3 rounded">

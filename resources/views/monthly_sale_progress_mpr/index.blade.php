@@ -9,6 +9,7 @@
             <form class="d-print-none" action="{{route('monthlySaleProgressMpr.index')}}" method="get">
                 <div class="row">
 
+                    @if(auth()->user()->role == "admin")
                     <div class="col-md-3">
                         <label>{{strtoupper(str_replace('_',' ', 'Battalion Name'))}}</label>
                         <select class="form-control" name="filter[btn]">
@@ -18,6 +19,7 @@
                             @endforeach
                         </select>
                     </div>
+                    @endif
 
 
                     <div class="col-md-3">
