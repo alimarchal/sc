@@ -123,7 +123,7 @@
                     <tfoot>
                     @if($collection->isNotEmpty())
                         <tr>
-                            <td colspan="4" class="text-right font-weight-bold">Total</td>
+                            <td colspan="5" class="text-right font-weight-bold">Total</td>
                             <td>{{$collection->sum('capacity')}}</td>
                             <td>{{$collection->sum('wc')}}</td>
                             <td>{{$collection->sum('vacant')}}</td>
