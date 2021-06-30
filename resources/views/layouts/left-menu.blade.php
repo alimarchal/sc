@@ -1206,7 +1206,7 @@
                             <p>Show All MZD</p>
                         </a>
 
-                        <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
+                        <a href="{{route('monthlyStockSummeryMpr.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Show All MPR</p>
                         </a>
