@@ -1,4 +1,4 @@
-v<nav c0lass="mt-2">
+<nav c0lass="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" d000000ata-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
@@ -1172,7 +1172,12 @@ v<nav c0lass="mt-2">
                     <li class="nav-item">
                         <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Show All</p>
+                            <p>Show All MZD</p>
+                        </a>
+
+                        <a href="{{route('monthlySaleProgressMpr.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All MPR</p>
                         </a>
                     </li>
 
@@ -1198,9 +1203,15 @@ v<nav c0lass="mt-2">
                     <li class="nav-item">
                         <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Show All</p>
+                            <p>Show All MZD</p>
+                        </a>
+
+                        <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All MPR</p>
                         </a>
                     </li>
+
 
                 </ul>
             </li>

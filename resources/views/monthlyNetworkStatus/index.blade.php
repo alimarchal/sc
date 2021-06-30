@@ -18,15 +18,15 @@
                         </select>
                     </div>
 
-                    <div class="col-md-3">
-                        <label>{{strtoupper(str_replace('_',' ', 'Company'))}}</label>
-                        <select class="form-control" name="filter[company]">
-                            <option value="">None</option>
-                            @foreach(\App\Models\User::company_name() as $company_name)
-                                <option value="{{$company_name}}">{{$company_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+{{--                    <div class="col-md-3">--}}
+{{--                        <label>{{strtoupper(str_replace('_',' ', 'Company'))}}</label>--}}
+{{--                        <select class="form-control" name="filter[company]">--}}
+{{--                            <option value="">None</option>--}}
+{{--                            @foreach(\App\Models\User::company_name() as $company_name)--}}
+{{--                                <option value="{{$company_name}}">{{$company_name}}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
 
                     <div class="col-md-3">
                         <label>Enter Month</label>
