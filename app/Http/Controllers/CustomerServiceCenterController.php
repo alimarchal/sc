@@ -27,14 +27,14 @@ class CustomerServiceCenterController extends Controller
 
             $collection = QueryBuilder::for(CustomerServiceCenter::class)
                 ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
-                ->where('region', 'AOTR MZD')
+                ->where('region', '61 CSB MZD')
                 ->get();
 
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
 
             $collection = QueryBuilder::for(CustomerServiceCenter::class)
                 ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
-                ->where('region', 'AOTR MPR')
+                ->where('region', '64 CSB MZD')
                 ->get();
 
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {

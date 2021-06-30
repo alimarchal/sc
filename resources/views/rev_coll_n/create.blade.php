@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">Rev Collection</h2>
+                <h2 class="text-center">Rev Report</h2>
                 <br>
                 <form action="{{route('revCollN.store')}}" method="post">
                     @csrf

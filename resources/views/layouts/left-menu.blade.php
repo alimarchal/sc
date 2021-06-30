@@ -153,7 +153,7 @@ v<nav c0lass="mt-2">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-balance-scale"></i>
                     <p>
-                        Court Cases Summery
+                        Court Cases Summary
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -438,7 +438,7 @@ v<nav c0lass="mt-2">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-cubes"></i>
                     <p>
-                        Stock Summery
+                        Stock Summary
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -944,7 +944,7 @@ v<nav c0lass="mt-2">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-balance-scale"></i>
                     <p>
-                        Court Cases Summery
+                        Court Cases Summary
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -1182,7 +1182,7 @@ v<nav c0lass="mt-2">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-cubes"></i>
                     <p>
-                        Stock Summery
+                        Stock Summary
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
