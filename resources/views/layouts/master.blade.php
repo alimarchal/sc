@@ -590,7 +590,7 @@
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="{{route('snet.index',['filter[month]=' . \Carbon\Carbon::parse(\Carbon\Carbon::now()->subMonth()->endOfMonth())->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{route('snet.index',['filter[month]=' . \Carbon\Carbon::parse($snet_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -605,7 +605,8 @@
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="{{route('sphone.index',['filter[month]=' . \Carbon\Carbon::parse(\Carbon\Carbon::now()->subMonth()->endOfMonth())->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+                            <a href="{{route('sphone.index',['filter[month]=' . \Carbon\Carbon::parse($sphone_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -620,7 +621,7 @@
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="{{route('revenue-target.index',['filter[month]=' . \Carbon\Carbon::parse(\Carbon\Carbon::now()->subMonth()->endOfMonth())->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{route('revenue-target.index',['filter[month]=' . \Carbon\Carbon::parse($rev_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

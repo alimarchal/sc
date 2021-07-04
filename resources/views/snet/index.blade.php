@@ -120,11 +120,11 @@
                             @endif
 
                             <td>{{$collection->sum('capacity')}}</td>
-                            <td>{{$collection->sum('vacant')}}</td>
-                            <td>{{$collection->sum('active_subscriber')}}</td>
-                            <td>{{$collection->sum('cir_customers')}}</td>
-                            <td>{{$collection->sum('other_customers')}}</td>
-                            <td>{{$collection->sum('official_customers')}}</td>
+                                <td>{{$collection->sum('active_subscriber')}}</td>
+                                <td>{{$collection->sum('cir_customers')}}</td>
+                                <td>{{$collection->sum('other_customers')}}</td>
+                                <td>{{$collection->sum('official_customers')}}</td>
+                                <td>{{$collection->sum('vacant')}}</td>
                         </tr>
                     @endif
                     </tfoot>

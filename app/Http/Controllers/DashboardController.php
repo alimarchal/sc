@@ -21,6 +21,10 @@ class DashboardController extends Controller
     public function index()
     {
 
+        $sphone_max_date = null;
+        $snet_max_date = null;
+        $rev_max_date = null;
+
 //        $bts_tower_count = BtsTower::count();
         $bts_tower_count = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
@@ -36,11 +40,20 @@ class DashboardController extends Controller
 //
         $revenue_sum = RevenueTarget::whereMonth('date', '=', Carbon::parse(Carbon::now())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
-            $revenue_sum = RevenueTarget::where('aor', 'AOTR MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $max_date = Carbon::create(RevenueTarget::max('date'));
+            $rev_max_date = RevenueTarget::max('date');
+            $revenue_sum = RevenueTarget::where('aor', 'AOTR MZD')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get();
+//            $revenue_sum = RevenueTarget::where('aor', 'AOTR MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
-            $revenue_sum = RevenueTarget::where('aor', 'AOTR MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $max_date = Carbon::create(RevenueTarget::max('date'));
+            $rev_max_date = RevenueTarget::max('date');
+            $revenue_sum = RevenueTarget::where('aor', 'AOTR MPR')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get();
+//            $revenue_sum = RevenueTarget::where('aor', 'AOTR MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
-            $revenue_sum = RevenueTarget::whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $max_date = Carbon::create(RevenueTarget::max('date'));
+            $rev_max_date = RevenueTarget::max('date');
+            $revenue_sum = RevenueTarget::whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get();
+//            $revenue_sum = RevenueTarget::whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         }
 
 
@@ -56,7 +69,6 @@ class DashboardController extends Controller
         ];
 
 
-
         $revenue_total = null;
         foreach ($revenue as $x)
             $revenue_total = $revenue_total + $x;
@@ -65,31 +77,60 @@ class DashboardController extends Controller
 
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
-            $sphone_wc = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('wc')->sum('wc');
+            $max_date = Carbon::create(Sphone::max('date'));
+            $sphone_max_date = Sphone::max('date');
+            $sphone_wc = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get('wc')->sum('wc');
+//            $sphone_wc = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('wc')->sum('wc');
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
-            $sphone_wc = Sphone::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('wc')->sum('wc');
+            $max_date = Carbon::create(Sphone::max('date'));
+            $sphone_max_date = Sphone::max('date');
+            $sphone_wc = Sphone::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get('wc')->sum('wc');
+//            $sphone_wc = Sphone::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('wc')->sum('wc');
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
-            $sphone_wc = Sphone::whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('wc')->sum('wc');
+            $max_date = Carbon::create(Sphone::max('date'));
+            $sphone_max_date = Sphone::max('date');
+            $sphone_wc = Sphone::whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get('wc')->sum('wc');
+//            $sphone_wc = Sphone::whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('wc')->sum('wc');
         }
 
         $snet_as = null;
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
-            $snet_as = Snet::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('active_subscriber')->sum('active_subscriber');
+            $max_date = Carbon::create(Snet::max('date'));
+            $snet_max_date = Snet::max('date');
+//            $snet_as = Snet::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('active_subscriber')->sum('active_subscriber');
+            $snet_as = Snet::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get('active_subscriber')->sum('active_subscriber');
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
-            $snet_as = Snet::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('active_subscriber')->sum('active_subscriber');
+            $max_date = Carbon::create(Snet::max('date'));
+            $snet_max_date = Snet::max('date');
+//            $snet_as = Snet::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('active_subscriber')->sum('active_subscriber');
+            $snet_as = Snet::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get('active_subscriber')->sum('active_subscriber');
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
-            $snet_as = Snet::whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('active_subscriber')->sum('active_subscriber');
+            $max_date = Carbon::create(Snet::max('date'));
+            $snet_max_date = Snet::max('date');
+//            $snet_as = Snet::whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get('active_subscriber')->sum('active_subscriber');
+            $snet_as = Snet::whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get('active_subscriber')->sum('active_subscriber');
         }
 
         $sphone = null;
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
-            $sphone = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $max_date = Carbon::create(Sphone::max('date'));
+            $sphone_max_date = Sphone::max('date');
+            $sphone = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get();
+//            $sphone = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
-            $sphone = Sphone::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $max_date = Carbon::create(Sphone::max('date'));
+            $sphone_max_date = Sphone::max('date');
+            $sphone = Sphone::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get();
+//            $sphone = Sphone::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
-            $sphone = Sphone::whereMonth('date', '=', Carbon::parse(Carbon::now()->subMonth()->endOfMonth())->format('m'))->whereYear('date', '=', Carbon::parse(Carbon::now())->format('Y'))->get();
+            $max_date = Carbon::create(Sphone::max('date'));
+            $sphone_max_date = Sphone::max('date');
+//            DB::enableQueryLog();
+            $sphone = Sphone::whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get();
+
+//            dd(DB::getQueryLog());
         }
 
 
@@ -97,12 +138,10 @@ class DashboardController extends Controller
         $free_slot = ($sphone->sum('capacity') - $sphone->sum('wc'));
 
 
-
         $slots = [
             'wroking_slot' => $working_slot,
             'free_slot' => $free_slot
         ];
-
 
 
         $customer_trend = null;
@@ -166,7 +205,7 @@ class DashboardController extends Controller
 
 //        dd($month);
 
-        return view('layouts.master', compact('month', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
+        return view('layouts.master', compact('month', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
     /**
