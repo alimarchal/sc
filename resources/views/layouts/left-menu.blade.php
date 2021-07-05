@@ -480,7 +480,7 @@
                                 <p>Show All</p>
                             </a>
                         @else
-                            <a href="{{route('monthlySaleProgress.index')}}" class="nav-link">
+                            <a href="{{route('monthlyStockSummery.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All</p>
                             </a>
