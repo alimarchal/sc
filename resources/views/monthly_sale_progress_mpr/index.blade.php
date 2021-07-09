@@ -10,15 +10,15 @@
                 <div class="row">
 
                     @if(auth()->user()->role == "admin")
-                    <div class="col-md-3">
-                        <label>{{strtoupper(str_replace('_',' ', 'Battalion Name'))}}</label>
-                        <select class="form-control" name="filter[btn]">
-                            <option value="">None</option>
-                            @foreach(\App\Models\User::btn_name() as $btn_name)
-                                <option value="{{$btn_name}}">{{$btn_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                        <div class="col-md-3">
+                            <label>{{strtoupper(str_replace('_',' ', 'Battalion Name'))}}</label>
+                            <select class="form-control" name="filter[btn]">
+                                <option value="">None</option>
+                                @foreach(\App\Models\User::btn_name() as $btn_name)
+                                    <option value="{{$btn_name}}">{{$btn_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     @endif
 
 
@@ -27,6 +27,16 @@
                         <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
                     </div>
 
+
+                    <div class="col-md-3">
+                        <label>Services</label>
+                        <select class="form-control" name="filter[services]">
+                            <option value="">None</option>
+                            @foreach(\App\Models\User::cards_denom() as $denom)
+                                <option value="{{$denom}}">{{$denom}}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                 </div>
 
@@ -58,7 +68,7 @@
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet/_franchisee_total_cards'))}}</th>
                         <th rowspan="2">{{strtoupper(str_replace('_',' ', 'own_outlet/_franchisee_total_revenue'))}}</th>
                         @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')
-                            @else
+                        @else
                             <th rowspan="2" class=" d-print-none" colspan="3">Action</th>
                         @endif
                     </tr>

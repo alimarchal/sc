@@ -200,7 +200,7 @@ class User extends Authenticatable
         return $connectionType = [
             'PSTN EXCH SITES',
             'GSM BTS SITES',
-            'WILL BTS SITES',
+            'WLL BTS SITES',
         ];
     }
 
@@ -218,39 +218,80 @@ class User extends Authenticatable
 
     public static function line_of_csc(): array
     {
-        return [
-            'Muzaffarabad' => [
-                'Dirkoot',
-                'Fwd Kahuta',
-                'Rawalakot',
-                'Paniola',
-                'Plandri',
-                'Hajira',
-                'Bandi Abbas Pur',
-                'MZD Old',
-                'MZD New',
-                'Hattian',
-                'Kel',
-                'Athmuqam',
-                'Bagh',
-            ],
 
-            'Mirpur' => [
-                'Chaksawari',
-                'Dudyal',
-                'Islamgarh',
-                'Jatlan',
-                'Mirpur',
-                'Barnala',
-                'Bhimber',
-                'Samahni',
-                'Khuiratta',
-                'Kotli',
-                'Nakial',
-                'Nar',
-                'Sehnsa',
-            ]
-        ];
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            return [
+                'Muzaffarabad' => [
+                    'Dirkoot',
+                    'Fwd Kahuta',
+                    'Rawalakot',
+                    'Paniola',
+                    'Plandri',
+                    'Hajira',
+                    'Bandi Abbas Pur',
+                    'MZD Old',
+                    'MZD New',
+                    'Hattian',
+                    'Kel',
+                    'Athmuqam',
+                    'Bagh',
+                ],
+            ];
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            return [
+                'Mirpur' => [
+                    'Chaksawari',
+                    'Dudyal',
+                    'Islamgarh',
+                    'Jatlan',
+                    'Mirpur',
+                    'Barnala',
+                    'Bhimber',
+                    'Samahni',
+                    'Khuiratta',
+                    'Kotli',
+                    'Nakial',
+                    'Nar',
+                    'Sehnsa',
+                ]
+            ];
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            return [
+                'Muzaffarabad' => [
+                    'Dirkoot',
+                    'Fwd Kahuta',
+                    'Rawalakot',
+                    'Paniola',
+                    'Plandri',
+                    'Hajira',
+                    'Bandi Abbas Pur',
+                    'MZD Old',
+                    'MZD New',
+                    'Hattian',
+                    'Kel',
+                    'Athmuqam',
+                    'Bagh',
+                ],
+
+                'Mirpur' => [
+                    'Chaksawari',
+                    'Dudyal',
+                    'Islamgarh',
+                    'Jatlan',
+                    'Mirpur',
+                    'Barnala',
+                    'Bhimber',
+                    'Samahni',
+                    'Khuiratta',
+                    'Kotli',
+                    'Nakial',
+                    'Nar',
+                    'Sehnsa',
+                ]
+            ];
+        }
+
+
     }
 
 

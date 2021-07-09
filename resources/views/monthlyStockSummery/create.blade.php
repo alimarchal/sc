@@ -227,7 +227,7 @@
 
 
 
-                        <div class="col-12">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label >{{strtoupper(str_replace('_',' ', 'total'))}}</label>
                                 <input type="number" name="total" class="form-control" >

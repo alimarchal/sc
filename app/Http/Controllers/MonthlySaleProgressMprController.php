@@ -22,20 +22,20 @@ class MonthlySaleProgressMprController extends Controller
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
 
             $collection = QueryBuilder::for(MonthlySaleProgressMpr::class)
-                ->allowedFilters(['btn', 'btn_name', AllowedFilter::scope('month')])
+                ->allowedFilters(['btn', 'btn_name',  'services',  AllowedFilter::scope('month')])
                 ->where('btn', '61 CSB MZD')
                 ->get();
 
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
 
             $collection = QueryBuilder::for(MonthlySaleProgressMpr::class)
-                ->allowedFilters(['btn', 'btn_name', AllowedFilter::scope('month')])
+                ->allowedFilters(['btn', 'btn_name',  'services',  AllowedFilter::scope('month')])
                 ->where('btn', '64 CSB MPR')
                 ->get();
 
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             $collection = QueryBuilder::for(MonthlySaleProgressMpr::class)
-                ->allowedFilters(['btn', 'btn_name', AllowedFilter::scope('month')])
+                ->allowedFilters(['btn', 'btn_name',  'services',  AllowedFilter::scope('month')])
                 ->get();
         }
 

@@ -106,6 +106,8 @@ class MonthlyNetworkStatusController extends Controller
      */
     public function destroy(MonthlyNetworkStatus $monthlyNetworkStatus)
     {
-        //
+        $monthlyNetworkStatus->delete();
+        session()->flash('message', 'Record successfully deleted.');
+        return redirect()->route('monthly-network-status.index');
     }
 }
