@@ -59,6 +59,7 @@ class ConsumerComplaintsController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         ConsumerComplaints::create($request->all());
         return redirect()->route('consumerComplaints.index');
     }

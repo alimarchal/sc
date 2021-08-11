@@ -36,14 +36,10 @@
         google.charts.setOnLoadCallback(drawChart3);
 
 
-
-
-
         google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(drawChart223);
         function drawChart223() {
             var data = google.visualization.arrayToDataTable([
-
                 @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
                     ['Month', 'AOR MZD'],
                 @foreach ($month as $key => $value)
@@ -72,8 +68,6 @@
                     ],
                     @endforeach
                 @endif
-
-
                 // ['2014', 1000, 700, 300],
                 // ['2015', 1170, 460, 250],
                 // ['2016', 660, 1120, -300],
@@ -86,7 +80,242 @@
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
 
+
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart224);
+        function drawChart224() {
+            var data = google.visualization.arrayToDataTable([
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
+                ['Month', 'Muzaffarabad'],
+                    @foreach ($month2 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'Mirpur'],
+                    @foreach ($month2 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                ['Month', 'Mirpur', 'Muzaffarabad'],
+                    @foreach ($month2 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
+                @endif
+                // ['2014', 1000, 700, 300],
+                // ['2015', 1170, 460, 250],
+                // ['2016', 660, 1120, -300],
+                // ['2017', 1030, 540, 350]
+            ]);
+            var options = {
+                chart: {
+                    title: 'SPhone Active Subs',
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material_2'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart225);
+        function drawChart225() {
+            var data = google.visualization.arrayToDataTable([
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
+                ['Month', 'Muzaffarabad'],
+                    @foreach ($month3 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'Mirpur'],
+                    @foreach ($month3 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                ['Month', 'Mirpur', 'Muzaffarabad'],
+                    @foreach ($month3 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
+                @endif
+                // ['2014', 1000, 700, 300],
+                // ['2015', 1170, 460, 250],
+                // ['2016', 660, 1120, -300],
+                // ['2017', 1030, 540, 350]
+            ]);
+            var options = {
+                chart: {
+                    title: 'DSL Connections',
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material_3'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart226);
+        function drawChart226() {
+            var data = google.visualization.arrayToDataTable([
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
+                ['Month', 'Muzaffarabad'],
+                    @foreach ($month4 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'Mirpur'],
+                    @foreach ($month4 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                ['Month', 'Mirpur', 'Muzaffarabad'],
+                    @foreach ($month4 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
+                @endif
+                // ['2014', 1000, 700, 300],
+                // ['2015', 1170, 460, 250],
+                // ['2016', 660, 1120, -300],
+                // ['2017', 1030, 540, 350]
+            ]);
+            var options = {
+                chart: {
+                    title: 'Monthly NW Status Report (GSM)',
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material_4'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart227);
+        function drawChart227() {
+            var data = google.visualization.arrayToDataTable([
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
+                ['Month', 'Muzaffarabad'],
+                    @foreach ($month5 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'Mirpur'],
+                    @foreach ($month5 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                ['Month', 'Mirpur', 'Muzaffarabad'],
+                    @foreach ($month5 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
+                @endif
+                // ['2014', 1000, 700, 300],
+                // ['2015', 1170, 460, 250],
+                // ['2016', 660, 1120, -300],
+                // ['2017', 1030, 540, 350]
+            ]);
+            var options = {
+                chart: {
+                    title: 'SALE OF SIMS',
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material_5'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart228);
+        function drawChart228() {
+            var data = google.visualization.arrayToDataTable([
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
+                ['Month', 'Muzaffarabad'],
+                    @foreach ($month6 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'Mirpur'],
+                    @foreach ($month6 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                ['Month', 'Muzaffarabad', 'Mirpur'],
+                    @foreach ($month6 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
+                @endif
+                // ['2014', 1000, 700, 300],
+                // ['2015', 1170, 460, 250],
+                // ['2016', 660, 1120, -300],
+                // ['2017', 1030, 540, 350]
+            ]);
+            var options = {
+                chart: {
+                    title: 'GSM Revenue',
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material_6'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
@@ -645,11 +874,40 @@
 {{--                        <div id="bar-chart"></div>--}}
                         <div id="columnchart_material"></div>
                     </section>
-
-
-
                     <!-- right col -->
                 </div>
+                <div class="row">
+{{--                    <div class="col-md-12 text-center">--}}
+{{--                        <h3>Customer Profile</h3>--}}
+{{--                    </div>--}}
+
+                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                        <div id="columnchart_material_2"></div>
+                    </section>
+
+
+                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                        <div id="columnchart_material_3"></div>
+                    </section>
+
+
+
+                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                        <div id="columnchart_material_4"></div>
+                    </section>
+
+
+                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                        <div id="columnchart_material_5"></div>
+                    </section>
+
+                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                        <div id="columnchart_material_6"></div>
+                    </section>
+
+                </div>
+
+
                 <!-- /.row -->
             </div>
 
