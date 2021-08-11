@@ -217,7 +217,7 @@
             ]);
             var options = {
                 chart: {
-                    title: 'Monthly NW Status Report (GSM)',
+                    title: 'SCOM Total Subs',
                 }
             };
 
@@ -264,7 +264,7 @@
             ]);
             var options = {
                 chart: {
-                    title: 'SALE OF SIMS',
+                    title: 'Sale of SIMs',
                 }
             };
 
@@ -518,10 +518,19 @@
 
         function drawChart1() {
             var data = google.visualization.arrayToDataTable([
-                ['Month', 'New Users', 'Outgoing Users'],
-                @foreach($customer_trend as $ct)
-                ['{{$ct->month}}', {{$ct->ntc}}, {{$ct->pmc}}],
+                ['Month', 'Outgoing Users','New Users'],
+{{--                @foreach($customer_trend as $ct)--}}
+{{--                ['{{$ct->month}}', {{$ct->ntc}}, {{$ct->pmc}}],--}}
+{{--                @endforeach--}}
+
+                @foreach ($customer_trnd as $key => $value)
+                    ['{{$key}}',
+                        @foreach ($value as $k => $v)
+                            {{$v}},
+                        @endforeach
+                    ],
                 @endforeach
+
                 // ['Jan', 90, 40],
                 // ['Feb', 100, 50],
                 // ['Mar', 120, 80],

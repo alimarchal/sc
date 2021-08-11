@@ -170,6 +170,25 @@ class DashboardController extends Controller
         }
 
 
+
+        $customer_trnd = null;
+        foreach ($customer_trend as $ct) {
+            $customer_trnd[$ct->month]['pmc'] = 0;
+            $customer_trnd[$ct->month]['ntc'] = 0;
+        }
+
+        foreach ($customer_trend as $ct) {
+            $customer_trnd[$ct->month]['ntc'] = $ct->ntc;
+        }
+        foreach ($customer_trend as $ct) {
+            $customer_trnd[$ct->month]['pmc'] = $ct->pmc;
+        }
+//        dd($customer_trnd);
+
+
+
+
+
         $customer_trend_revenue = null;
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
@@ -198,12 +217,23 @@ class DashboardController extends Controller
         }
 
 
+//        $month = [];
+//        foreach ($customer_trend_revenue as $ct) {
+//            $month[$ct->month][$ct->unit] = $ct->total;
+//        }
+
         $month = [];
+        foreach ($customer_trend_revenue as $ct) {
+            $month[$ct->month]['AOTR MZD'] = 0;
+            $month[$ct->month]['AOTR MPR'] = 0;
+        }
+
         foreach ($customer_trend_revenue as $ct) {
             $month[$ct->month][$ct->unit] = $ct->total;
         }
 
-//        dd($month);
+
+
 
 
         //sphone avtive subscriber
@@ -236,8 +266,13 @@ class DashboardController extends Controller
 
         $month2 = [];
         foreach ($sphone_active_subscriber as $ct) {
+            $month2[$ct->month]['64 CSB MPR'] = 0;
+            $month2[$ct->month]['61 CSB MZD'] = 0;
+        }
+        foreach ($sphone_active_subscriber as $ct) {
             $month2[$ct->month][$ct->unit] = $ct->total;
         }
+
 
         $dsl_connections = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
@@ -268,8 +303,13 @@ class DashboardController extends Controller
 
         $month3 = [];
         foreach ($dsl_connections as $ct) {
+            $month3[$ct->month]['64 CSB MPR'] = 0;
+            $month3[$ct->month]['61 CSB MZD'] = 0;
+        }
+        foreach ($dsl_connections as $ct) {
             $month3[$ct->month][$ct->unit] = $ct->total;
         }
+
 
         $monthly_network_status_gsm = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
@@ -300,8 +340,14 @@ class DashboardController extends Controller
 
         $month4 = [];
         foreach ($monthly_network_status_gsm as $ct) {
+            $month4[$ct->month]['64 CSB MPR'] = 0;
+            $month4[$ct->month]['61 CSB MZD'] = 0;
+        }
+        foreach ($monthly_network_status_gsm as $ct) {
             $month4[$ct->month][$ct->unit] = $ct->total;
         }
+
+
 
 
         $gsm_sim_sold_during_month = null;
@@ -333,8 +379,14 @@ class DashboardController extends Controller
 
         $month5 = [];
         foreach ($gsm_sim_sold_during_month as $ct) {
+            $month5[$ct->month]['64 CSB MPR'] = 0;
+            $month5[$ct->month]['61 CSB MZD'] = 0;
+        }
+        foreach ($gsm_sim_sold_during_month as $ct) {
             $month5[$ct->month][$ct->unit] = $ct->total;
         }
+
+
 
         $sco_achinve = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
@@ -365,11 +417,15 @@ class DashboardController extends Controller
 
         $month6 = [];
         foreach ($sco_achinve as $ct) {
+            $month6[$ct->month]['AOTR MZD'] = 0;
+            $month6[$ct->month]['AOTR MPR'] = 0;
+        }
+        foreach ($sco_achinve as $ct) {
             $month6[$ct->month][$ct->unit] = $ct->total;
         }
 
-
-        return view('layouts.master', compact('month', 'month2', 'month3','month4', 'month5' , 'month6', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
+//        dd($month6);
+        return view('layouts.master', compact('customer_trnd','month', 'month2', 'month3','month4', 'month5' , 'month6', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
     /**
