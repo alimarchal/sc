@@ -36,37 +36,43 @@
         google.charts.setOnLoadCallback(drawChart3);
 
 
-        google.charts.load('current', {'packages':['bar']});
+        google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart223);
+
         function drawChart223() {
             var data = google.visualization.arrayToDataTable([
-                @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
-                    ['Month', 'AOR MZD'],
-                @foreach ($month as $key => $value)
-                    ['{{$key}}',
-                        @foreach ($value as $k => $v)
-                            {{$v}},
-                        @endforeach
-                    ],
-                @endforeach
-                @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
-                        ['Month', 'AOR MPR'],
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
+                ['Month', 'AOR MZD'],
                     @foreach ($month as $key => $value)
-                                ['{{$key}}',
-                            @foreach ($value as $k => $v)
-                                {{$v}},
-                            @endforeach
-                        ],
+
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        @if($k == 'AOTR MZD')
+                        {{$v}},
+                    @endif
                     @endforeach
-                @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
-                    ['Month', 'AOR MZD', 'AOR MPR'],
-                        @foreach ($month as $key => $value)
-                    ['{{$key}}',
-                        @foreach ($value as $k => $v)
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
+                ['Month', 'AOR MPR'],
+                    @foreach ($month as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                         @if($k == 'AOTR MPR')
                             {{$v}},
-                        @endforeach
-                    ],
+                        @endif
                     @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                ['Month', 'AOR MZD', 'AOR MPR'],
+                    @foreach ($month as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
                 @endif
                 // ['2014', 1000, 700, 300],
                 // ['2015', 1170, 460, 250],
@@ -76,7 +82,10 @@
             var options = {
                 chart: {
                     title: '6 Month Revenue Trend',
-                }
+                },
+                colors: ['red','green'],
+                is3D:true,
+
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
@@ -84,8 +93,9 @@
         }
 
 
-        google.charts.load('current', {'packages':['bar']});
+        google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart224);
+
         function drawChart224() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -93,7 +103,9 @@
                     @foreach ($month2 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == '61 CSB MZD')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -102,7 +114,9 @@
                     @foreach ($month2 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == '64 CSB MPR')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -124,15 +138,18 @@
             var options = {
                 chart: {
                     title: 'SPhone Active Subs',
-                }
+                },
+                colors: ['skyblue','lightgreen'],
+                is3D:true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_2'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
-        google.charts.load('current', {'packages':['bar']});
+        google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart225);
+
         function drawChart225() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -140,7 +157,9 @@
                     @foreach ($month3 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == '61 CSB MZD')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -149,7 +168,9 @@
                     @foreach ($month3 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == '64 CSB MPR')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -178,8 +199,9 @@
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
-        google.charts.load('current', {'packages':['bar']});
+        google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart226);
+
         function drawChart226() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -187,7 +209,9 @@
                     @foreach ($month4 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == '61 CSB MZD')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -196,7 +220,9 @@
                     @foreach ($month4 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == '64 CSB MPR')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -218,15 +244,18 @@
             var options = {
                 chart: {
                     title: 'SCOM Total Subs',
-                }
+                },
+                colors: ['lightgreen','green'],
+                is3D:true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_4'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
-        google.charts.load('current', {'packages':['bar']});
+        google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart227);
+
         function drawChart227() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -234,7 +263,9 @@
                     @foreach ($month5 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == '61 CSB MZD')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -243,7 +274,9 @@
                     @foreach ($month5 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == '64 CSB MPR')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -265,15 +298,18 @@
             var options = {
                 chart: {
                     title: 'Sale of SIMs',
-                }
+                },
+                colors: ['orange','orangered'],
+                is3D:true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_5'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
-        google.charts.load('current', {'packages':['bar']});
+        google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart228);
+
         function drawChart228() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -281,7 +317,9 @@
                     @foreach ($month6 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == 'AOTR MZD')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -290,7 +328,9 @@
                     @foreach ($month6 as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                        {{$v}},
+                        @if($k == 'AOTR MPR')
+                            {{$v}},
+                        @endif
                     @endforeach
                 ],
                     @endforeach
@@ -312,7 +352,9 @@
             var options = {
                 chart: {
                     title: 'GSM Revenue',
-                }
+                },
+                colors: ['darkblue','lightblue'],
+                is3D:true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_6'));
@@ -320,9 +362,9 @@
         }
 
 
-
-        google.load("visualization", "1", {packages:["corechart"]});
+        google.load("visualization", "1", {packages: ["corechart"]});
         google.setOnLoadCallback(drawCharts22);
+
         function drawCharts22() {
 
             // BEGIN BAR CHART
@@ -342,12 +384,12 @@
             // actual bar chart data
             var barData = google.visualization.arrayToDataTable([
                 ['Month', 'AOR MZD', 'AOR MPR'],
-                @foreach ($month as $key => $value)
-                    ['{{$key}}',
+                    @foreach ($month as $key => $value)
+                ['{{$key}}',
                     @foreach ($value as $k => $v)
                         {{$v}},
                     @endforeach
-                    ],
+                ],
                 @endforeach
 
                 // ['Sun',  1050,      600],
@@ -413,20 +455,22 @@
             // BEGIN LINE GRAPH
 
             function randomNumber(base, step) {
-                return Math.floor((Math.random()*step)+base);
+                return Math.floor((Math.random() * step) + base);
             }
+
             function createData(year, start1, start2, step, offset) {
                 var ar = [];
                 for (var i = 0; i < 12; i++) {
-                    ar.push([new Date(year, i), randomNumber(start1, step)+offset, randomNumber(start2, step)+offset]);
+                    ar.push([new Date(year, i), randomNumber(start1, step) + offset, randomNumber(start2, step) + offset]);
                 }
                 return ar;
             }
+
             var randomLineData = [
                 ['Year', 'Page Views', 'Unique Views']
             ];
             for (var x = 0; x < 7; x++) {
-                var newYear = createData(2007+x, 10000, 5000, 4000, 800*Math.pow(x,2));
+                var newYear = createData(2007 + x, 10000, 5000, 4000, 800 * Math.pow(x, 2));
                 for (var n = 0; n < 12; n++) {
                     randomLineData.push(newYear.shift());
                 }
@@ -518,17 +562,17 @@
 
         function drawChart1() {
             var data = google.visualization.arrayToDataTable([
-                ['Month', 'Outgoing Users','New Users'],
-{{--                @foreach($customer_trend as $ct)--}}
-{{--                ['{{$ct->month}}', {{$ct->ntc}}, {{$ct->pmc}}],--}}
-{{--                @endforeach--}}
+                ['Month', 'Outgoing Users', 'New Users'],
+                    {{--                @foreach($customer_trend as $ct)--}}
+                    {{--                ['{{$ct->month}}', {{$ct->ntc}}, {{$ct->pmc}}],--}}
+                    {{--                @endforeach--}}
 
                 @foreach ($customer_trnd as $key => $value)
-                    ['{{$key}}',
-                        @foreach ($value as $k => $v)
-                            {{$v}},
-                        @endforeach
-                    ],
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
                 @endforeach
 
                 // ['Jan', 90, 40],
@@ -541,7 +585,9 @@
             var options = {
                 title: 'Customer Profile Trend',
                 curveType: 'function',
-                legend: {position: 'bottom'}
+                legend: {position: 'bottom'},
+                colors: ['red','green'],
+                is3D:true,
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -551,19 +597,12 @@
 
         function drawChart3() {
             var data = google.visualization.arrayToDataTable([
-                ["Month", "AOR MZD", "AOR MPR", {role: "style"}],
-                @foreach ($month as $key => $value)
-                ["{{$key}}",
-                    @foreach ($value as $k => $v)
-                        {{$v}},
-                    @endforeach
-                        "#b87333"],
-                @endforeach
-                // ["Jan", 5000, "#b87333"],
-                // ["Feb", 8000, "silver"],
-                // ["March", 19000, "gold"],
-                // ["April", 7000, "color: #e5e4e2"],
-                // ["May", 9000,"color: #e5e4e2"]
+                ["Month", "AOR MZD", {role: "style"}],
+                ["Jan", 5000, "#b87333"],
+                ["Feb", 8000, "silver"],
+                ["March", 19000, "gold"],
+                ["April", 7000, "color: #e5e4e2"],
+                ["May", 9000,"color: #e5e4e2"]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -586,7 +625,6 @@
             var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values_mzd"));
             chart.draw(view, options);
         }
-
 
 
     </script>
@@ -707,16 +745,16 @@
 
 
                     <div class="dropdown-divider"></div>
-                                        <a href="{{url('user/profile')}}" class="dropdown-item">
-                                            <i class="fas fa-key mr-2"></i> Change Password
-                                        </a>
-{{--                                        <div class="dropdown-divider"></div>--}}
-{{--                                        <a href="#" class="dropdown-item">--}}
-{{--                                            <i class="fas fa-file mr-2"></i> 3 new reports--}}
-{{--                                            <span class="float-right text-muted text-sm">2 days</span>--}}
-{{--                                        </a>--}}
-{{--                                        <div class="dropdown-divider"></div>--}}
-{{--                                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
+                    <a href="{{url('user/profile')}}" class="dropdown-item">
+                        <i class="fas fa-key mr-2"></i> Change Password
+                    </a>
+                    {{--                                        <div class="dropdown-divider"></div>--}}
+                    {{--                                        <a href="#" class="dropdown-item">--}}
+                    {{--                                            <i class="fas fa-file mr-2"></i> 3 new reports--}}
+                    {{--                                            <span class="float-right text-muted text-sm">2 days</span>--}}
+                    {{--                                        </a>--}}
+                    {{--                                        <div class="dropdown-divider"></div>--}}
+                    {{--                                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
                 </div>
             </li>
             <li class="nav-item">
@@ -747,9 +785,9 @@
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
 
-{{--                    <div class="mt-2" x-show="! photoPreview">--}}
-{{--                        <img src="{{ auth()->user()->profile_photo_url }}" alt="{{ auth()->user()->name }}" class="rounded-full h-20 w-20 object-cover">--}}
-{{--                    </div>--}}
+                    {{--                    <div class="mt-2" x-show="! photoPreview">--}}
+                    {{--                        <img src="{{ auth()->user()->profile_photo_url }}" alt="{{ auth()->user()->name }}" class="rounded-full h-20 w-20 object-cover">--}}
+                    {{--                    </div>--}}
                     <img src="{{auth()->user()->profile_photo_url}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
@@ -799,135 +837,136 @@
         <!-- Main content -->
         <section class="content">
             @if(auth()->user()->designation != "Clerk")
-            <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>{{$bts_tower_count}}</h3>
+                <div class="container-fluid">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>{{$bts_tower_count}}</h3>
 
-                                <p>SCOM Towers</p>
+                                    <p>SCOM Towers</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="{{route('bts-tower.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-bag"></i>
-                            </div>
-                            <a href="{{route('bts-tower.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{$snet_as}}</h3>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>{{$snet_as}}</h3>
 
-                                <p>S-Net Connections</p>
+                                    <p>S-Net Connections</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="{{route('snet.index',['filter[month]=' . \Carbon\Carbon::parse($snet_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
-                            </div>
-                            <a href="{{route('snet.index',['filter[month]=' . \Carbon\Carbon::parse($snet_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>{{$sphone_wc}}</h3>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>{{$sphone_wc}}</h3>
 
-                                <p>S-Phone Connections</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
+                                    <p>S-Phone Connections</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
 
-                            <a href="{{route('sphone.index',['filter[month]=' . \Carbon\Carbon::parse($sphone_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="{{route('sphone.index',['filter[month]=' . \Carbon\Carbon::parse($sphone_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{number_format(($revenue_total/1000000),3)}} Million</h3>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>{{number_format(($revenue_total/1000000),3)}} Million</h3>
 
-                                <p>Total Revenue</p>
+                                    <p>Total Revenue</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="{{route('revenue-target.index',['filter[month]=' . \Carbon\Carbon::parse($rev_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
-                            </div>
-                            <a href="{{route('revenue-target.index',['filter[month]=' . \Carbon\Carbon::parse($rev_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
+                        <!-- ./col -->
                     </div>
-                    <!-- ./col -->
+
+
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-4 connectedSortable">
+                            <br>
+                            <div id="piechart_3d"></div>
+                        </section>
+                        <!-- /.Left col -->
+                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                        <section class="col-lg-4 connectedSortable">
+                            <br>
+                            <div id="curve_chart"></div>
+                        </section>
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            {{--                        <div id="bar-chart"></div>--}}
+                            <div id="columnchart_material"></div>
+                        </section>
+                        <!-- right col -->
+                    </div>
+                    <div class="row">
+                        {{--                    <div class="col-md-12 text-center">--}}
+                        {{--                        <h3>Customer Profile</h3>--}}
+                        {{--                    </div>--}}
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            <div id="columnchart_material_2"></div>
+                        </section>
+
+
+
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            <div id="columnchart_material_3"></div>
+                        </section>
+
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            <div id="columnchart_material_4"></div>
+                        </section>
+
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            <div id="columnchart_material_5"></div>
+                        </section>
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            <div id="columnchart_material_6"></div>
+                        </section>
+
+                    </div>
+
+
+                    <!-- /.row -->
                 </div>
 
-
-                <div class="row">
-                    <!-- Left col -->
-                    <section class="col-lg-4 connectedSortable">
-                        <br>
-                        <div id="piechart_3d" ></div>
-                    </section>
-                    <!-- /.Left col -->
-                    <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                    <section class="col-lg-4 connectedSortable">
-                        <br>
-                        <div id="curve_chart" ></div>
-                    </section>
-
-                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
-{{--                        <div id="bar-chart"></div>--}}
-                        <div id="columnchart_material"></div>
-                    </section>
-                    <!-- right col -->
-                </div>
-                <div class="row">
-{{--                    <div class="col-md-12 text-center">--}}
-{{--                        <h3>Customer Profile</h3>--}}
-{{--                    </div>--}}
-
-                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
-                        <div id="columnchart_material_2"></div>
-                    </section>
-
-
-                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
-                        <div id="columnchart_material_3"></div>
-                    </section>
-
-
-
-                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
-                        <div id="columnchart_material_4"></div>
-                    </section>
-
-
-                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
-                        <div id="columnchart_material_5"></div>
-                    </section>
-
-                    <section class="col-lg-4 mt-4 mb-4 connectedSortable">
-                        <div id="columnchart_material_6"></div>
-                    </section>
-
-                </div>
-
-
-                <!-- /.row -->
-            </div>
-
-        @else
+            @else
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
 
                         <div class="col-12">
                             <div style="margin: auto;">
-                                <img class="w-auto h-auto" src="{{url('SCO-Logo.png')}}" />
+                                <img class="w-auto h-auto" src="{{url('SCO-Logo.png')}}"/>
                             </div>
                         </div>
 
@@ -935,8 +974,8 @@
 
                     </div>
                 </div>
-            @endif
-            <!-- /.container-fluid -->
+        @endif
+        <!-- /.container-fluid -->
         </section>
 
         <br>

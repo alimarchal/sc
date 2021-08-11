@@ -115,6 +115,7 @@ class DashboardController extends Controller
         $sphone = null;
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+
             $max_date = Carbon::create(Sphone::max('date'));
             $sphone_max_date = Sphone::max('date');
             $sphone = Sphone::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->get();
@@ -215,12 +216,6 @@ class DashboardController extends Controller
                 ->orderBy('unit', 'desc')->orderBy('date', 'asc')
                 ->get();
         }
-
-
-//        $month = [];
-//        foreach ($customer_trend_revenue as $ct) {
-//            $month[$ct->month][$ct->unit] = $ct->total;
-//        }
 
         $month = [];
         foreach ($customer_trend_revenue as $ct) {
@@ -352,7 +347,7 @@ class DashboardController extends Controller
 
         $gsm_sim_sold_during_month = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
-            $sale_of_sim = DB::table('monthly_network_statuses')
+            $gsm_sim_sold_during_month = DB::table('monthly_network_statuses')
                 ->select(DB::raw('btn as unit, MONTHNAME(date) as month, sum(gsm_sim_sold_during_month) as total'))
                 ->where('btn', '61 CSB MZD')
                 ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(5))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
@@ -377,6 +372,7 @@ class DashboardController extends Controller
         }
 
 
+//        dd($gsm_sim_sold_during_month);
         $month5 = [];
         foreach ($gsm_sim_sold_during_month as $ct) {
             $month5[$ct->month]['64 CSB MPR'] = 0;
@@ -392,19 +388,21 @@ class DashboardController extends Controller
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             $sco_achinve = DB::table('revenue_targets')
                 ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_ach) as total'))
-                ->where('btn', '61 CSB MZD')
+                ->where('aor', 'AOTR MZD')
                 ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(5))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
-                ->groupBy(DB::raw('btn, YEAR(date), MONTH(date)'))
+                ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
                 ->orderBy('unit', 'desc')->orderBy('date', 'asc')
                 ->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
             $sco_achinve = DB::table('revenue_targets')
                 ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_ach) as total'))
-                ->where('btn', '64 CSB MPR')
+                ->where('aor', 'AOTR MPR')
                 ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(5))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
-                ->groupBy(DB::raw('btn, YEAR(date), MONTH(date)'))
+                ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
                 ->orderBy('unit', 'desc')->orderBy('date', 'asc')
                 ->get();
+
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             $sco_achinve = DB::table('revenue_targets')
                 ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_ach) as total'))
@@ -424,7 +422,7 @@ class DashboardController extends Controller
             $month6[$ct->month][$ct->unit] = $ct->total;
         }
 
-//        dd($month6);
+//        dd($slots);
         return view('layouts.master', compact('customer_trnd','month', 'month2', 'month3','month4', 'month5' , 'month6', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
