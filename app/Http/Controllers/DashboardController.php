@@ -9,7 +9,6 @@ use App\Models\Sphone;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Monolog\Handler\IFTTTHandler;
 
 class DashboardController extends Controller
 {
@@ -171,7 +170,6 @@ class DashboardController extends Controller
         }
 
 
-
         $customer_trnd = null;
         foreach ($customer_trend as $ct) {
             $customer_trnd[$ct->month]['pmc'] = 0;
@@ -185,9 +183,6 @@ class DashboardController extends Controller
             $customer_trnd[$ct->month]['pmc'] = $ct->pmc;
         }
 //        dd($customer_trnd);
-
-
-
 
 
         $customer_trend_revenue = null;
@@ -226,9 +221,6 @@ class DashboardController extends Controller
         foreach ($customer_trend_revenue as $ct) {
             $month[$ct->month][$ct->unit] = $ct->total;
         }
-
-
-
 
 
         //sphone avtive subscriber
@@ -343,8 +335,6 @@ class DashboardController extends Controller
         }
 
 
-
-
         $gsm_sim_sold_during_month = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             $gsm_sim_sold_during_month = DB::table('monthly_network_statuses')
@@ -381,7 +371,6 @@ class DashboardController extends Controller
         foreach ($gsm_sim_sold_during_month as $ct) {
             $month5[$ct->month][$ct->unit] = $ct->total;
         }
-
 
 
         $sco_achinve = null;
@@ -422,8 +411,151 @@ class DashboardController extends Controller
             $month6[$ct->month][$ct->unit] = $ct->total;
         }
 
-//        dd($slots);
-        return view('layouts.master', compact('customer_trnd','month', 'month2', 'month3','month4', 'month5' , 'month6', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
+
+        //
+        $consumer_ach_ach = null;
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $consumer_ach_ach = DB::table('revenue_targets')
+                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach '))
+                ->where('aor', 'AOTR MZD')
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            $consumer_ach_ach = DB::table('revenue_targets')
+                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach '))
+                ->where('aor', 'AOTR MPR')
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $consumer_ach_ach = DB::table('revenue_targets')
+                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach '))
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        }
+
+        $consumer_ach = [];
+        foreach ($consumer_ach_ach as $ct) {
+            $consumer_ach[$ct->month]['AOTR MZD']['gsm_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['gsm_ach'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['pstn_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['pstn_ach'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['dsl_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['dsl_ach'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['dxx_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['dxx_ach'] = 0;
+
+
+            $consumer_ach[$ct->month]['AOTR MPR']['gsm_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['gsm_ach'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['pstn_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['pstn_ach'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['dsl_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['dsl_ach'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['dxx_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['dxx_ach'] = 0;
+        }
+//
+        foreach ($consumer_ach_ach as $ct) {
+            $consumer_ach[$ct->month][$ct->unit]['gsm_asg'] = $ct->gsm_asg;
+            $consumer_ach[$ct->month][$ct->unit]['gsm_ach'] = $ct->gsm_ach;
+            $consumer_ach[$ct->month][$ct->unit]['pstn_asg'] = $ct->pstn_asg;
+            $consumer_ach[$ct->month][$ct->unit]['pstn_ach'] = $ct->pstn_ach;
+            $consumer_ach[$ct->month][$ct->unit]['dsl_asg'] = $ct->dsl_asg;
+            $consumer_ach[$ct->month][$ct->unit]['dsl_ach'] = $ct->dsl_ach;
+            $consumer_ach[$ct->month][$ct->unit]['dxx_asg'] = $ct->dxx_asg;
+            $consumer_ach[$ct->month][$ct->unit]['dxx_ach'] = $ct->dxx_ach;
+        }
+
+
+
+        $com_sphone = null;
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $com_sphone = DB::table('consumer_complaints')
+                ->select(DB::raw('type as sphone, btn_name as unit, MONTHNAME(date) as month, sum(total) as total'))
+                ->where('btn_name', '61 CSB MZD')
+                ->where('type', 'Basic Telephony')
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('btn_name, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            $com_sphone = DB::table('consumer_complaints')
+                ->select(DB::raw('type as sphone, btn_name as unit, MONTHNAME(date) as month, sum(total) as total'))
+                ->where('btn_name', '64 CSB MPR')
+                ->where('type', 'Basic Telephony')
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('btn_name, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $com_sphone = DB::table('consumer_complaints')
+                ->select(DB::raw('type as sphone, btn_name as unit, MONTHNAME(date) as month, sum(total) as total'))
+                ->where('type', 'Basic Telephony')
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('btn_name, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        }
+
+        $month8 = [];
+        foreach ($com_sphone as $ct) {
+            $month8[$ct->month]['61 CSB MZD'] = 0;
+            $month8[$ct->month]['64 CSB MPR'] = 0;
+        }
+        foreach ($com_sphone as $ct) {
+            $month8[$ct->month][$ct->unit] = $ct->total;
+        }
+
+
+
+        $com_snet = null;
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $com_snet = DB::table('consumer_complaints')
+                ->select(DB::raw('type as sphone, btn_name as unit, MONTHNAME(date) as month, sum(total) as total'))
+                ->where('btn_name', '61 CSB MZD')
+                ->where('type', 'SNET')
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('btn_name, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            $com_snet = DB::table('consumer_complaints')
+                ->select(DB::raw('type as sphone, btn_name as unit, MONTHNAME(date) as month, sum(total) as total'))
+                ->where('btn_name', '64 CSB MPR')
+                ->where('type', 'SNET')
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('btn_name, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $com_snet = DB::table('consumer_complaints')
+                ->select(DB::raw('type, btn_name as unit, MONTHNAME(date) as month, sum(total) as total'))
+                ->where('type', 'SNET')
+                ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('btn_name, YEAR(date), MONTH(date)'))
+                ->orderBy('unit', 'desc')->orderBy('date', 'asc')
+                ->get();
+        }
+
+        $month9 = [];
+        foreach ($com_snet as $ct) {
+            $month9[$ct->month]['61 CSB MZD'] = 0;
+            $month9[$ct->month]['64 CSB MPR'] = 0;
+        }
+        foreach ($com_snet as $ct) {
+            $month9[$ct->month][$ct->unit] = $ct->total;
+        }
+
+
+//        dd($month8);
+        return view('layouts.master', compact('customer_trnd', 'consumer_ach', 'month', 'month2', 'month3', 'month4', 'month5', 'month6','month8', 'month9', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
     /**

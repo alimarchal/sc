@@ -309,7 +309,6 @@
 
         google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart228);
-
         function drawChart228() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -360,6 +359,172 @@
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_6'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
+
+
+        google.charts.load('current', {'packages': ['bar']});
+        google.charts.setOnLoadCallback(drawChart230);
+        function drawChart230() {
+            var data = google.visualization.arrayToDataTable([
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
+                ['Month', 'GSM Asg','GSM Ach','PSTN Asg','PSTN Ach','DSL Asg','DSL Ach','DSS Asg','DSS Ach'],
+                    @foreach ($consumer_ach as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                    @if($k == "AOTR MZD")
+                        @foreach ($v as $ky => $vy)
+                            {{$vy}},
+                        @endforeach
+                     @endif
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'GSM Asg','GSM Ach','PSTN Asg','PSTN Ach','DSL Asg','DSL Ach','DSS Asg','DSS Ach'],
+                    @foreach ($consumer_ach as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                    @if($k == "AOTR MPR")
+                        @foreach ($v as $ky => $vy)
+                        {{$vy}},
+                        @endforeach
+                    @endif
+                    @endforeach
+                ],
+                    @endforeach
+                @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+
+                    ['Month', 'MZD GSM Asg','MZD GSM Ach','MZD PSTN Asg','MZD PSTN Ach','MZD DSL Asg','MZD DSL Ach','MZD DSS Asg','MZD DSS Ach','MPR GSM Asg','MPR GSM Ach','MPR PSTN Asg','MPR PSTN Ach','MPR DSL Asg','MPR DSL Ach','MPR DSS Asg','MPR DSS Ach'],
+                @foreach ($consumer_ach as $key => $value)
+                    ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                                @foreach ($v as $ky => $vy)
+                                    {{$vy}},
+                                @endforeach
+                    @endforeach
+                    ],
+                @endforeach
+
+                @endif
+            ]);
+            var options = {
+                chart: {
+                    title: 'Target Asg & Achive',
+                },
+                is3D:true,
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material_7'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+
+        google.charts.load('current', {'packages': ['bar']});
+        google.charts.setOnLoadCallback(drawChart231);
+        function drawChart231() {
+            var data = google.visualization.arrayToDataTable([
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
+                ['Month', 'Muzaffarabad'],
+                    @foreach ($month8 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        @if($k == '61 CSB MZD')
+                        {{$v}},
+                    @endif
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'Mirpur'],
+                    @foreach ($month8 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        @if($k == '64 CSB MPR')
+                        {{$v}},
+                    @endif
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                ['Month', 'Muzaffarabad', 'Mirpur'],
+                    @foreach ($month8 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
+                @endif
+                // ['2014', 1000, 700, 300],
+                // ['2015', 1170, 460, 250],
+                // ['2016', 660, 1120, -300],
+                // ['2017', 1030, 540, 350]
+            ]);
+            var options = {
+                chart: {
+                    title: 'SPhone Consumer Complaints',
+                },
+                colors: ['darkblue','lightblue'],
+                is3D:true,
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material_8'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+
+        google.charts.load('current', {'packages': ['bar']});
+        google.charts.setOnLoadCallback(drawChart232);
+        function drawChart232() {
+            var data = google.visualization.arrayToDataTable([
+                    @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
+                ['Month', 'Muzaffarabad'],
+                    @foreach ($month9 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        @if($k == '61 CSB MZD')
+                        {{$v}},
+                    @endif
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'Mirpur'],
+                    @foreach ($month9 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        @if($k == '64 CSB MPR')
+                        {{$v}},
+                    @endif
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                ['Month', 'Muzaffarabad', 'Mirpur'],
+                    @foreach ($month9 as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
+                @endif
+                // ['2014', 1000, 700, 300],
+                // ['2015', 1170, 460, 250],
+                // ['2016', 660, 1120, -300],
+                // ['2017', 1030, 540, 350]
+            ]);
+            var options = {
+                chart: {
+                    title: 'SNet Consumer Complaints',
+                },
+                colors: ['darkblue','lightblue'],
+                is3D:true,
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material_9'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
 
 
         google.load("visualization", "1", {packages: ["corechart"]});
@@ -951,6 +1116,20 @@
 
                         <section class="col-lg-4 mt-4 mb-4 connectedSortable">
                             <div id="columnchart_material_6"></div>
+                        </section>
+
+                        <section class="col-lg-12 mt-8 mb-8 connectedSortable" >
+                            <div id="columnchart_material_7" style="height: 650px;"></div>
+                        </section>
+
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            <div id="columnchart_material_8"></div>
+                        </section>
+
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            <div id="columnchart_material_9"></div>
                         </section>
 
                     </div>
