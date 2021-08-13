@@ -366,7 +366,7 @@
         function drawChart230() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
-                ['Month', 'GSM Asg','GSM Ach','PSTN Asg','PSTN Ach','DSL Asg','DSL Ach','DSS Asg','DSS Ach'],
+                ['Month', 'GSM Asg','GSM Ach','PSTN Asg','PSTN Ach','DSL Asg','DSL Ach','DXX Asg','DXX Ach'],
                     @foreach ($consumer_ach as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
@@ -379,7 +379,7 @@
                 ],
                     @endforeach
                     @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
-                ['Month', 'GSM Asg','GSM Ach','PSTN Asg','PSTN Ach','DSL Asg','DSL Ach','DSS Asg','DSS Ach'],
+                ['Month', 'GSM Asg','GSM Ach','PSTN Asg','PSTN Ach','DSL Asg','DSL Ach','DXX Asg','DXX Ach'],
                     @foreach ($consumer_ach as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
@@ -393,7 +393,7 @@
                     @endforeach
                 @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
 
-                    ['Month', 'MZD GSM Asg','MZD GSM Ach','MZD PSTN Asg','MZD PSTN Ach','MZD DSL Asg','MZD DSL Ach','MZD DSS Asg','MZD DSS Ach','MPR GSM Asg','MPR GSM Ach','MPR PSTN Asg','MPR PSTN Ach','MPR DSL Asg','MPR DSL Ach','MPR DSS Asg','MPR DSS Ach'],
+                    ['Month', 'MZD GSM Asg','MZD GSM Ach','MZD PSTN Asg','MZD PSTN Ach','MZD DSL Asg','MZD DSL Ach','MZD DXX Asg','MZD DXX Ach','MPR GSM Asg','MPR GSM Ach','MPR PSTN Asg','MPR PSTN Ach','MPR DSL Asg','MPR DSL Ach','MPR DXX Asg','MPR DXX Ach'],
                 @foreach ($consumer_ach as $key => $value)
                     ['{{$key}}',
                     @foreach ($value as $k => $v)
