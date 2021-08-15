@@ -554,7 +554,7 @@ class DashboardController extends Controller
         }
 
 
-//        dd($month8);
+//        dd($consumer_ach);
         return view('layouts.master', compact('customer_trnd', 'consumer_ach', 'month', 'month2', 'month3', 'month4', 'month5', 'month6','month8', 'month9', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
