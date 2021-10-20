@@ -61,7 +61,7 @@
             <div class="invoice p-3 mb-3 rounded">
                 <h2 class="text-center">SPhone</h2>
                 <br>
-                <table id="example" class="display nowrap table-striped table-bordered">
+                <table id="example1" class="display nowrap table-striped table table-bordered">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -123,7 +123,15 @@
                     <tfoot>
                     @if($collection->isNotEmpty())
                         <tr>
-                            <td colspan="5" class="text-right font-weight-bold">Total</td>
+                            @if(auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR")
+                                <td colspan="5" class="text-right font-weight-bold">Total</td>
+                            @elseif (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD")
+                                <td colspan="5" class="text-right font-weight-bold">Total</td>
+                            @elseif(auth()->user()->role == "Sector HQ")
+                                <td colspan="4" class="text-right font-weight-bold">Total</td>
+                            @else
+                                <td colspan="5" class="text-right font-weight-bold">Total</td>
+                            @endif
                             <td>{{$collection->sum('capacity')}}</td>
                             <td>{{$collection->sum('wc')}}</td>
                             <td>{{$collection->sum('vacant')}}</td>
@@ -136,6 +144,8 @@
                     @endif
                     </tfoot>
                 </table>
+
+                {{ $collection->links() }}
             </div>
         </div>
     </div>
