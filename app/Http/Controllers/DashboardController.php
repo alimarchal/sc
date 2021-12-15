@@ -19,7 +19,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
         $sphone_max_date = null;
         $snet_max_date = null;
         $rev_max_date = null;
@@ -221,6 +220,9 @@ class DashboardController extends Controller
         foreach ($customer_trend_revenue as $ct) {
             $month[$ct->month][$ct->unit] = $ct->total;
         }
+
+
+//        dd($month);
 
 
         //sphone avtive subscriber
@@ -433,7 +435,7 @@ class DashboardController extends Controller
                 ->get();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             $consumer_ach_ach = DB::table('revenue_targets')
-                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach '))
+                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach, sum(gpon_asg) as gpon_asg, sum(gpon_ach) as gpon_ach  '))
                 ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
                 ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
                 ->orderBy('unit', 'desc')->orderBy('date', 'asc')
@@ -450,6 +452,8 @@ class DashboardController extends Controller
             $consumer_ach[$ct->month]['AOTR MZD']['dsl_ach'] = 0;
             $consumer_ach[$ct->month]['AOTR MZD']['dxx_asg'] = 0;
             $consumer_ach[$ct->month]['AOTR MZD']['dxx_ach'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['gpon_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MZD']['gpon_ach'] = 0;
 
 
             $consumer_ach[$ct->month]['AOTR MPR']['gsm_asg'] = 0;
@@ -460,6 +464,8 @@ class DashboardController extends Controller
             $consumer_ach[$ct->month]['AOTR MPR']['dsl_ach'] = 0;
             $consumer_ach[$ct->month]['AOTR MPR']['dxx_asg'] = 0;
             $consumer_ach[$ct->month]['AOTR MPR']['dxx_ach'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['gpon_asg'] = 0;
+            $consumer_ach[$ct->month]['AOTR MPR']['gpon_ach'] = 0;
         }
 //
         foreach ($consumer_ach_ach as $ct) {
@@ -471,6 +477,8 @@ class DashboardController extends Controller
             $consumer_ach[$ct->month][$ct->unit]['dsl_ach'] = $ct->dsl_ach;
             $consumer_ach[$ct->month][$ct->unit]['dxx_asg'] = $ct->dxx_asg;
             $consumer_ach[$ct->month][$ct->unit]['dxx_ach'] = $ct->dxx_ach;
+            $consumer_ach[$ct->month][$ct->unit]['gpon_asg'] = $ct->gpon_asg;
+            $consumer_ach[$ct->month][$ct->unit]['gpon_ach'] = $ct->gpon_ach;
         }
 
 

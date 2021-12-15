@@ -11,7 +11,8 @@ class RevenueTarget extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date','aor','scom_asg','remarks','scom_ach','snet_asg','snet_ach','sphone_asg','sphone_ach','dxx_asg','dxx_ach','total_ach','total_asg'];
+    protected $fillable = ['date','aor','scom_asg','remarks','scom_ach','snet_asg','snet_ach','sphone_asg','sphone_ach','dxx_asg','dxx_ach','total_ach','total_asg','gpon_asg', 'gpon_ach'
+    ];
 
     public function scopeMonth(Builder $query, $date): Builder
     {
