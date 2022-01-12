@@ -97,6 +97,22 @@
 
                         <div class="col-2">
                             <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'gpon_asg'))}}</label>
+                                <input type="number" step="any" min="0" name="gpon_asg"  value="{{$revenueTarget->gpon_asg}}"  class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label>{{strtoupper(str_replace('_',' ', 'gpon_ach'))}}</label>
+                                <input type="number" step="any" min="0" name="gpon_ach"  value="{{$revenueTarget->gpon_ach}}"  class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="col-2">
+                            <div class="form-group">
                                 <label>{{strtoupper(str_replace('_',' ', 'total_asg'))}}</label>
                                 <input type="number" step="any" min="0" name="total_asg" value="{{$revenueTarget->total_asg}}" class="form-control">
                             </div>

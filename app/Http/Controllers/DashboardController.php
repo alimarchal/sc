@@ -419,7 +419,7 @@ class DashboardController extends Controller
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             $consumer_ach_ach = DB::table('revenue_targets')
-                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach '))
+                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach, sum(gpon_asg) as gpon_asg, sum(gpon_ach) as gpon_ach '))
                 ->where('aor', 'AOTR MZD')
                 ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
                 ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
@@ -427,7 +427,7 @@ class DashboardController extends Controller
                 ->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             $consumer_ach_ach = DB::table('revenue_targets')
-                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach '))
+                ->select(DB::raw('aor as unit, MONTHNAME(date) as month, sum(scom_asg) as gsm_asg, sum(scom_ach) as gsm_ach, sum(sphone_asg) as pstn_asg, sum(sphone_ach) as pstn_ach, sum(snet_asg) as dsl_asg, sum(snet_ach) as dsl_ach, sum(dxx_asg) as dxx_asg, sum(dxx_ach) as dxx_ach,  sum(gpon_asg) as gpon_asg, sum(gpon_ach) as gpon_ach '))
                 ->where('aor', 'AOTR MPR')
                 ->whereBetween('date', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
                 ->groupBy(DB::raw('aor, YEAR(date), MONTH(date)'))
@@ -468,6 +468,7 @@ class DashboardController extends Controller
             $consumer_ach[$ct->month]['AOTR MPR']['gpon_ach'] = 0;
         }
 //
+
         foreach ($consumer_ach_ach as $ct) {
             $consumer_ach[$ct->month][$ct->unit]['gsm_asg'] = $ct->gsm_asg;
             $consumer_ach[$ct->month][$ct->unit]['gsm_ach'] = $ct->gsm_ach;

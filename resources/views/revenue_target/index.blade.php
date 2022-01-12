@@ -54,6 +54,8 @@
                         <th>{{strtoupper(str_replace('_',' ', 'sphone_ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'dxx_asg'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'dxx_ach'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'GPON ASG'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'GPON ACH'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total_asg'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total_ach'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'remarks'))}}</th>
@@ -80,6 +82,8 @@
                             <td>{{number_format(($coll->sphone_ach/1000000),3)}} m</td>
                             <td>{{number_format(($coll->dxx_asg/1000000),3)}} m</td>
                             <td>{{number_format(($coll->dxx_ach/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->gpon_asg/1000000),3)}} m</td>
+                            <td>{{number_format(($coll->gpon_ach/1000000),3)}} m</td>
                             <td>{{number_format(($coll->total_asg/1000000),3)}} m</td>
                             <td>{{number_format(($coll->total_ach/1000000),3)}} m</td>
                             <td>{{ $coll->remarks }}</td>
