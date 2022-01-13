@@ -34,7 +34,7 @@ class CustomerServiceCenterController extends Controller
 
             $collection = QueryBuilder::for(CustomerServiceCenter::class)
                 ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
-                ->where('region', '64 CSB MZD')
+                ->where('region', '64 CSB MPR')
                 ->get();
 
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
@@ -42,6 +42,7 @@ class CustomerServiceCenterController extends Controller
                 ->allowedFilters(['loc_of_csc', 'svsc','date','region', AllowedFilter::scope('month')])
                 ->get();
         }
+
 
 
 
