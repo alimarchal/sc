@@ -67,6 +67,7 @@
                                         <option value="Rs 500" @if( $monthlyStockSummery->denom =='Rs 500') selected @endif>Rs 500</option>
                                         <option value="Rs 500 (Super Card)" @if( $monthlyStockSummery->denom =='Rs 500 (Super Card)') selected @endif>Rs 500 (Super Card)</option>
                                         <option value="Rs 549 (Super Card)" @if( $monthlyStockSummery->denom =='Rs 549 (Super Card)') selected @endif>Rs 549 (Super Card)</option>
+                                        <option value="Rs 550 (Super Card)" @if( $monthlyStockSummery->denom =='Rs 550 (Super Card)') selected @endif>Rs 550 (Super Card)</option>
                                         <option value="Rs 1000" @if( $monthlyStockSummery->denom =='Rs 1000') selected @endif>Rs 1000</option>
                                     </optgroup>
 

@@ -64,6 +64,7 @@
                                         <option value="Rs 500">Rs 500</option>
                                         <option value="Rs 500 (Super Card)">Rs 500 (Super Card)</option>
                                         <option value="Rs 549 (Super Card)">Rs 549 (Super Card)</option>
+                                        <option value="Rs 550 (Super Card)">Rs 550 (Super Card)</option>
                                         <option value="Rs 1000">Rs 1000</option>
                                     </optgroup>
 

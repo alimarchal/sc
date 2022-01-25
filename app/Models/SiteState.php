@@ -15,6 +15,6 @@ class SiteState extends Model
 
     public function scopeMonth(Builder $query, $date): Builder
     {
-        return $query->whereMonth('created_at', '=', Carbon::parse($date)->format('m'))->whereYear('created_at', '=', Carbon::parse($date)->format('Y'));
+        return $query->whereMonth('date', '=', Carbon::parse($date)->format('m'))->whereYear('date', '=', Carbon::parse($date)->format('Y'));
     }
 }
