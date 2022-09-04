@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\BtsTower;
+use App\Models\Gallery;
 use App\Models\RevenueTarget;
 use App\Models\Snet;
 use App\Models\Sphone;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class DashboardController extends Controller
 {
@@ -468,7 +471,7 @@ class DashboardController extends Controller
             $consumer_ach[$ct->month]['AOTR MPR']['gpon_ach'] = 0;
         }
 //
-        
+
         foreach ($consumer_ach_ach as $ct) {
             $consumer_ach[$ct->month][$ct->unit]['gsm_asg'] = $ct->gsm_asg;
             $consumer_ach[$ct->month][$ct->unit]['gsm_ach'] = $ct->gsm_ach;
@@ -481,7 +484,6 @@ class DashboardController extends Controller
             $consumer_ach[$ct->month][$ct->unit]['gpon_asg'] = $ct->gpon_asg;
             $consumer_ach[$ct->month][$ct->unit]['gpon_ach'] = $ct->gpon_ach;
         }
-
 
 
         $com_sphone = null;
@@ -523,7 +525,6 @@ class DashboardController extends Controller
         }
 
 
-
         $com_snet = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             $com_snet = DB::table('consumer_complaints')
@@ -563,8 +564,25 @@ class DashboardController extends Controller
         }
 
 
+        $collection = null;
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $collection = QueryBuilder::for(Gallery::class)
+                ->allowedFilters(['btn', 'date', 'company', 'title', 'description', AllowedFilter::scope('month')])
+                ->where('region', '61 CSB MZD')
+                ->orderBy('created_at', 'desc')->take(10)->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            $collection = QueryBuilder::for(Gallery::class)
+                ->allowedFilters(['btn', 'date', 'company', 'title', 'description', AllowedFilter::scope('month')])
+                ->where('region', '64 CSB MPR')
+                ->orderBy('created_at', 'desc')->take(10)->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $collection = QueryBuilder::for(Gallery::class)
+                ->allowedFilters(['btn', 'date', 'title', 'description', 'company', AllowedFilter::scope('month')])
+                ->orderBy('created_at', 'desc')->take(10)->get();
+        }
+
 //        dd($consumer_ach);
-        return view('layouts.master', compact('customer_trnd', 'consumer_ach', 'month', 'month2', 'month3', 'month4', 'month5', 'month6','month8', 'month9', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
+        return view('layouts.master', compact('collection', 'customer_trnd', 'consumer_ach', 'month', 'month2', 'month3', 'month4', 'month5', 'month6', 'month8', 'month9', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
     /**

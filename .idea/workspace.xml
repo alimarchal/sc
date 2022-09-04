@@ -2,41 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65eaf6be-f33d-4b63-a9dc-0cf79f59b4b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/gallery/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/gallery/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/blade.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blade.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_3_20_21__2_16_PM.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sco-2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sco-2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerServiceCenterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerServiceCenterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MonthlyStockSummeryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MonthlyStockSummeryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MonthlyStockSummeryMprController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MonthlyStockSummeryMprController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SphoneController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SphoneController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CorporateCustomerData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CorporateCustomerData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/FranchiseWiseRevenue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/FranchiseWiseRevenue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MonthlyStockSummery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MonthlyStockSummery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/RevenueTarget.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/RevenueTarget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SimsSale.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SimsSale.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SiteState.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SiteState.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/left-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/left-menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GalleryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GalleryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateGalleryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateGalleryRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Gallery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_09_01_063407_create_galleries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_09_01_063407_create_galleries_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gallery/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gallery/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gallery/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/monthlyStockSummery/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/monthlyStockSummery/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/monthlyStockSummery/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/monthlyStockSummery/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/revenue_target/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/revenue_target/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/revenue_target/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/revenue_target/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/revenue_target/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/revenue_target/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sphone/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sphone/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,12 +154,14 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2E9cfBK1bvSrtVAtkHMtmAotwnn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -217,7 +194,11 @@
       <updated>1662011342727</updated>
       <workItem from="1662011344501" duration="9009000" />
       <workItem from="1662025966803" duration="113000" />
-      <workItem from="1662031908205" duration="603000" />
+      <workItem from="1662031908205" duration="909000" />
+      <workItem from="1662096752786" duration="10889000" />
+      <workItem from="1662111206664" duration="1644000" />
+      <workItem from="1662139272245" duration="3000" />
+      <workItem from="1662301820640" duration="1936000" />
     </task>
     <servers />
   </component>
@@ -240,12 +221,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/gallery/show.blade.php</url>
-          <line>146</line>
+          <line>170</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/gallery/index.blade.php</url>
-          <line>53</line>
+          <line>78</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

@@ -17,7 +17,6 @@ class CreateGalleriesTable extends Migration
             $table->id();
             $table->date('date')->nullable();
             $table->string('aor')->nullable();
-            $table->string('company')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->text('attachments')->nullable();

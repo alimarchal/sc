@@ -79,5 +79,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('revCollN', \App\Http\Controllers\RevCollNController::class);
 
     Route::resource('gallery', \App\Http\Controllers\GalleryController::class);
+    Route::delete('gallery/{gallery}', [\App\Http\Controllers\GalleryController::class,'destroyAlbum'])->name('gallery.destroy-album');
+    Route::delete('gallery/{gallery}/{id}', [\App\Http\Controllers\GalleryController::class,'destroy'])->name('gallery.destroy');
 });
 

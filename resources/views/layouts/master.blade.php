@@ -29,6 +29,86 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <link rel="shortcut icon" href="{{ asset('SCO-Logo.ico') }}">
 
+    <style>
+        .container {
+            width: 18em;
+            height: 8em;
+            margin: 1em auto;
+            overflow: hidden;
+            background: white;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .marquee {
+            top: 6em;
+            position: relative;
+            box-sizing: border-box;
+            animation: marquee 15s linear infinite;
+        }
+
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+
+        /* Make it move! */
+        @keyframes marquee {
+            0%   { top:   8em }
+            100% { top: -11em }
+        }
+
+        /* Make it look pretty */
+        .microsoft .marquee {
+            margin: 0;
+            padding: 0 0.5em;
+            line-height: 1.5em;
+            font: 1em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+        }
+
+        .microsoft:before, .microsoft::before,
+        .microsoft:after,  .microsoft::after {
+            left: 0;
+            z-index: 1;
+            content: '';
+            position: absolute;
+            pointer-events: none;
+            width: 100%; height: 2em;
+            background-image: linear-gradient(180deg, #FFF, rgba(255,255,255,0));
+        }
+
+        .microsoft:after, .microsoft::after {
+            bottom: 0;
+            transform: rotate(180deg);
+        }
+
+        .microsoft:before, .microsoft::before {
+            top: 0;
+        }
+
+        /* Style the links */
+        .vanity {
+            color: #333;
+            text-align: center;
+            font: .75em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+        }
+
+        .vanity a, .microsoft a {
+            color: #1570A6;
+            transition: color .5s;
+            text-decoration: none;
+        }
+
+        .vanity a:hover, .microsoft a:hover {
+            color: #F65314;
+        }
+
+        /* Style toggle button */
+        .toggle {
+            display: block;
+            margin: 2em auto;
+        }
+    </style>
+
     <script type="text/javascript">
         google.charts.load("current", {packages: ["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
@@ -58,9 +138,9 @@
                     @foreach ($month as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                         @if($k == 'AOTR MPR')
-                            {{$v}},
-                        @endif
+                        @if($k == 'AOTR MPR')
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -83,8 +163,8 @@
                 chart: {
                     title: '6 Month Revenue Trend',
                 },
-                colors: ['red','green'],
-                is3D:true,
+                colors: ['red', 'green'],
+                is3D: true,
 
             };
 
@@ -104,8 +184,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == '61 CSB MZD')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -115,8 +195,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == '64 CSB MPR')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -139,8 +219,8 @@
                 chart: {
                     title: 'SPhone Active Subs',
                 },
-                colors: ['skyblue','lightgreen'],
-                is3D:true,
+                colors: ['skyblue', 'lightgreen'],
+                is3D: true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_2'));
@@ -158,8 +238,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == '61 CSB MZD')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -169,8 +249,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == '64 CSB MPR')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -210,8 +290,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == '61 CSB MZD')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -221,8 +301,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == '64 CSB MPR')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -245,8 +325,8 @@
                 chart: {
                     title: 'SCOM Total Subs',
                 },
-                colors: ['lightgreen','green'],
-                is3D:true,
+                colors: ['lightgreen', 'green'],
+                is3D: true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_4'));
@@ -264,8 +344,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == '61 CSB MZD')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -275,8 +355,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == '64 CSB MPR')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -299,8 +379,8 @@
                 chart: {
                     title: 'Sale of SIMs',
                 },
-                colors: ['orange','orangered'],
-                is3D:true,
+                colors: ['orange', 'orangered'],
+                is3D: true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_5'));
@@ -309,6 +389,7 @@
 
         google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart228);
+
         function drawChart228() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -317,8 +398,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == 'AOTR MZD')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -328,8 +409,8 @@
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         @if($k == 'AOTR MPR')
-                            {{$v}},
-                        @endif
+                        {{$v}},
+                    @endif
                     @endforeach
                 ],
                     @endforeach
@@ -352,8 +433,8 @@
                 chart: {
                     title: 'GSM Revenue',
                 },
-                colors: ['darkblue','lightblue'],
-                is3D:true,
+                colors: ['darkblue', 'lightblue'],
+                is3D: true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_6'));
@@ -363,45 +444,46 @@
 
         google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart230);
+
         function drawChart230() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
-                ['Month', 'GSM Asg','GSM Ach','PSTN Asg','PSTN Ach','DSL Asg','DSL Ach','DXX Asg','DXX Ach','GPON Asg','GPON Ach'],
+                ['Month', 'GSM Asg', 'GSM Ach', 'PSTN Asg', 'PSTN Ach', 'DSL Asg', 'DSL Ach', 'DXX Asg', 'DXX Ach', 'GPON Asg', 'GPON Ach'],
                     @foreach ($consumer_ach as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
-                    @if($k == "AOTR MZD")
-                        @foreach ($v as $ky => $vy)
-                            {{$vy}},
-                        @endforeach
-                     @endif
-                    @endforeach
-                ],
-                    @endforeach
-                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
-                ['Month', 'GSM Asg','GSM Ach','PSTN Asg','PSTN Ach','DSL Asg','DSL Ach','DXX Asg','DXX Ach','GPON Asg','GPON Ach'],
-                    @foreach ($consumer_ach as $key => $value)
-                ['{{$key}}',
-                    @foreach ($value as $k => $v)
-                    @if($k == "AOTR MPR")
+                        @if($k == "AOTR MZD")
                         @foreach ($v as $ky => $vy)
                         {{$vy}},
-                        @endforeach
+                    @endforeach
                     @endif
                     @endforeach
                 ],
                     @endforeach
-                @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
-
-                    ['Month', 'MZD GSM Asg','MZD GSM Ach','MZD PSTN Asg','MZD PSTN Ach','MZD DSL Asg','MZD DSL Ach','MZD DXX Asg','MZD DXX Ach','MZD GPON Asg','MZD GPON Ach','MPR GSM Asg','MPR GSM Ach','MPR PSTN Asg','MPR PSTN Ach','MPR DSL Asg','MPR DSL Ach','MPR DXX Asg','MPR DXX Ach', 'MPR GPON Asg','MPR GPON Ach'],
-                @foreach ($consumer_ach as $key => $value)
-                    ['{{$key}}',
+                    @elseif(auth()->user()->role == "CSB 64" || auth()->user()->role == "Mirpur")
+                ['Month', 'GSM Asg', 'GSM Ach', 'PSTN Asg', 'PSTN Ach', 'DSL Asg', 'DSL Ach', 'DXX Asg', 'DXX Ach', 'GPON Asg', 'GPON Ach'],
+                    @foreach ($consumer_ach as $key => $value)
+                ['{{$key}}',
                     @foreach ($value as $k => $v)
-                                @foreach ($v as $ky => $vy)
-                                    {{$vy}},
-                                @endforeach
+                        @if($k == "AOTR MPR")
+                        @foreach ($v as $ky => $vy)
+                        {{$vy}},
                     @endforeach
-                    ],
+                    @endif
+                    @endforeach
+                ],
+                    @endforeach
+                    @elseif(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+
+                ['Month', 'MZD GSM Asg', 'MZD GSM Ach', 'MZD PSTN Asg', 'MZD PSTN Ach', 'MZD DSL Asg', 'MZD DSL Ach', 'MZD DXX Asg', 'MZD DXX Ach', 'MZD GPON Asg', 'MZD GPON Ach', 'MPR GSM Asg', 'MPR GSM Ach', 'MPR PSTN Asg', 'MPR PSTN Ach', 'MPR DSL Asg', 'MPR DSL Ach', 'MPR DXX Asg', 'MPR DXX Ach', 'MPR GPON Asg', 'MPR GPON Ach'],
+                    @foreach ($consumer_ach as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        @foreach ($v as $ky => $vy)
+                        {{$vy}},
+                    @endforeach
+                    @endforeach
+                ],
                 @endforeach
 
                 @endif
@@ -410,7 +492,7 @@
                 chart: {
                     title: 'Target Asg & Achive',
                 },
-                is3D:true,
+                is3D: true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_7'));
@@ -420,6 +502,7 @@
 
         google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart231);
+
         function drawChart231() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -463,8 +546,8 @@
                 chart: {
                     title: 'SPhone Consumer Complaints',
                 },
-                colors: ['darkblue','lightblue'],
-                is3D:true,
+                colors: ['darkblue', 'lightblue'],
+                is3D: true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_8'));
@@ -474,6 +557,7 @@
 
         google.charts.load('current', {'packages': ['bar']});
         google.charts.setOnLoadCallback(drawChart232);
+
         function drawChart232() {
             var data = google.visualization.arrayToDataTable([
                     @if(auth()->user()->role == "CSB 61" || auth()->user()->role == "Muzaffarabad")
@@ -517,14 +601,13 @@
                 chart: {
                     title: 'SNet Consumer Complaints',
                 },
-                colors: ['darkblue','lightblue'],
-                is3D:true,
+                colors: ['darkblue', 'lightblue'],
+                is3D: true,
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material_9'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
-
 
 
         google.load("visualization", "1", {packages: ["corechart"]});
@@ -732,7 +815,7 @@
                     {{--                ['{{$ct->month}}', {{$ct->ntc}}, {{$ct->pmc}}],--}}
                     {{--                @endforeach--}}
 
-                @foreach ($customer_trnd as $key => $value)
+                    @foreach ($customer_trnd as $key => $value)
                 ['{{$key}}',
                     @foreach ($value as $k => $v)
                         {{$v}},
@@ -751,8 +834,8 @@
                 title: 'Customer Profile Trend',
                 curveType: 'function',
                 legend: {position: 'bottom'},
-                colors: ['red','green'],
-                is3D:true,
+                colors: ['red', 'green'],
+                is3D: true,
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -767,7 +850,7 @@
                 ["Feb", 8000, "silver"],
                 ["March", 19000, "gold"],
                 ["April", 7000, "color: #e5e4e2"],
-                ["May", 9000,"color: #e5e4e2"]
+                ["May", 9000, "color: #e5e4e2"]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -820,79 +903,79 @@
         </ul>
 
         <!-- SEARCH FORM -->
-    {{--        <form class="form-inline ml-3">--}}
-    {{--            <div class="input-group input-group-sm">--}}
-    {{--                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">--}}
-    {{--                <div class="input-group-append">--}}
-    {{--                    <button class="btn btn-navbar" type="submit">--}}
-    {{--                        <i class="fas fa-search"></i>--}}
-    {{--                    </button>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </form>--}}
+        {{--        <form class="form-inline ml-3">--}}
+        {{--            <div class="input-group input-group-sm">--}}
+        {{--                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">--}}
+        {{--                <div class="input-group-append">--}}
+        {{--                    <button class="btn btn-navbar" type="submit">--}}
+        {{--                        <i class="fas fa-search"></i>--}}
+        {{--                    </button>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </form>--}}
 
-    <!-- Right navbar links -->
+        <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
-        {{--            <li class="nav-item dropdown">--}}
-        {{--                <a class="nav-link" data-toggle="dropdown" href="#">--}}
-        {{--                    <i class="far fa-comments"></i>--}}
-        {{--                    <span class="badge badge-danger navbar-badge">3</span>--}}
-        {{--                </a>--}}
-        {{--                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">--}}
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <!-- Message Start -->--}}
-        {{--                        <div class="media">--}}
-        {{--                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">--}}
-        {{--                            <div class="media-body">--}}
-        {{--                                <h3 class="dropdown-item-title">--}}
-        {{--                                    Brad Diesel--}}
-        {{--                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>--}}
-        {{--                                </h3>--}}
-        {{--                                <p class="text-sm">Call me whenever you can...</p>--}}
-        {{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
-        {{--                            </div>--}}
-        {{--                        </div>--}}
-        {{--                        <!-- Message End -->--}}
-        {{--                    </a>--}}
-        {{--                    <div class="dropdown-divider"></div>--}}
+            {{--            <li class="nav-item dropdown">--}}
+            {{--                <a class="nav-link" data-toggle="dropdown" href="#">--}}
+            {{--                    <i class="far fa-comments"></i>--}}
+            {{--                    <span class="badge badge-danger navbar-badge">3</span>--}}
+            {{--                </a>--}}
+            {{--                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">--}}
+            {{--                    <a href="#" class="dropdown-item">--}}
+            {{--                        <!-- Message Start -->--}}
+            {{--                        <div class="media">--}}
+            {{--                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">--}}
+            {{--                            <div class="media-body">--}}
+            {{--                                <h3 class="dropdown-item-title">--}}
+            {{--                                    Brad Diesel--}}
+            {{--                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>--}}
+            {{--                                </h3>--}}
+            {{--                                <p class="text-sm">Call me whenever you can...</p>--}}
+            {{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
+            {{--                            </div>--}}
+            {{--                        </div>--}}
+            {{--                        <!-- Message End -->--}}
+            {{--                    </a>--}}
+            {{--                    <div class="dropdown-divider"></div>--}}
 
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <!-- Message Start -->--}}
-        {{--                        <div class="media">--}}
-        {{--                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
-        {{--                            <div class="media-body">--}}
-        {{--                                <h3 class="dropdown-item-title">--}}
-        {{--                                    John Pierce--}}
-        {{--                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>--}}
-        {{--                                </h3>--}}
-        {{--                                <p class="text-sm">I got your message bro</p>--}}
-        {{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
-        {{--                            </div>--}}
-        {{--                        </div>--}}
-        {{--                        <!-- Message End -->--}}
-        {{--                    </a>--}}
-        {{--                    <div class="dropdown-divider"></div>--}}
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <!-- Message Start -->--}}
-        {{--                        <div class="media">--}}
-        {{--                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
-        {{--                            <div class="media-body">--}}
-        {{--                                <h3 class="dropdown-item-title">--}}
-        {{--                                    Nora Silvester--}}
-        {{--                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>--}}
-        {{--                                </h3>--}}
-        {{--                                <p class="text-sm">The subject goes here</p>--}}
-        {{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
-        {{--                            </div>--}}
-        {{--                        </div>--}}
-        {{--                        <!-- Message End -->--}}
-        {{--                    </a>--}}
-        {{--                    <div class="dropdown-divider"></div>--}}
-        {{--                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>--}}
-        {{--                </div>--}}
-        {{--            </li>--}}
-        <!-- Notifications Dropdown Menu -->
+            {{--                    <a href="#" class="dropdown-item">--}}
+            {{--                        <!-- Message Start -->--}}
+            {{--                        <div class="media">--}}
+            {{--                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
+            {{--                            <div class="media-body">--}}
+            {{--                                <h3 class="dropdown-item-title">--}}
+            {{--                                    John Pierce--}}
+            {{--                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>--}}
+            {{--                                </h3>--}}
+            {{--                                <p class="text-sm">I got your message bro</p>--}}
+            {{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
+            {{--                            </div>--}}
+            {{--                        </div>--}}
+            {{--                        <!-- Message End -->--}}
+            {{--                    </a>--}}
+            {{--                    <div class="dropdown-divider"></div>--}}
+            {{--                    <a href="#" class="dropdown-item">--}}
+            {{--                        <!-- Message Start -->--}}
+            {{--                        <div class="media">--}}
+            {{--                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
+            {{--                            <div class="media-body">--}}
+            {{--                                <h3 class="dropdown-item-title">--}}
+            {{--                                    Nora Silvester--}}
+            {{--                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>--}}
+            {{--                                </h3>--}}
+            {{--                                <p class="text-sm">The subject goes here</p>--}}
+            {{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
+            {{--                            </div>--}}
+            {{--                        </div>--}}
+            {{--                        <!-- Message End -->--}}
+            {{--                    </a>--}}
+            {{--                    <div class="dropdown-divider"></div>--}}
+            {{--                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>--}}
+            {{--                </div>--}}
+            {{--            </li>--}}
+            <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-user"></i>
@@ -939,12 +1022,12 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-    {{--        <a href="index3.html" class="brand-link">--}}
-    {{--            <img src="{{url('AdminLTE/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">--}}
-    {{--            <span class="brand-text font-weight-light">AdminLTE 3</span>--}}
-    {{--        </a>--}}
+        {{--        <a href="index3.html" class="brand-link">--}}
+        {{--            <img src="{{url('AdminLTE/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">--}}
+        {{--            <span class="brand-text font-weight-light">AdminLTE 3</span>--}}
+        {{--        </a>--}}
 
-    <!-- Sidebar -->
+        <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -973,8 +1056,8 @@
             </div>
 
             <!-- Sidebar Menu -->
-        @include('layouts.left-menu')
-        <!-- /.sidebar-menu -->
+            @include('layouts.left-menu')
+            <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
     </aside>
@@ -1066,6 +1149,19 @@
                             </div>
                         </div>
                         <!-- ./col -->
+
+                        <div class="card" style="width: 400px;">
+                            <h5 class="card-header">Latest Events Update</h5>
+                            <div class="card-body">
+                                <div class="microsoft container">
+                                    <p class="card-text marquee">
+                                        @foreach($collection as $gallery)
+                                           {{$loop->iteration}}: <a href="{{route('gallery.show', $gallery->id)}}">{{$gallery->title}} - {{$gallery->region}} - {{\Carbon\Carbon::parse($gallery->date)->format('d-m-Y')}}</a><br>
+                                        @endforeach
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -1098,8 +1194,6 @@
                         </section>
 
 
-
-
                         <section class="col-lg-4 mt-4 mb-4 connectedSortable">
                             <div id="columnchart_material_3"></div>
                         </section>
@@ -1118,7 +1212,7 @@
                             <div id="columnchart_material_6"></div>
                         </section>
 
-                        <section class="col-lg-12 mt-8 mb-8 connectedSortable" >
+                        <section class="col-lg-12 mt-8 mb-8 connectedSortable">
                             <div id="columnchart_material_7" style="height: 650px;"></div>
                         </section>
 
@@ -1153,8 +1247,8 @@
 
                     </div>
                 </div>
-        @endif
-        <!-- /.container-fluid -->
+            @endif
+            <!-- /.container-fluid -->
         </section>
 
         <br>
@@ -1189,6 +1283,11 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
+</script>
+<script>
+    $(".toggle").on("click", function () {
+        $(".container").toggleClass("microsoft");
+    });
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{url('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

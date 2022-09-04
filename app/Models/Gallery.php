@@ -13,8 +13,7 @@ class Gallery extends Model
 
     protected $fillable = [
         'date',
-        'btn',
-        'company',
+        'region',
         'title',
         'description',
         'attachments',
