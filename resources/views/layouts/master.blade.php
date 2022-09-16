@@ -1044,16 +1044,16 @@
             </div>
 
             <!-- SidebarSearch Form -->
-            <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-sidebar">
-                            <i class="fas fa-search fa-fw"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="form-inline">--}}
+{{--                <div class="input-group" data-widget="sidebar-search">--}}
+{{--                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">--}}
+{{--                    <div class="input-group-append">--}}
+{{--                        <button class="btn btn-sidebar">--}}
+{{--                            <i class="fas fa-search fa-fw"></i>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <!-- Sidebar Menu -->
             @include('layouts.left-menu')
@@ -1099,7 +1099,7 @@
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="{{route('bts-tower.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="{{route('bts-tower.index',['filter[month]=' . \Carbon\Carbon::parse($scom_tower_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -1148,20 +1148,77 @@
                                 <a href="{{route('revenue-target.index',['filter[month]=' . \Carbon\Carbon::parse($rev_max_date)->format('Y-m-d')])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <!-- ./col -->
 
-                        <div class="card" style="width: 400px;">
-                            <h5 class="card-header">Latest Events Update</h5>
-                            <div class="card-body">
-                                <div class="microsoft container">
-                                    <p class="card-text marquee">
-                                        @foreach($collection as $gallery)
-                                           {{$loop->iteration}}: <a href="{{route('gallery.show', $gallery->id)}}">{{$gallery->title}} - {{$gallery->region}} - {{\Carbon\Carbon::parse($gallery->date)->format('d-m-Y')}}</a><br>
-                                        @endforeach
-                                    </p>
+
+                        <div class="col-lg-12 col-6">
+                            <!-- small box -->
+                           <h2 class="text-center">Photo Gallery</h2>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h4>DG SCO</h4>
                                 </div>
+                                <a href="{{route('gallery.index',['filter[category]=' . 'DG SCO'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h4>Sec Commander</h4>
+                                </div>
+                                <a href="{{route('gallery.index',['filter[category]=' . 'Sector Commander'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h4>CO 61 BTN</h4>
+                                </div>
+                                <a href="{{route('gallery.index',['filter[category]=' . '61 CSB MZD'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h4>CO 64 BTN</h4>
+                                </div>
+                                <a href="{{route('gallery.index',['filter[category]=' . '64 CSB MPR'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h4>Events</h4>
+                                </div>
+                                <a href="{{route('gallery.index',['filter[category]=' . 'Events'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- ./col -->
+
+{{--                        <div class="card" style="width: 400px;">--}}
+{{--                            <h5 class="card-header">Latest Events Update</h5>--}}
+{{--                            <div class="card-body">--}}
+{{--                                <div class="microsoft container">--}}
+{{--                                    <p class="card-text marquee">--}}
+{{--                                        @foreach($collection as $gallery)--}}
+{{--                                           {{$loop->iteration}}: <a href="{{route('gallery.show', $gallery->id)}}">{{$gallery->title}} - {{$gallery->region}} - {{\Carbon\Carbon::parse($gallery->date)->format('d-m-Y')}}</a><br>--}}
+{{--                                        @endforeach--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
 
 

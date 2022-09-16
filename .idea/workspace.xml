@@ -5,14 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GalleryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GalleryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateGalleryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateGalleryRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Gallery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_09_01_063407_create_galleries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_09_01_063407_create_galleries_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/gallery/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gallery/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/gallery/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/gallery/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/left-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/left-menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +26,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -198,7 +199,9 @@
       <workItem from="1662096752786" duration="10889000" />
       <workItem from="1662111206664" duration="1644000" />
       <workItem from="1662139272245" duration="3000" />
-      <workItem from="1662301820640" duration="1936000" />
+      <workItem from="1662301820640" duration="3332000" />
+      <workItem from="1662970468444" duration="7257000" />
+      <workItem from="1663314814107" duration="3174000" />
     </task>
     <servers />
   </component>
@@ -226,7 +229,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/gallery/index.blade.php</url>
-          <line>78</line>
+          <line>127</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

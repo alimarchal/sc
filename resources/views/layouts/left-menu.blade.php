@@ -231,7 +231,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-money-bill"></i>
                     <p>
-                        Events
+                        Photo Gallery
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -856,12 +856,12 @@
             </li>
 
 
-            <li class="nav-header">Events</li>
+            <li class="nav-header">Photo Gallery</li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-user-alt"></i>
                     <p>
-                        Events
+                        Photo Gallery
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
@@ -1591,12 +1591,12 @@
 
 
 
-            <li class="nav-header">Events</li>
+            <li class="nav-header">Photo Gallery</li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-mobile-alt"></i>
                     <p>
-                        Events
+                        Photo Gallery
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>

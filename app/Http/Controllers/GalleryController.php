@@ -23,17 +23,17 @@ class GalleryController extends Controller
         $collection = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
             $collection = QueryBuilder::for(Gallery::class)
-                ->allowedFilters(['btn', 'date', 'company', 'title', 'description', AllowedFilter::scope('month')])
-                ->where('region', '61 CSB MZD')
+                ->allowedFilters([AllowedFilter::exact('region'), AllowedFilter::exact('category'), 'date', 'title', 'description', 'company', AllowedFilter::scope('month')])
+//                ->where('region', '61 CSB MZD')
                 ->orderBy('created_at', 'desc')->paginate(25)->withQueryString();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
             $collection = QueryBuilder::for(Gallery::class)
-                ->allowedFilters(['btn', 'date', 'company', 'title', 'description', AllowedFilter::scope('month')])
-                ->where('region', '64 CSB MPR')
+                ->allowedFilters([AllowedFilter::exact('region'), AllowedFilter::exact('category'), 'date', 'title', 'description', 'company', AllowedFilter::scope('month')])
+//                ->where('region', '64 CSB MPR')
                 ->orderBy('created_at', 'desc')->paginate(25)->withQueryString();
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
             $collection = QueryBuilder::for(Gallery::class)
-                ->allowedFilters(['btn', 'date', 'title', 'description', 'company', AllowedFilter::scope('month')])
+                ->allowedFilters([AllowedFilter::exact('region'), AllowedFilter::exact('category'), 'date', 'title', 'description', 'company', AllowedFilter::scope('month')])
                 ->orderBy('created_at', 'desc')->paginate(25)->withQueryString();
         }
 //        $gallery = Gallery::all();

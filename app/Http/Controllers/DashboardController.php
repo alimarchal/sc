@@ -26,14 +26,29 @@ class DashboardController extends Controller
         $snet_max_date = null;
         $rev_max_date = null;
 
+        $scom_tower_date = null;
+
 //        $bts_tower_count = BtsTower::count();
         $bts_tower_count = null;
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
-            $bts_tower_count = BtsTower::where('btn', '61 CSB MZD')->count();
+            $max_date = Carbon::create(BtsTower::max('date'));
+            $rev_max_date = BtsTower::max('date');
+            $scom_tower_date = $rev_max_date;
+
+            $bts_tower_count = BtsTower::where('btn', '61 CSB MZD')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->count();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
-            $bts_tower_count = BtsTower::where('btn', '64 CSB MPR')->count();
+
+            $max_date = Carbon::create(BtsTower::max('date'));
+            $rev_max_date = BtsTower::max('date');
+            $bts_tower_count = BtsTower::where('btn', '64 CSB MPR')->whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->count();
+            $scom_tower_date = $rev_max_date;
         } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
-            $bts_tower_count = BtsTower::count();
+
+
+            $max_date = Carbon::create(BtsTower::max('date'));
+            $rev_max_date = BtsTower::max('date');
+            $scom_tower_date = $rev_max_date;
+            $bts_tower_count = BtsTower::whereMonth('date', '=', Carbon::parse($max_date)->format('m'))->whereYear('date', '=', Carbon::parse($max_date)->format('Y'))->count();
         }
 
 
@@ -582,7 +597,7 @@ class DashboardController extends Controller
         }
 
 //        dd($consumer_ach);
-        return view('layouts.master', compact('collection', 'customer_trnd', 'consumer_ach', 'month', 'month2', 'month3', 'month4', 'month5', 'month6', 'month8', 'month9', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
+        return view('layouts.master', compact('collection', 'customer_trnd', 'scom_tower_date','consumer_ach', 'month', 'month2', 'month3', 'month4', 'month5', 'month6', 'month8', 'month9', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
     /**

@@ -35,11 +35,60 @@
 @section('breadcrumb-item','')
 @section('body-start')
     <div class="row">
+
+
+        <div class="col-12">
+
+            <form class=" d-print-none" action="{{route('gallery.index')}}" method="get">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <label>Enter Month</label>
+                        <input class="form-control" type="date" name="filter[month]" placeholder="YYYY-MM-DD">
+                    </div>
+
+                    <div class="col-3">
+                        <label>{{strtoupper(str_replace('_',' ', 'region'))}}</label>
+                        <select class="form-control" name="filter[region]">
+                            <option value="">None</option>
+                            @if(auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin")
+                                <option value="Sector HQ">Sector HQ AJK</option>
+                            @endif
+                            @foreach(\App\Models\User::btn_name() as $btn_name)
+                                <option value="{{$btn_name}}">{{$btn_name}}</option>
+                            @endforeach
+                            @foreach(\App\Models\User::region_court_case() as $region_court_case)
+                                <option value="{{$region_court_case}}">{{$region_court_case}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-3">
+                        <label>{{strtoupper(str_replace('_',' ', 'Category'))}}</label>
+                        <select class="form-control" name="filter[category]">
+                            <option value="">None</option>
+                            <option value="DG SCO">DG SCO</option>
+                            <option value="Sector Commander">Sector Commander</option>
+                            <option value="61 CSB MZD">CO 61 CSB</option>
+                            <option value="64 CSB MPR">CO 64 CSB</option>
+                            <option value="Events">Events</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <br>
+                <input type="submit" class="btn btn-danger" value="Search">
+                <br>
+            </form>
+            <br>
+        </div>
+
         <div class="col-12">
 
 
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">Events</h2>
+                <h2 class="text-center">Photo Gallery</h2>
 
 
                 <div class="row">

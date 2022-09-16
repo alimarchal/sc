@@ -18,6 +18,7 @@ class Gallery extends Model
         'description',
         'attachments',
         'added_by',
+        'category',
     ];
 
     public function scopeMonth(Builder $query, $date): Builder

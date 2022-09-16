@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('page-title', 'Event Edit')
+@section('page-title', 'Photo Gallery Edit')
 @section('breadcrumb-item','Edit')
 
 
@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-12">
             <div class="invoice p-3 mb-3 rounded">
-                <h2 class="text-center">Create Event</h2>
+                <h2 class="text-center">Photo Gallery</h2>
                 <br>
                 <form action="{{route('gallery.update', $gallery->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -38,7 +38,19 @@
                         </div>
 
 
-                        <div class="col-6">
+                        <div class="col-3">
+                            <label>{{strtoupper(str_replace('_',' ', 'Category'))}}</label>
+                            <select class="form-control" name="category" required>
+                                <option value="">None</option>
+                                <option value="DG SCO" @if($gallery->category == "DG SCO") selected @endif>DG SCO</option>
+                                <option value="Sector Commander" @if($gallery->category == "Sector Commander") selected @endif>Sector Commander</option>
+                                <option value="61 CSB MZD" @if($gallery->category == "61 CSB MZD") selected @endif>CS 61 Signal Battalion</option>
+                                <option value="64 CSB MPR" @if($gallery->category == "64 CSB MPR") selected @endif>CS 64 Signal Battalion</option>
+                                <option value="Events" @if($gallery->category == "Events") selected @endif>Events</option>
+                            </select>
+                        </div>
+
+                        <div class="col-3">
                             <div class="form-group">
                                 <label>Title</label>
                                 <input type="text" name="title"  value="{{$gallery->title}}" class="form-control">
