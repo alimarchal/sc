@@ -283,6 +283,33 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        FTTH
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->designation == 'Clerk')
+                        <li class="nav-item">
+                            <a href="{{route('ftth.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('ftth.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-globe"></i>
@@ -991,6 +1018,32 @@
                         </a>
                     </li>
 
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mobile-alt"></i>
+                    <p>
+                        FTTH
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(auth()->user()->role != 'Sector HQ' || auth()->user()->designation == 'Clerk'  )
+                        <li class="nav-item">
+                            <a href="{{route('ftth.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{route('ftth.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
 

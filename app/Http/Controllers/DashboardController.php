@@ -202,6 +202,66 @@ class DashboardController extends Controller
 //        dd($customer_trnd);
 
 
+
+
+
+
+        $ftth_trend = null;
+
+
+        if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+            $ftth_trend = DB::table('ftths')
+                ->select(DB::raw('MONTHNAME(date) as month, sum(pmc) as pmc, sum(new_accs) as ntc'))
+                ->where('btn', '61 CSB MZD')
+                ->whereBetween('created_at', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('YEAR(date), MONTH(date)'))
+                ->get();
+        } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+            $ftth_trend = DB::table('ftths')
+                ->select(DB::raw('MONTHNAME(date) as month, sum(pmc) as pmc, sum(new_accs) as ntc'))
+                ->where('btn', '64 CSB MPR')
+                ->whereBetween('created_at', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('YEAR(date), MONTH(date)'))
+                ->get();
+        } elseif (auth()->user()->role == "Sector HQ" || auth()->user()->role == "admin") {
+            $ftth_trend = DB::table('ftths')
+                ->select(DB::raw('MONTHNAME(date) as month, sum(pmc) as pmc, sum(new_accs) as ntc'))
+                ->whereBetween('created_at', [Carbon::parse(Carbon::now()->subMonth(6))->startOfMonth()->toDateString(), Carbon::parse(now())->endOfMonth()->toDateString()])
+                ->groupBy(DB::raw('YEAR(date), MONTH(date)'))
+                ->get();
+        }
+
+
+
+
+        $ftth_trnd = null;
+        foreach ($ftth_trend as $ct) {
+            $ftth_trnd[$ct->month]['pmc'] = 0;
+            $ftth_trnd[$ct->month]['ntc'] = 0;
+        }
+
+        foreach ($ftth_trend as $ct) {
+            $ftth_trnd[$ct->month]['ntc'] = $ct->ntc;
+        }
+        foreach ($ftth_trend as $ct) {
+            $ftth_trnd[$ct->month]['pmc'] = $ct->pmc;
+        }
+//        dd($ftth_trnd);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $customer_trend_revenue = null;
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
@@ -597,7 +657,7 @@ class DashboardController extends Controller
         }
 
 //        dd($consumer_ach);
-        return view('layouts.master', compact('collection', 'customer_trnd', 'scom_tower_date','consumer_ach', 'month', 'month2', 'month3', 'month4', 'month5', 'month6', 'month8', 'month9', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
+        return view('layouts.master', compact('collection', 'ftth_trnd','customer_trnd', 'scom_tower_date','consumer_ach', 'month', 'month2', 'month3', 'month4', 'month5', 'month6', 'month8', 'month9', 'sphone_max_date', 'snet_max_date', 'rev_max_date', 'bts_tower_count', 'revenue_total', 'sphone_wc', 'snet_as', 'slots', 'customer_trend'));
     }
 
     /**

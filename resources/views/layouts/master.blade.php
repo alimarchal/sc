@@ -113,6 +113,7 @@
         google.charts.load("current", {packages: ["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
         google.charts.setOnLoadCallback(drawChart1);
+        google.charts.setOnLoadCallback(drawChart9);
         google.charts.setOnLoadCallback(drawChart3);
 
 
@@ -843,6 +844,43 @@
             chart.draw(data, options);
         }
 
+
+
+        function drawChart9() {
+            var data = google.visualization.arrayToDataTable([
+                ['Month', 'Outgoing Users', 'New Users'],
+                    {{--                @foreach($customer_trend as $ct)--}}
+                    {{--                ['{{$ct->month}}', {{$ct->ntc}}, {{$ct->pmc}}],--}}
+                    {{--                @endforeach--}}
+
+                    @foreach ($ftth_trnd as $key => $value)
+                ['{{$key}}',
+                    @foreach ($value as $k => $v)
+                        {{$v}},
+                    @endforeach
+                ],
+                @endforeach
+
+                // ['Jan', 90, 40],
+                // ['Feb', 100, 50],
+                // ['Mar', 120, 80],
+                // ['Apr', 180, 60],
+                // ['May', 160, 35]
+            ]);
+
+            var options = {
+                title: 'FTTH Trend',
+                curveType: 'function',
+                legend: {position: 'top'},
+                colors: ['blue', 'purple'],
+                is3D: true,
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart_1'));
+
+            chart.draw(data, options);
+        }
+
         function drawChart3() {
             var data = google.visualization.arrayToDataTable([
                 ["Month", "AOR MZD", {role: "style"}],
@@ -1179,7 +1217,7 @@
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h4>CO 61 BTN</h4>
+                                    <h4>CO 61 CSB</h4>
                                 </div>
                                 <a href="{{route('gallery.index',['filter[category]=' . '61 CSB MZD'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -1189,7 +1227,7 @@
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h4>CO 64 BTN</h4>
+                                    <h4>CO 64 CSB</h4>
                                 </div>
                                 <a href="{{route('gallery.index',['filter[category]=' . '64 CSB MPR'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -1235,10 +1273,14 @@
                             <div id="curve_chart"></div>
                         </section>
 
+
+
                         <section class="col-lg-4 mt-4 mb-4 connectedSortable">
                             {{--                        <div id="bar-chart"></div>--}}
                             <div id="columnchart_material"></div>
                         </section>
+
+
                         <!-- right col -->
                     </div>
                     <div class="row">
@@ -1246,9 +1288,14 @@
                         {{--                        <h3>Customer Profile</h3>--}}
                         {{--                    </div>--}}
 
+
+
+
+
                         <section class="col-lg-4 mt-4 mb-4 connectedSortable">
                             <div id="columnchart_material_2"></div>
                         </section>
+
 
 
                         <section class="col-lg-4 mt-4 mb-4 connectedSortable">
@@ -1256,18 +1303,27 @@
                         </section>
 
 
+
+
                         <section class="col-lg-4 mt-4 mb-4 connectedSortable">
                             <div id="columnchart_material_4"></div>
                         </section>
+
 
 
                         <section class="col-lg-4 mt-4 mb-4 connectedSortable">
                             <div id="columnchart_material_5"></div>
                         </section>
 
+
                         <section class="col-lg-4 mt-4 mb-4 connectedSortable">
                             <div id="columnchart_material_6"></div>
                         </section>
+
+                        <section class="col-lg-4 mt-4 mb-4 connectedSortable">
+                            <div id="curve_chart_1"></div>
+                        </section>
+
 
                         <section class="col-lg-12 mt-8 mb-8 connectedSortable">
                             <div id="columnchart_material_7" style="height: 650px;"></div>

@@ -61,6 +61,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('revenue-target', \App\Http\Controllers\RevenueTargetController::class);
     Route::resource('snet', \App\Http\Controllers\SnetController::class);
     Route::resource('sphone', \App\Http\Controllers\SphoneController::class);
+    Route::resource('ftth', \App\Http\Controllers\FtthController::class);
     Route::resource('monthly-network-status', \App\Http\Controllers\MonthlyNetworkStatusController::class);
 
     Route::resource('monthlyDslRevAotr', \App\Http\Controllers\MonthlyDslRevAotrController::class);
