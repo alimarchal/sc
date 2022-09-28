@@ -57,6 +57,7 @@
                         <th>{{strtoupper(str_replace('_',' ', 'btn'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'company'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'total_accts'))}}</th>
+                        <th>{{strtoupper(str_replace('_',' ', 'NEW ACCS'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'pmc'))}}</th>
                         <th>{{strtoupper(str_replace('_',' ', 'restored_after_pmc'))}}</th>
 
@@ -77,6 +78,7 @@
                             <td>{{strtoupper($coll->btn)}}</td>
                             <td>{{strtoupper($coll->company)}}</td>
                             <td>{{$coll->total_accts}}</td>
+                            <td>{{$coll->new_accs}}</td>
                             <td>{{$coll->pmc}}</td>
                             <td>{{$coll->restored_after_pmc}}</td>
                             @if((auth()->user()->role == "Sector HQ" || auth()->user()->role == "CSB 61" || auth()->user()->role == "CSB 64") && auth()->user()->designation != 'Clerk')

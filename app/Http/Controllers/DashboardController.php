@@ -79,6 +79,7 @@ class DashboardController extends Controller
 
         $revenue = [
             'scom_ach' => $revenue_sum->sum('scom_ach'),
+            'gpon_ach' => $revenue_sum->sum('gpon_ach'),
             'snet_ach' => $revenue_sum->sum('snet_ach'),
             'sphone_ach' => $revenue_sum->sum('sphone_ach'),
             'dxx_ach' => $revenue_sum->sum('dxx_ach'),
@@ -87,7 +88,10 @@ class DashboardController extends Controller
 
         $revenue_total = null;
         foreach ($revenue as $x)
+        {
             $revenue_total = $revenue_total + $x;
+        }
+
 
         $sphone_wc = null;
 
@@ -210,6 +214,7 @@ class DashboardController extends Controller
 
 
         if (auth()->user()->role == "CSB 61" || auth()->user()->role == "AOTR MZD") {
+
             $ftth_trend = DB::table('ftths')
                 ->select(DB::raw('MONTHNAME(date) as month, sum(pmc) as pmc, sum(new_accs) as ntc'))
                 ->where('btn', '61 CSB MZD')
@@ -217,6 +222,7 @@ class DashboardController extends Controller
                 ->groupBy(DB::raw('YEAR(date), MONTH(date)'))
                 ->get();
         } elseif (auth()->user()->role == "CSB 64" || auth()->user()->role == "AOTR MPR") {
+
             $ftth_trend = DB::table('ftths')
                 ->select(DB::raw('MONTHNAME(date) as month, sum(pmc) as pmc, sum(new_accs) as ntc'))
                 ->where('btn', '64 CSB MPR')
@@ -246,7 +252,7 @@ class DashboardController extends Controller
         foreach ($ftth_trend as $ct) {
             $ftth_trnd[$ct->month]['pmc'] = $ct->pmc;
         }
-//        dd($ftth_trnd);
+//        dd($ftth_trend);
 
 
 

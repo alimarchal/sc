@@ -832,7 +832,7 @@
             ]);
 
             var options = {
-                title: 'Customer Profile Trend',
+                title: 'Customer Profile Trend (SPhone)',
                 curveType: 'function',
                 legend: {position: 'bottom'},
                 colors: ['red', 'green'],
@@ -869,9 +869,9 @@
             ]);
 
             var options = {
-                title: 'FTTH Trend',
+                title: 'Customer Profile Trend (FTTH)',
                 curveType: 'function',
-                legend: {position: 'top'},
+                legend: {position: 'bottom'},
                 colors: ['blue', 'purple'],
                 is3D: true,
             };

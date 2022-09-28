@@ -120,6 +120,8 @@
                             <td>{{number_format(($collection->sum('sphone_ach')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('dxx_asg')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('dxx_ach')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('gpon_asg')/1000000),3)}} m</td>
+                            <td>{{number_format(($collection->sum('gpon_ach')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('total_asg')/1000000),3)}} m</td>
                             <td>{{number_format(($collection->sum('total_ach')/1000000),3)}} m</td>
                         </tr>
